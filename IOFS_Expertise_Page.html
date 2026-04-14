@@ -1,0 +1,228 @@
+<style>
+.iofs-wrap { font-family: 'Georgia', serif; color: #1a1a2e; max-width: 1100px; margin: 0 auto; }
+.iofs-hero { background: linear-gradient(160deg, #1c3060 0%, #1e3d78 60%, #1a3468 100%); padding: 80px 60px; text-align: center; border-radius: 8px; margin-bottom: 60px; }
+.iofs-hero-tag { font-family: 'Trebuchet MS', sans-serif; font-size: 12px; letter-spacing: 4px; text-transform: uppercase; color: rgba(170,210,250,0.8); margin-bottom: 20px; }
+.iofs-hero h1 { font-size: 48px; font-weight: 700; color: #ffffff; margin: 0 0 20px; font-family: 'Trebuchet MS', sans-serif; line-height: 1.2; }
+.iofs-hero h1 span { color: #90c8f8; }
+.iofs-hero p { font-size: 20px; color: rgba(190,225,255,0.9); max-width: 700px; margin: 0 auto 30px; line-height: 1.7; }
+.iofs-accent { width: 80px; height: 3px; background: linear-gradient(90deg, transparent, #50a0f0, transparent); margin: 0 auto; }
+
+/* DR LEE FEATURE */
+.iofs-dr-feature { display: grid; grid-template-columns: 320px 1fr; gap: 60px; margin-bottom: 70px; align-items: start; }
+.iofs-dr-feature img { width: 100%; border-radius: 12px; box-shadow: 0 12px 40px rgba(30,61,120,0.15); }
+.iofs-dr-feature-content .badge { display: inline-block; background: #1e3d78; color: #ffffff; font-family: 'Trebuchet MS', sans-serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 20px; }
+.iofs-dr-feature-content h2 { font-family: 'Trebuchet MS', sans-serif; font-size: 36px; font-weight: 700; color: #1a1a2e; margin: 0 0 8px; }
+.iofs-dr-feature-content h3 { font-size: 17px; color: #1e3d78; font-weight: 600; margin: 0 0 25px; font-family: 'Trebuchet MS', sans-serif; }
+.iofs-dr-feature-content p { font-size: 16px; color: #444; line-height: 1.9; margin-bottom: 18px; }
+
+/* STATS ROW */
+.iofs-stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 25px; }
+.iofs-stat { background: linear-gradient(160deg, #1c3060, #1e3d78); border-radius: 10px; padding: 25px 15px; text-align: center; color: #ffffff; }
+.iofs-stat .num { font-family: 'Trebuchet MS', sans-serif; font-size: 38px; font-weight: 700; color: #90c8f8; line-height: 1; margin-bottom: 6px; }
+.iofs-stat .label { font-size: 12px; color: rgba(190,225,255,0.85); line-height: 1.4; }
+
+/* CREDENTIALS */
+.iofs-credentials { background: #f8faff; border-radius: 12px; padding: 40px; margin-bottom: 60px; }
+.iofs-credentials h2 { font-family: 'Trebuchet MS', sans-serif; font-size: 24px; font-weight: 700; color: #1e3d78; margin-bottom: 25px; }
+.iofs-cred-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.iofs-cred-item { display: flex; align-items: flex-start; gap: 12px; padding: 15px; background: #ffffff; border-radius: 8px; border: 1px solid #e0e8f8; }
+.iofs-cred-item .dot { width: 8px; height: 8px; border-radius: 50%; background: #1e3d78; flex-shrink: 0; margin-top: 6px; }
+.iofs-cred-item p { font-size: 14px; color: #444; margin: 0; line-height: 1.6; }
+
+/* SECTION TITLE */
+.iofs-section-title { font-family: 'Trebuchet MS', sans-serif; font-size: 32px; font-weight: 700; color: #1a1a2e; margin-bottom: 10px; }
+.iofs-section-sub { font-size: 16px; color: #666; margin-bottom: 40px; line-height: 1.6; }
+
+/* SCIENCE APPROACH */
+.iofs-approach { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 60px; }
+.iofs-approach-item { background: #ffffff; border: 1px solid #e0e8f8; border-radius: 10px; padding: 35px; box-shadow: 0 4px 20px rgba(30,61,120,0.06); border-top: 4px solid #1e3d78; }
+.iofs-approach-item .icon { font-size: 30px; margin-bottom: 15px; }
+.iofs-approach-item h3 { font-family: 'Trebuchet MS', sans-serif; font-size: 18px; font-weight: 700; color: #1e3d78; margin: 0 0 12px; }
+.iofs-approach-item p { font-size: 15px; color: #555; line-height: 1.7; margin: 0; }
+
+/* PRACTICE AREAS */
+.iofs-practice { background: #f8faff; border-radius: 12px; padding: 50px; margin-bottom: 60px; }
+.iofs-practice h2 { font-family: 'Trebuchet MS', sans-serif; font-size: 28px; font-weight: 700; color: #1a1a2e; margin-bottom: 10px; }
+.iofs-practice p { font-size: 16px; color: #555; margin-bottom: 30px; line-height: 1.7; }
+.iofs-practice-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+.iofs-practice-item { background: #ffffff; border: 1px solid #e0e8f8; border-radius: 8px; padding: 18px; text-align: center; }
+.iofs-practice-item h4 { font-family: 'Trebuchet MS', sans-serif; font-size: 14px; font-weight: 700; color: #1e3d78; margin: 0; }
+
+/* QUOTE */
+.iofs-quote { background: linear-gradient(160deg, #1c3060, #1e3d78); border-radius: 12px; padding: 60px; margin-bottom: 60px; text-align: center; color: #ffffff; }
+.iofs-quote blockquote { font-size: 22px; color: rgba(190,225,255,0.95); line-height: 1.8; font-style: italic; margin: 0 0 20px; max-width: 800px; margin-left: auto; margin-right: auto; }
+.iofs-quote cite { font-family: 'Trebuchet MS', sans-serif; font-size: 14px; color: #90c8f8; letter-spacing: 1px; }
+
+/* CTA */
+.iofs-cta-strip { background: #f0f5ff; border-radius: 8px; padding: 50px; text-align: center; }
+.iofs-cta-strip h2 { font-family: 'Trebuchet MS', sans-serif; font-size: 28px; font-weight: 700; color: #1e3d78; margin-bottom: 15px; }
+.iofs-cta-strip p { font-size: 17px; color: #555; margin-bottom: 30px; line-height: 1.7; max-width: 600px; margin-left: auto; margin-right: auto; }
+.iofs-cta-btn { display: inline-block; background: #1e3d78; color: #ffffff; font-family: 'Trebuchet MS', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 16px 40px; border-radius: 6px; text-decoration: none; margin: 0 10px; }
+.iofs-cta-btn-outline { display: inline-block; background: transparent; color: #1e3d78; font-family: 'Trebuchet MS', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 16px 40px; border-radius: 6px; text-decoration: none; border: 2px solid #1e3d78; margin: 0 10px; }
+
+@media (max-width: 768px) {
+  .iofs-dr-feature { grid-template-columns: 1fr; }
+  .iofs-stats-row { grid-template-columns: 1fr 1fr; }
+  .iofs-cred-grid, .iofs-approach { grid-template-columns: 1fr; }
+  .iofs-practice-grid { grid-template-columns: 1fr 1fr; }
+  .iofs-hero { padding: 50px 30px; }
+  .iofs-hero h1 { font-size: 32px; }
+}
+</style>
+
+<div class="iofs-wrap">
+
+  <!-- HERO -->
+  <div class="iofs-hero">
+    <div class="iofs-hero-tag">Expertise</div>
+    <h1>World-Class Forensic <span>Expertise</span></h1>
+    <p>The Institute of Forensic Science brings the highest level of scientific authority to family courts, civil proceedings, and legislative chambers across the United States and beyond — guided by the unmatched expertise of Dr. Bandy X. Lee, M.D.</p>
+    <div class="iofs-accent"></div>
+  </div>
+
+  <!-- DR LEE FEATURE -->
+  <div class="iofs-dr-feature">
+    <div>
+      <img src="https://forensicscienceinstitute.com/wp-content/uploads/2025/06/Bandy_X_Lee.webp" alt="Dr. Bandy X. Lee, MD" />
+    </div>
+    <div class="iofs-dr-feature-content">
+      <div class="badge">Chief Medical Officer</div>
+      <h2>Dr. Bandy X. Lee, M.D.</h2>
+      <h3>As Chief Medical Officer, Serves as Our Visionary Guide</h3>
+      <p style="font-size: 15px; color: #555; font-style: italic; margin-bottom: 15px;">Forensic & Social Psychiatrist | Public Health Advocate | Global Authority on Violence Prevention</p>
+      <p>Dr. Bandy X. Lee stands at the pinnacle of modern forensic psychiatry — not merely as a clinician, but as a visionary whose work has redefined the global understanding of mental health, violence prevention, and the intersection between psychiatry and public policy. Trained at Yale and Harvard, she has become the world's most prominent forensic voice on the psychology of dangerous leadership, family court violence, and the mental health of societies.</p>
+      <p>Her influence extends far beyond the clinic. Dr. Lee has briefed members of the U.S. Congress, advised governments and international organizations, and worked with the World Health Organization to develop global violence-prevention strategies. She has brought the insights of forensic psychiatry into family court and other judicial settings — challenging injustice, exposing pseudoscience, and confronting some of the most urgent threats to families and children.</p>
+      <p>As an expert witness in more than 300 cases across more than 30 states, Dr. Lee has witnessed firsthand the devastating consequences of unscientific forensic evaluations on families and children. Her testimony has become a catalyst for reform — engaging state legislatures and policymakers across the country to take meaningful action.</p>
+      <p>Dr. Lee's extraordinary impact comes from her rare combination of deep clinical expertise, rigorous scholarship, and uncompromising moral courage. She has transformed psychiatry into a proactive force for education, justice, public safety, and the defense of constitutional values. In her hands, psychiatry becomes a tool not only to heal individuals, but to diagnose and treat the illnesses of entire societies.</p>
+      <p>In an era where truth and accountability are under siege, Dr. Bandy X. Lee has emerged as psychiatry's most influential and impactful leader — arguably the most prominent psychiatrist in the world — not because she sought power, but because she has consistently used her expertise to speak truth to it.</p>
+
+      <!-- STATS -->
+      <div class="iofs-stats-row">
+        <div class="iofs-stat">
+          <div class="num">300+</div>
+          <div class="label">Expert Witness Cases</div>
+        </div>
+        <div class="iofs-stat">
+          <div class="num">100+</div>
+          <div class="label">Peer-Reviewed Articles</div>
+        </div>
+        <div class="iofs-stat">
+          <div class="num">11+</div>
+          <div class="label">Academic Books Edited</div>
+        </div>
+        <div class="iofs-stat">
+          <div class="num">50+</div>
+          <div class="label">Congress Members Consulted</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CREDENTIALS -->
+  <div class="iofs-credentials">
+    <h2>Academic Credentials & Appointments</h2>
+    <div class="iofs-cred-grid">
+      <div class="iofs-cred-item">
+        <div class="dot"></div>
+        <p><strong>M.D.</strong> — Yale School of Medicine (youngest graduate)</p>
+      </div>
+      <div class="iofs-cred-item">
+        <div class="dot"></div>
+        <p><strong>M.Div.</strong> — Yale Divinity School</p>
+      </div>
+      <div class="iofs-cred-item">
+        <div class="dot"></div>
+        <p><strong>Chief Resident</strong> — Massachusetts General Hospital, Harvard Medical School</p>
+      </div>
+      <div class="iofs-cred-item">
+        <div class="dot"></div>
+        <p><strong>Fellow</strong> — Social Medicine, Harvard Medical School</p>
+      </div>
+      <div class="iofs-cred-item">
+        <div class="dot"></div>
+        <p><strong>National Research Service Award</strong> — National Institute of Mental Health</p>
+      </div>
+      <div class="iofs-cred-item">
+        <div class="dot"></div>
+        <p><strong>17 years</strong> — Yale School of Medicine & Yale Law School Faculty</p>
+      </div>
+      <div class="iofs-cred-item">
+        <div class="dot"></div>
+        <p><strong>Harvard Program</strong> in Psychiatry and the Law</p>
+      </div>
+      <div class="iofs-cred-item">
+        <div class="dot"></div>
+        <p><strong>President</strong> — World Mental Health Coalition</p>
+      </div>
+      <div class="iofs-cred-item">
+        <div class="dot"></div>
+        <p><strong>Co-Founder</strong> — Preventing Violence Now</p>
+      </div>
+      <div class="iofs-cred-item">
+        <div class="dot"></div>
+        <p><strong>Advisor</strong> — World Health Organization, Violence Prevention Alliance</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCIENCE BASED APPROACH -->
+  <div class="iofs-section-title">Our Science-Based Approach</div>
+  <p class="iofs-section-sub">Every engagement at IOFS is grounded in the highest standards of clinical accuracy, legal admissibility, and ethical responsibility — because the stakes for families and children are too high for anything less.</p>
+  <div class="iofs-approach">
+    <div class="iofs-approach-item">
+      <div class="icon">🔬</div>
+      <h3>Evidence-Based Evaluations</h3>
+      <p>Every forensic evaluation is rooted in DSM-5 criteria and empirical science — not subjective opinion, not guesswork. Comprehensive psychiatric and medical history review is standard on every engagement.</p>
+    </div>
+    <div class="iofs-approach-item">
+      <div class="icon">📊</div>
+      <h3>Objective Methodology</h3>
+      <p>Our evaluations use objective data, empirical records, and transparent methodologies — providing clear, defensible findings that meet the highest threshold of legal admissibility in courts at every level.</p>
+    </div>
+    <div class="iofs-approach-item">
+      <div class="icon">⚖️</div>
+      <h3>Court-Ready Findings</h3>
+      <p>Every report, opinion, and evaluation produced by IOFS is designed to withstand rigorous legal scrutiny — delivering clear, defensible recommendations for courts, attorneys, and families.</p>
+    </div>
+    <div class="iofs-approach-item">
+      <div class="icon">🌎</div>
+      <h3>Public Education & Advocacy</h3>
+      <p>Beyond individual cases, IOFS is committed to public education and legal advocacy based on objective science — challenging pseudoscience, exposing fraudulent evaluations, and advancing systemic reform at the legislative level.</p>
+    </div>
+  </div>
+
+  <!-- PRACTICE AREAS -->
+  <div class="iofs-practice">
+    <h2>Practice Areas</h2>
+    <p>IOFS provides forensic expertise across a broad range of legal practice areas — serving families, attorneys, courts, and government agencies throughout the United States and internationally.</p>
+    <div class="iofs-practice-grid">
+      <div class="iofs-practice-item"><h4>Family Law</h4></div>
+      <div class="iofs-practice-item"><h4>Parental Fitness</h4></div>
+      <div class="iofs-practice-item"><h4>Child Custody</h4></div>
+      <div class="iofs-practice-item"><h4>Child Abuse & Neglect</h4></div>
+      <div class="iofs-practice-item"><h4>Coercive Control & Domestic Violence</h4></div>
+      <div class="iofs-practice-item"><h4>Violence & Risk Assessment</h4></div>
+      <div class="iofs-practice-item"><h4>Criminal Law</h4></div>
+      <div class="iofs-practice-item"><h4>Civil Law</h4></div>
+      <div class="iofs-practice-item"><h4>Federal Civil Rights — 42 U.S.C. § 1983</h4></div>
+      <div class="iofs-practice-item"><h4>Medical Malpractice</h4></div>
+      <div class="iofs-practice-item"><h4>Standard of Care</h4></div>
+      <div class="iofs-practice-item"><h4>Trauma & Injury Law</h4></div>
+    </div>
+  </div>
+
+  <!-- QUOTE -->
+  <div class="iofs-quote">
+    <blockquote>"Forensic experts and expert witnesses are highly valued by both judges and attorneys. As such, it is incumbent upon forensic professionals — especially those in the mental health field — to maintain the highest standards of integrity, objectivity, and scientific accuracy."</blockquote>
+    <cite>— Dr. Bandy X. Lee, M.D., Chief Medical Officer, Institute of Forensic Science</cite>
+  </div>
+
+  <!-- CTA -->
+  <div class="iofs-cta-strip">
+    <h2>Access World-Class Expertise</h2>
+    <p>Whether you need to retain Dr. Lee directly for your case or access ongoing forensic insights through The Just Science Community — IOFS is here for you.</p>
+    <a href="/contact/" class="iofs-cta-btn">Request a Free Consultation</a>
+    <a href="/just-science-community/" class="iofs-cta-btn-outline">Join The Just Science Community</a>
+  </div>
+
+</div>

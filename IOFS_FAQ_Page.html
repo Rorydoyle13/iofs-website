@@ -1,0 +1,333 @@
+<style>
+.iofs-wrap { font-family: 'Georgia', serif; color: #1a1a2e; max-width: 1100px; margin: 0 auto; }
+.iofs-hero { background: linear-gradient(160deg, #1c3060 0%, #1e3d78 60%, #1a3468 100%); padding: 80px 60px; text-align: center; border-radius: 8px; margin-bottom: 60px; }
+.iofs-hero-tag { font-family: 'Trebuchet MS', sans-serif; font-size: 12px; letter-spacing: 4px; text-transform: uppercase; color: rgba(170,210,250,0.8); margin-bottom: 20px; }
+.iofs-hero h1 { font-size: 48px; font-weight: 700; color: #ffffff; margin: 0 0 20px; font-family: 'Trebuchet MS', sans-serif; line-height: 1.2; }
+.iofs-hero h1 span { color: #90c8f8; }
+.iofs-hero p { font-size: 20px; color: rgba(190,225,255,0.9); max-width: 700px; margin: 0 auto 30px; line-height: 1.7; }
+.iofs-accent { width: 80px; height: 3px; background: linear-gradient(90deg, transparent, #50a0f0, transparent); margin: 0 auto; }
+
+/* MISSION STRIP */
+.iofs-mission-strip { background: linear-gradient(160deg, #1c3060, #1e3d78); border-radius: 12px; padding: 40px 50px; margin-bottom: 60px; text-align: center; }
+.iofs-mission-strip p { font-size: 20px; color: rgba(190,225,255,0.95); line-height: 1.8; margin: 0; font-style: italic; }
+
+/* FAQ CATEGORIES */
+.iofs-faq-section { margin-bottom: 50px; }
+.iofs-faq-section-title { font-family: 'Trebuchet MS', sans-serif; font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: #1e3d78; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #e0e8f8; }
+
+/* FAQ ITEMS */
+.iofs-faq-item { border: 1px solid #e0e8f8; border-radius: 10px; margin-bottom: 15px; background: #ffffff; overflow: hidden; box-shadow: 0 2px 12px rgba(30,61,120,0.06); transition: all 0.3s; }
+.iofs-faq-item:hover { box-shadow: 0 6px 24px rgba(30,61,120,0.12); }
+.iofs-faq-question { padding: 22px 30px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.iofs-faq-question h3 { font-family: 'Trebuchet MS', sans-serif; font-size: 16px; font-weight: 700; color: #1e3d78; margin: 0; line-height: 1.4; }
+.iofs-faq-toggle { font-size: 22px; color: #1e3d78; flex-shrink: 0; transition: transform 0.3s; font-weight: 300; }
+.iofs-faq-answer { padding: 0 30px 25px; border-top: 1px solid #f0f5ff; }
+.iofs-faq-answer p { font-size: 15px; color: #444; line-height: 1.8; margin: 20px 0 0; }
+
+/* ACCORDION JS */
+.iofs-faq-item.active .iofs-faq-toggle { transform: rotate(45deg); }
+.iofs-faq-answer { display: none; }
+.iofs-faq-item.active .iofs-faq-answer { display: block; }
+
+/* DR LEE HIGHLIGHT */
+.iofs-dr-highlight { background: linear-gradient(160deg, #1c3060, #1e3d78); border-radius: 12px; padding: 50px 60px; margin-bottom: 60px; display: grid; grid-template-columns: 200px 1fr; gap: 40px; align-items: start; color: #ffffff; }
+.iofs-dr-highlight img { width: 100%; border-radius: 8px; }
+.iofs-dr-highlight .badge { display: inline-block; background: rgba(255,255,255,0.15); color: #90c8f8; font-family: 'Trebuchet MS', sans-serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 20px; border: 1px solid rgba(100,170,240,0.3); }
+.iofs-dr-highlight h2 { font-family: 'Trebuchet MS', sans-serif; font-size: 26px; font-weight: 700; color: #ffffff; margin-bottom: 15px; }
+.iofs-dr-highlight p { font-size: 15px; color: rgba(190,225,255,0.9); line-height: 1.8; margin-bottom: 12px; }
+.iofs-dr-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 20px; }
+.iofs-dr-stat { background: rgba(255,255,255,0.1); border-radius: 8px; padding: 15px; text-align: center; border: 1px solid rgba(100,170,240,0.2); }
+.iofs-dr-stat .num { font-family: 'Trebuchet MS', sans-serif; font-size: 28px; font-weight: 700; color: #90c8f8; }
+.iofs-dr-stat .label { font-size: 12px; color: rgba(170,210,250,0.8); line-height: 1.4; margin-top: 4px; }
+
+/* PRICING BOX */
+.iofs-pricing-box { background: #f8faff; border: 2px solid #1e3d78; border-radius: 12px; padding: 50px; margin-bottom: 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+.iofs-price-display { text-align: center; }
+.iofs-price-display .amount { font-family: 'Trebuchet MS', sans-serif; font-size: 80px; font-weight: 700; color: #1e3d78; line-height: 1; }
+.iofs-price-display .period { font-size: 20px; color: #555; }
+.iofs-price-display .note { font-size: 14px; color: #888; margin-top: 10px; font-style: italic; }
+.iofs-price-includes h3 { font-family: 'Trebuchet MS', sans-serif; font-size: 18px; font-weight: 700; color: #1e3d78; margin-bottom: 20px; }
+.iofs-price-includes ul { list-style: none; padding: 0; margin: 0 0 25px; }
+.iofs-price-includes ul li { font-size: 15px; color: #444; padding: 8px 0; border-bottom: 1px solid #e8f0fb; display: flex; align-items: flex-start; gap: 10px; }
+.iofs-price-includes ul li::before { content: '✦'; color: #1e3d78; font-size: 11px; margin-top: 4px; flex-shrink: 0; }
+.iofs-price-includes ul li:last-child { border-bottom: none; }
+.iofs-join-btn { display: inline-block; background: #1e3d78; color: #ffffff; font-family: 'Trebuchet MS', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 16px 35px; border-radius: 6px; text-decoration: none; }
+
+/* DISCLAIMER */
+.iofs-disclaimer { background: #fff8f0; border: 1px solid #f0d8b0; border-radius: 8px; padding: 30px 35px; margin-bottom: 60px; }
+.iofs-disclaimer h3 { font-family: 'Trebuchet MS', sans-serif; font-size: 14px; font-weight: 700; color: #8a5a00; margin-bottom: 12px; letter-spacing: 1px; text-transform: uppercase; }
+.iofs-disclaimer p { font-size: 14px; color: #6a4800; line-height: 1.7; margin: 0; }
+
+/* CONTACT CTA */
+.iofs-contact-cta { background: linear-gradient(160deg, #1c3060, #1e3d78); border-radius: 12px; padding: 50px; text-align: center; color: #ffffff; }
+.iofs-contact-cta h2 { font-family: 'Trebuchet MS', sans-serif; font-size: 28px; font-weight: 700; color: #ffffff; margin-bottom: 15px; }
+.iofs-contact-cta p { font-size: 17px; color: rgba(190,225,255,0.9); margin-bottom: 30px; line-height: 1.7; }
+.iofs-contact-btn { display: inline-block; background: #ffffff; color: #1e3d78; font-family: 'Trebuchet MS', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 16px 40px; border-radius: 6px; text-decoration: none; }
+
+@media (max-width: 768px) {
+  .iofs-hero { padding: 50px 30px; }
+  .iofs-hero h1 { font-size: 34px; }
+  .iofs-dr-highlight { grid-template-columns: 1fr; }
+  .iofs-dr-stats { grid-template-columns: 1fr 1fr; }
+  .iofs-pricing-box { grid-template-columns: 1fr; }
+}
+</style>
+
+<div class="iofs-wrap">
+
+  <!-- HERO -->
+  <div class="iofs-hero">
+    <div class="iofs-hero-tag">The Just Science Community</div>
+    <h1>Frequently Asked <span>Questions</span></h1>
+    <p>Everything you need to know about The Just Science Community — your ongoing resource for world-class forensic expertise, groundbreaking data, and mission-driven science.</p>
+    <div class="iofs-accent"></div>
+  </div>
+
+  <!-- MISSION STRIP -->
+  <div class="iofs-mission-strip">
+    <p>IOFS membership delivers world-renowned forensic science, mission-driven education, and critical national data trends — led by Dr. Bandy X. Lee, M.D., Chief Medical Officer.</p>
+  </div>
+
+  <!-- MEMBERSHIP BASICS -->
+  <div class="iofs-faq-section">
+    <div class="iofs-faq-section-title">Membership — What's Included</div>
+
+    <div class="iofs-faq-item active">
+      <div class="iofs-faq-question" onclick="toggleFAQ(this)">
+        <h3>What does membership include?</h3>
+        <span class="iofs-faq-toggle">+</span>
+      </div>
+      <div class="iofs-faq-answer">
+        <p>Membership includes monthly one-hour educational sessions with Dr. Bandy Lee, M.D., advisory newsletters, forensic analysis, national data insights, and the ability to submit member questions across 15 categories of forensic expertise. All members also receive recording downloads of every session and full access to all past content — regardless of their ability to attend live. All materials are educational and policy-informed only.</p>
+        <p>Members also have access to our growing content library — including past sessions, newsletters, and educational briefings available for individual purchase à la carte.</p>
+      </div>
+    </div>
+
+    <div class="iofs-faq-item">
+      <div class="iofs-faq-question" onclick="toggleFAQ(this)">
+        <h3>If I miss the live monthly meeting, how will I receive access?</h3>
+        <span class="iofs-faq-toggle">+</span>
+      </div>
+      <div class="iofs-faq-answer">
+        <p>All members have full access to all content and meetings regardless of their ability to attend live. Every session is recorded and made available as a downloadable file — so no meeting is ever missed.</p>
+      </div>
+    </div>
+
+    <div class="iofs-faq-item">
+      <div class="iofs-faq-question" onclick="toggleFAQ(this)">
+        <h3>Will members have full access to previous content including educational meetings, newsletters, and educational content?</h3>
+        <span class="iofs-faq-toggle">+</span>
+      </div>
+      <div class="iofs-faq-answer">
+        <p>Yes. All members can purchase content a la carte as part of our library. Every educational session, newsletter, and piece of content is available to members as part of the IOFS content library.</p>
+      </div>
+    </div>
+
+    <div class="iofs-faq-item">
+      <div class="iofs-faq-question" onclick="toggleFAQ(this)">
+        <h3>What happens when I submit a question?</h3>
+        <span class="iofs-faq-toggle">+</span>
+      </div>
+      <div class="iofs-faq-answer">
+        <p>Questions are reviewed for educational relevance and professional scope. Themes may inform future briefings or reports. Individual responses are not guaranteed, but all submissions are carefully reviewed and considered for inclusion in upcoming sessions and educational content.</p>
+      </div>
+    </div>
+
+    <div class="iofs-faq-item">
+      <div class="iofs-faq-question" onclick="toggleFAQ(this)">
+        <h3>Who develops the educational content?</h3>
+        <span class="iofs-faq-toggle">+</span>
+      </div>
+      <div class="iofs-faq-answer">
+        <p>Content is informed by forensic psychiatric research, national data, interdisciplinary analysis, and the leadership of Dr. Bandy X. Lee, M.D. — one of the most internationally recognized forensic psychiatrists and public health advocates in the United States.</p>
+      </div>
+    </div>
+
+    <div class="iofs-faq-item">
+      <div class="iofs-faq-question" onclick="toggleFAQ(this)">
+        <h3>Who is membership designed for?</h3>
+        <span class="iofs-faq-toggle">+</span>
+      </div>
+      <div class="iofs-faq-answer">
+        <p>The Just Science Community is designed for families, pro se litigants, legal professionals, policymakers, advocates, and guardians — anyone navigating the complexities of family court who needs access to credible, empirical, science-based expertise and actionable intelligence.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- WHAT MEMBERSHIP IS NOT -->
+  <div class="iofs-faq-section">
+    <div class="iofs-faq-section-title">What Membership Does Not Include</div>
+
+    <div class="iofs-faq-item">
+      <div class="iofs-faq-question" onclick="toggleFAQ(this)">
+        <h3>Does membership include legal advice?</h3>
+        <span class="iofs-faq-toggle">+</span>
+      </div>
+      <div class="iofs-faq-answer">
+        <p>No. IOFS does not provide legal advice or create an attorney–client relationship. All content provided through The Just Science Community is educational and policy-informed only and does not replace the advice of a licensed legal professional.</p>
+      </div>
+    </div>
+
+    <div class="iofs-faq-item">
+      <div class="iofs-faq-question" onclick="toggleFAQ(this)">
+        <h3>Does membership include therapy or diagnosis?</h3>
+        <span class="iofs-faq-toggle">+</span>
+      </div>
+      <div class="iofs-faq-answer">
+        <p>No. Membership does not provide treatment, diagnosis, or clinical care. All materials are for educational purposes only and do not create a doctor-patient relationship.</p>
+      </div>
+    </div>
+
+    <div class="iofs-faq-item">
+      <div class="iofs-faq-question" onclick="toggleFAQ(this)">
+        <h3>Can IOFS review my individual case through membership?</h3>
+        <span class="iofs-faq-toggle">+</span>
+      </div>
+      <div class="iofs-faq-answer">
+        <p>Not through membership. Case review requires a separate formal professional engagement. If you need Dr. Bandy Lee, M.D. to conduct a comprehensive forensic evaluation, peer review, or provide expert testimony in your specific case, please visit our <a href="/services/" style="color: #1e3d78;">Forensic Services</a> page to request a consultation.</p>
+      </div>
+    </div>
+
+    <div class="iofs-faq-item">
+      <div class="iofs-faq-question" onclick="toggleFAQ(this)">
+        <h3>Should membership guide my legal or clinical decisions?</h3>
+        <span class="iofs-faq-toggle">+</span>
+      </div>
+      <div class="iofs-faq-answer">
+        <p>No. Materials provided through The Just Science Community are for educational purposes only and do not replace licensed professional advice. We strongly encourage all members to work with qualified legal and clinical professionals in their individual matters.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PRICING & BILLING -->
+  <div class="iofs-faq-section">
+    <div class="iofs-faq-section-title">Pricing & Billing</div>
+
+    <div class="iofs-faq-item">
+      <div class="iofs-faq-question" onclick="toggleFAQ(this)">
+        <h3>How much does membership cost?</h3>
+        <span class="iofs-faq-toggle">+</span>
+      </div>
+      <div class="iofs-faq-answer">
+        <p>Membership is $129 per month, with full access to all member education, analysis, session recordings, newsletters, and the ability to submit questions across 15 categories of forensic expertise.</p>
+      </div>
+    </div>
+
+    <div class="iofs-faq-item">
+      <div class="iofs-faq-question" onclick="toggleFAQ(this)">
+        <h3>Are there long-term contracts?</h3>
+        <span class="iofs-faq-toggle">+</span>
+      </div>
+      <div class="iofs-faq-answer">
+        <p>No. Membership is billed monthly with cancellation available per checkout terms. There is no long-term commitment required.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- WHY IOFS -->
+  <div class="iofs-faq-section">
+    <div class="iofs-faq-section-title">Why The Just Science Community</div>
+
+    <div class="iofs-faq-item">
+      <div class="iofs-faq-question" onclick="toggleFAQ(this)">
+        <h3>Why did IOFS create this membership?</h3>
+        <span class="iofs-faq-toggle">+</span>
+      </div>
+      <div class="iofs-faq-answer">
+        <p>The founders of IOFS created this membership as an accessible and impactful solution to empower families, advocates, legal professionals, and policymakers with world-class forensic science expertise, strategic education, and critical national data. This level of insight and advocacy support has historically been unattainable for most families due to the significant financial barriers of engaging top-tier forensic professionals — costs that can run into the tens of thousands of dollars. IOFS membership changes that, putting mission-driven science and data-driven advocacy within reach for those who need it most.</p>
+      </div>
+    </div>
+
+    <div class="iofs-faq-item">
+      <div class="iofs-faq-question" onclick="toggleFAQ(this)">
+        <h3>Why is membership so critical today?</h3>
+        <span class="iofs-faq-toggle">+</span>
+      </div>
+      <div class="iofs-faq-answer">
+        <p>In an era of escalating misinformation and a growing global disconnect from scientific fact, children and families are increasingly placed in peril by decisions that ignore evidence-based forensic science. IOFS membership exists to close that gap — delivering world-renowned expertise, critical national data, and mission-driven education to those navigating a system that too often fails to prioritize truth, safety, and accountability.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- DR LEE SECTION -->
+  <div class="iofs-dr-highlight">
+    <div>
+      <img src="https://forensicscienceinstitute.com/wp-content/uploads/2025/06/Bandy_X_Lee.webp" alt="Dr. Bandy X. Lee, MD" />
+    </div>
+    <div>
+      <div class="badge">Chief Medical Officer</div>
+      <h2>Who is Dr. Bandy X. Lee, M.D.?</h2>
+      <p>Dr. Bandy X. Lee is a Harvard and Yale trained world-renowned forensic and social psychiatrist, violence prevention expert, and global authority on public health approaches to violence. She served on the faculties of Yale School of Medicine and Yale Law School for 17 years before joining Harvard Medical School.</p>
+      <p>Dr. Lee has pioneered a national movement for family court accountability and reform, engaging dozens of states to take meaningful action. She is the most sought-after forensic psychiatrist globally, and her leadership of IOFS represents a once-in-a-generation opportunity for families to access the highest level of scientific authority.</p>
+      <div class="iofs-dr-stats">
+        <div class="iofs-dr-stat">
+          <div class="num">300+</div>
+          <div class="label">Expert Witness Cases</div>
+        </div>
+        <div class="iofs-dr-stat">
+          <div class="num">100+</div>
+          <div class="label">Peer-Reviewed Articles</div>
+        </div>
+        <div class="iofs-dr-stat">
+          <div class="num">50+</div>
+          <div class="label">U.S. Congress Members Consulted</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRICING BOX -->
+  <div class="iofs-pricing-box">
+    <div class="iofs-price-display">
+      <div class="amount">$129</div>
+      <div class="period">per month</div>
+      <div class="note">No long-term contracts. Cancel anytime.</div>
+      <br/>
+      <a href="/contact/" class="iofs-join-btn">Join Now</a>
+    </div>
+    <div class="iofs-price-includes">
+      <h3>Everything Included:</h3>
+      <ul>
+        <li>Monthly one-hour session with Dr. Bandy Lee, M.D.</li>
+        <li>Submit questions across 15 forensic expertise categories</li>
+        <li>Monthly newsletter — legislative reform updates</li>
+        <li>Recording downloads of every session</li>
+        <li>Access to national initiatives & advocacy efforts</li>
+        <li>Groundbreaking research & empirical data</li>
+        <li>Full access to all past content & session library</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="iofs-disclaimer">
+    <h3>⚠️ Important Notice</h3>
+    <p>All content and materials provided through The Just Science Community are for educational purposes only. IOFS membership does not constitute legal advice, clinical care, therapy, diagnosis, or case review, and does not create an attorney-client or doctor-patient relationship. Materials do not replace the advice of qualified legal or clinical professionals. Individual case review requires a separate formal professional engagement.</p>
+  </div>
+
+  <!-- CONTACT CTA -->
+  <div class="iofs-contact-cta">
+    <h2>Have More Questions?</h2>
+    <p>Submit your question through our member portal or contact us directly. We are here to help every family access the science they need.</p>
+    <a href="/contact/" class="iofs-contact-btn">Contact Us</a>
+  </div>
+
+</div>
+
+<script>
+function toggleFAQ(el) {
+  const item = el.parentElement;
+  const allItems = document.querySelectorAll('.iofs-faq-item');
+  allItems.forEach(i => { if (i !== item) i.classList.remove('active'); });
+  item.classList.toggle('active');
+}
+// Open first item by default
+document.addEventListener('DOMContentLoaded', function() {
+  const first = document.querySelector('.iofs-faq-item');
+  if (first) first.classList.add('active');
+});
+</script>

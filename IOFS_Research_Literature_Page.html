@@ -1,0 +1,304 @@
+<style>
+.iofs-wrap { font-family: 'Georgia', serif; color: #1a1a2e; max-width: 1100px; margin: 0 auto; }
+.iofs-hero { background: linear-gradient(160deg, #1c3060 0%, #1e3d78 60%, #1a3468 100%); padding: 80px 60px; text-align: center; border-radius: 8px; margin-bottom: 60px; }
+.iofs-hero-tag { font-family: 'Trebuchet MS', sans-serif; font-size: 12px; letter-spacing: 4px; text-transform: uppercase; color: rgba(170,210,250,0.8); margin-bottom: 20px; }
+.iofs-hero h1 { font-size: 48px; font-weight: 700; color: #ffffff; margin: 0 0 20px; font-family: 'Trebuchet MS', sans-serif; line-height: 1.2; }
+.iofs-hero h1 span { color: #90c8f8; }
+.iofs-hero p { font-size: 20px; color: rgba(190,225,255,0.9); max-width: 750px; margin: 0 auto 30px; line-height: 1.7; }
+.iofs-accent { width: 80px; height: 3px; background: linear-gradient(90deg, transparent, #50a0f0, transparent); margin: 0 auto; }
+
+/* INTRO */
+.iofs-intro { background: #f8faff; border-left: 5px solid #1e3d78; padding: 40px 50px; margin-bottom: 60px; border-radius: 0 8px 8px 0; }
+.iofs-intro p { font-size: 18px; color: #1a1a2e; line-height: 1.9; margin: 0; }
+
+/* STATS */
+.iofs-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 60px; }
+.iofs-stat { background: linear-gradient(160deg, #1c3060, #1e3d78); border-radius: 10px; padding: 30px 15px; text-align: center; color: #ffffff; }
+.iofs-stat .num { font-family: 'Trebuchet MS', sans-serif; font-size: 36px; font-weight: 700; color: #90c8f8; line-height: 1; margin-bottom: 8px; }
+.iofs-stat .label { font-size: 13px; color: rgba(190,225,255,0.85); line-height: 1.4; }
+
+/* SECTION TITLE */
+.iofs-section-title { font-family: 'Trebuchet MS', sans-serif; font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: #1e3d78; margin-bottom: 25px; padding-bottom: 12px; border-bottom: 2px solid #e0e8f8; }
+
+/* REFERENCE CARDS */
+.iofs-ref-grid { display: grid; grid-template-columns: 1fr; gap: 15px; margin-bottom: 50px; }
+.iofs-ref-card { background: #ffffff; border: 1px solid #e0e8f8; border-radius: 10px; padding: 30px 35px; box-shadow: 0 2px 12px rgba(30,61,120,0.05); transition: all 0.3s; border-left: 4px solid #1e3d78; }
+.iofs-ref-card:hover { box-shadow: 0 6px 24px rgba(30,61,120,0.10); transform: translateX(3px); }
+.iofs-ref-card.featured { border-left: 4px solid #50a0f0; background: #f8faff; }
+.iofs-ref-card .ref-tag { display: inline-block; font-family: 'Trebuchet MS', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; margin-bottom: 12px; }
+.iofs-ref-card .ref-tag.iofs { background: #1e3d78; color: #ffffff; }
+.iofs-ref-card .ref-tag.peer { background: #e8f0fb; color: #1e3d78; }
+.iofs-ref-card .ref-tag.gov { background: #f0f8e8; color: #2a6e00; }
+.iofs-ref-card .ref-tag.intl { background: #fff0e8; color: #8a3a00; }
+.iofs-ref-card .ref-tag.press { background: #f8f0ff; color: #5a0080; }
+.iofs-ref-citation { font-size: 15px; color: #1a1a2e; font-weight: 600; line-height: 1.6; margin-bottom: 10px; font-family: 'Georgia', serif; }
+.iofs-ref-citation a { color: #1e3d78; text-decoration: underline; }
+.iofs-ref-summary { font-size: 14px; color: #555; line-height: 1.7; margin: 0; font-style: italic; }
+
+/* COMMUNITY CTA */
+.iofs-community-cta { background: linear-gradient(160deg, #1c3060, #1e3d78); border-radius: 12px; padding: 60px; margin-bottom: 40px; text-align: center; color: #ffffff; }
+.iofs-community-cta h2 { font-family: 'Trebuchet MS', sans-serif; font-size: 32px; font-weight: 700; color: #ffffff; margin-bottom: 15px; }
+.iofs-community-cta p { font-size: 18px; color: rgba(190,225,255,0.9); margin-bottom: 30px; line-height: 1.7; max-width: 700px; margin-left: auto; margin-right: auto; }
+.iofs-cta-btn-white { display: inline-block; background: #ffffff; color: #1e3d78; font-family: 'Trebuchet MS', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 16px 40px; border-radius: 6px; text-decoration: none; margin: 0 10px; }
+.iofs-cta-btn-outline { display: inline-block; background: transparent; color: #ffffff; font-family: 'Trebuchet MS', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 16px 40px; border-radius: 6px; text-decoration: none; border: 2px solid rgba(255,255,255,0.5); margin: 0 10px; }
+
+@media (max-width: 768px) {
+  .iofs-stats { grid-template-columns: 1fr 1fr; }
+  .iofs-hero { padding: 50px 30px; }
+  .iofs-hero h1 { font-size: 32px; }
+  .iofs-community-cta { padding: 40px 30px; }
+}
+</style>
+
+<div class="iofs-wrap">
+
+  <!-- HERO -->
+  <div class="iofs-hero">
+    <div class="iofs-hero-tag">Research Literature</div>
+    <h1>Mission Driven Science. <span>Evidence-Based Truth.</span></h1>
+    <p>A curated library of peer-reviewed research, international policy guidance, and investigative reporting that forms the empirical foundation of IOFS's work — protecting families through science, not speculation.</p>
+    <div class="iofs-accent"></div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="iofs-intro">
+    <p>The Institute of Forensic Science is a mission-driven, research-centered organization dedicated to advancing public health, protecting vulnerable families, and strengthening the integrity of forensic and judicial systems through education and scientifically sound service provision. This curated research library reflects critical scholarship, investigative reporting, and international guidance on domestic violence and child abuse issues in the family court context. It exists to support professionals, policymakers, and families seeking evidence-based insights grounded in science and facts — not speculation.</p>
+  </div>
+
+  <!-- STATS -->
+  <div class="iofs-stats">
+    <div class="iofs-stat">
+      <div class="num">30+</div>
+      <div class="label">Peer-Reviewed<br>Studies Referenced</div>
+    </div>
+    <div class="iofs-stat">
+      <div class="num">5+</div>
+      <div class="label">International<br>Organizations Cited</div>
+    </div>
+    <div class="iofs-stat">
+      <div class="num">100+</div>
+      <div class="label">Dr. Lee Peer-Reviewed<br>Articles Published</div>
+    </div>
+    <div class="iofs-stat">
+      <div class="num">11+</div>
+      <div class="label">Academic Books<br>Edited by Dr. Lee</div>
+    </div>
+  </div>
+
+  <!-- IOFS PUBLISHED RESEARCH -->
+  <div class="iofs-section-title">IOFS Published Research</div>
+  <div class="iofs-ref-grid">
+    <div class="iofs-ref-card featured">
+      <span class="ref-tag iofs">IOFS Research</span>
+      <div class="iofs-ref-citation">Lee, B. X., & Lee, G. (2025). A triple pandemic: COVID-19, violence against children, and the crisis in family courts. <em>Frontiers in Child and Adolescent Psychiatry, 4</em>, 1481455.</div>
+      <p class="iofs-ref-summary">This article argues that COVID-19, rising violence against children, and family court failures constitute a triple global crisis requiring urgent coordinated action.</p>
+    </div>
+  </div>
+
+  <!-- PEER REVIEWED RESEARCH -->
+  <div class="iofs-section-title">Peer-Reviewed Research</div>
+  <div class="iofs-ref-grid">
+
+    <div class="iofs-ref-card">
+      <span class="ref-tag peer">Peer-Reviewed</span>
+      <div class="iofs-ref-citation">Bartlow, R. D. (2017). Judicial response to court-assisted child murders. <em>Family & Intimate Partner Violence Quarterly, 10</em>(1), 7–54.</div>
+      <p class="iofs-ref-summary">This study documents cases where judicial decisions contributed to child homicides and analyzes systemic failures in court responses.</p>
+    </div>
+
+    <div class="iofs-ref-card">
+      <span class="ref-tag peer">Peer-Reviewed</span>
+      <div class="iofs-ref-citation">Dalgarno, E., Ayeb-Karlsson, S., Bramwell, D., Barnett, A., & Verma, A. (2024). Health-related experiences of family court and domestic abuse in England. <em>Journal of Family Trauma, Child Custody & Child Development, 21</em>(3), 1–28.</div>
+      <p class="iofs-ref-summary">This research highlights severe health impacts on domestic abuse survivors involved in England's family court system.</p>
+    </div>
+
+    <div class="iofs-ref-card">
+      <span class="ref-tag peer">Peer-Reviewed</span>
+      <div class="iofs-ref-citation">Dichter, M. E., Thomas, K. A., Crits-Christoph, P., Ogden, S. N., & Rhodes, K. V. (2018). Coercive control in intimate partner violence. <em>Psychology of Violence, 8</em>(5), 596–604.</div>
+      <p class="iofs-ref-summary">This article analyzes how coercive control shapes women's experiences of intimate partner violence and danger.</p>
+    </div>
+
+    <div class="iofs-ref-card">
+      <span class="ref-tag peer">Peer-Reviewed</span>
+      <div class="iofs-ref-citation">Ireland, G., Wijlaars, L., Jay, M., & Gilbert, R. (2024). Increased mortality among mothers involved in family court care proceedings compared with their peers in England. <em>International Journal of Population Data Science, 9</em>(5): 162.</div>
+      <p class="iofs-ref-summary">This study finds that mothers in care proceedings face significantly higher mortality rates than similar mothers not in the system.</p>
+    </div>
+
+    <div class="iofs-ref-card">
+      <span class="ref-tag peer">Peer-Reviewed</span>
+      <div class="iofs-ref-citation">Johnson, M. E. (2008). Redefining harm, reimagining remedies, and reclaiming domestic violence law. <em>UC Davis Law Review, 42</em>, 1107–1180.</div>
+      <p class="iofs-ref-summary">This article argues for reforming domestic violence law to better capture complex harms and improve protective remedies.</p>
+    </div>
+
+    <div class="iofs-ref-card">
+      <span class="ref-tag peer">Peer-Reviewed</span>
+      <div class="iofs-ref-citation">Karbasi, Z., Safdari, R., & Eslami, P. (2022). The silent crisis of child abuse in the COVID-19 pandemic: A scoping review. <em>Health Science Reports, 5</em>(5), e790.</div>
+      <p class="iofs-ref-summary">This review identifies increased risks and reduced detection of child abuse during the COVID-19 pandemic.</p>
+    </div>
+
+    <div class="iofs-ref-card">
+      <span class="ref-tag peer">Peer-Reviewed</span>
+      <div class="iofs-ref-citation">Kõlves, K. (2010). Child suicide, family environment, and economic crisis. <em>Crisis, 31</em>(3), 115–117.</div>
+      <p class="iofs-ref-summary">This article explores how economic stress and family instability contribute to elevated child suicide risk.</p>
+    </div>
+
+    <div class="iofs-ref-card">
+      <span class="ref-tag peer">Peer-Reviewed</span>
+      <div class="iofs-ref-citation">Kuehn, B. M. (2020). Surge in child abuse, harm during COVID-19 pandemic reported. <em>JAMA, 324</em>(7), 621.</div>
+      <p class="iofs-ref-summary">This news report summarizes rising concerns about increased child abuse during the pandemic.</p>
+    </div>
+
+    <div class="iofs-ref-card">
+      <span class="ref-tag peer">Peer-Reviewed</span>
+      <div class="iofs-ref-citation">Meier, J. S. (2020). U.S. child custody outcomes in cases involving parental alienation and abuse allegations: What do the data show? <em>Journal of Social Welfare and Family Law, 42</em>(1), 92–105.</div>
+      <p class="iofs-ref-summary">This study shows that abuse claims often lead to unfavorable custody outcomes for the reporting parent, especially when parental alienation is alleged.</p>
+    </div>
+
+    <div class="iofs-ref-card">
+      <span class="ref-tag peer">Peer-Reviewed</span>
+      <div class="iofs-ref-citation">Saunders, D. G., Faller, K. C., & Tolman, R. M. (2011). Child custody evaluators' beliefs about domestic abuse allegations. U.S. Department of Justice. <a href="https://www.ojp.gov/pdffiles1/nij/grants/238891.pdf" target="_blank">View Report</a></div>
+      <p class="iofs-ref-summary">This report examines how custody evaluators' beliefs and training influence their handling of domestic abuse claims.</p>
+    </div>
+
+    <div class="iofs-ref-card">
+      <span class="ref-tag peer">Peer-Reviewed</span>
+      <div class="iofs-ref-citation">Sheehy, E., & Lapierre, S. (2020). Introduction to the special issue. <em>Journal of Social Welfare and Family Law, 42</em>(1), 1–4.</div>
+      <p class="iofs-ref-summary">This introduction frames the issue's focus on family court challenges and the risks faced by abuse survivors.</p>
+    </div>
+
+    <div class="iofs-ref-card">
+      <span class="ref-tag peer">Peer-Reviewed</span>
+      <div class="iofs-ref-citation">Teicher, M. H. (2018). Childhood trauma and the enduring consequences of forcibly separating children from parents at the United States border. <em>BMC Medicine, 16</em>, 1–3.</div>
+      <p class="iofs-ref-summary">This article reviews the lasting psychological and biological effects of forced parent–child separation.</p>
+    </div>
+
+    <div class="iofs-ref-card">
+      <span class="ref-tag peer">Peer-Reviewed</span>
+      <div class="iofs-ref-citation">Wilde, S., Sheeran, N., & Douglas, H. (2024). The psychological impact on mothers who have experienced domestic violence when navigating the family court system. <em>Psychiatry, Psychology and Law, 31</em>(4), 764–791.</div>
+      <p class="iofs-ref-summary">This review finds that mothers who have survived domestic violence experience significant psychological distress when engaging with family courts.</p>
+    </div>
+
+  </div>
+
+  <!-- GOVERNMENT & POLICY -->
+  <div class="iofs-section-title">Government & Policy Resources</div>
+  <div class="iofs-ref-grid">
+
+    <div class="iofs-ref-card">
+      <span class="ref-tag gov">Government</span>
+      <div class="iofs-ref-citation">Center for Judicial Excellence. (2024). U.S. child homicide data: 2008–present. <a href="https://centerforjudicialexcellence.org/cje-projects-initiatives/child-murder-data/" target="_blank">View Resource</a></div>
+      <p class="iofs-ref-summary">This resource compiles national data on child homicides related to custody and family court contexts.</p>
+    </div>
+
+    <div class="iofs-ref-card">
+      <span class="ref-tag gov">Government</span>
+      <div class="iofs-ref-citation">George Washington University. (2021). Draft summary: Overview of family court outcomes study. National Institute of Justice. <a href="https://www.ojp.gov/pdffiles1/nij/grants/302141.pdf" target="_blank">View Report</a></div>
+      <p class="iofs-ref-summary">This draft summary outlines preliminary findings on patterns and safety issues in U.S. family court outcomes.</p>
+    </div>
+
+    <div class="iofs-ref-card">
+      <span class="ref-tag gov">Government</span>
+      <div class="iofs-ref-citation">Resource Center on Domestic Violence: Child Protection and Custody. (2023). Facts. <a href="https://rcdvcpc.org/facts.html" target="_blank">View Resource</a></div>
+      <p class="iofs-ref-summary">This webpage provides key statistics on domestic violence, child protection, and custody-related risks.</p>
+    </div>
+
+    <div class="iofs-ref-card">
+      <span class="ref-tag gov">Government</span>
+      <div class="iofs-ref-citation">Siltala, H., et al. (2023). Domestic violence-related use of services and the resulting costs in health, social and legal services. Finland Prime Minister's Office.</div>
+      <p class="iofs-ref-summary">This study estimates the broad economic costs created by domestic-violence-related service use across multiple sectors.</p>
+    </div>
+
+    <div class="iofs-ref-card">
+      <span class="ref-tag gov">Government</span>
+      <div class="iofs-ref-citation">U.S. Department of Health and Human Services. (2010). <em>Child Maltreatment 2010</em>. <a href="https://www.acf.hhs.gov/programs/cb/stats_research/index.htm" target="_blank">View Report</a></div>
+      <p class="iofs-ref-summary">This annual federal report provides national statistics on child abuse and neglect investigations and outcomes.</p>
+    </div>
+
+  </div>
+
+  <!-- INTERNATIONAL ORGANIZATIONS -->
+  <div class="iofs-section-title">International Organizations & Treaties</div>
+  <div class="iofs-ref-grid">
+
+    <div class="iofs-ref-card">
+      <span class="ref-tag intl">International</span>
+      <div class="iofs-ref-citation">European Parliament. (2021). European Parliament resolution of 6 October 2021 on the impact of intimate partner violence and custody rights on women and children. <a href="https://perma.cc/962L-QJDQ" target="_blank">View Resolution</a></div>
+      <p class="iofs-ref-summary">This resolution condemns custody practices that endanger women and children and calls for EU-wide reforms.</p>
+    </div>
+
+    <div class="iofs-ref-card">
+      <span class="ref-tag intl">International</span>
+      <div class="iofs-ref-citation">Šimonović, D., et al. (2019). <em>Intimate Partner Violence against Women is an Essential Factor in the Determination of Child Custody</em>. United Nations Human Rights Council. <a href="https://www.ohchr.org/sites/default/files/Documents/Issues/Women/SR/StatementVAW_Custody.pdf" target="_blank">View Statement</a></div>
+      <p class="iofs-ref-summary">This UN statement asserts that intimate partner violence must be prioritized in custody determinations to safeguard women and children.</p>
+    </div>
+
+    <div class="iofs-ref-card">
+      <span class="ref-tag intl">International</span>
+      <div class="iofs-ref-citation">United Nations. (2023). Custody, violence against women and violence against children: Report of the Special Rapporteur on violence against women and girls. <a href="https://www.ohchr.org/en/documents/thematic-reports/ahrc5336-custody-violence-against-women-and-violence-against-children" target="_blank">View Report</a></div>
+      <p class="iofs-ref-summary">This UN report warns that custody practices worldwide often expose women and children to ongoing violence.</p>
+    </div>
+
+    <div class="iofs-ref-card">
+      <span class="ref-tag intl">International</span>
+      <div class="iofs-ref-citation">World Health Organization. (2020). <em>Global Status Report on Preventing Violence against Children 2020</em>. <a href="https://iris.who.int/bitstream/handle/10665/332394/9789240004191-eng.pdf" target="_blank">View Report</a></div>
+      <p class="iofs-ref-summary">This global report evaluates countries' progress in preventing violence against children and identifies major gaps.</p>
+    </div>
+
+    <div class="iofs-ref-card">
+      <span class="ref-tag intl">International</span>
+      <div class="iofs-ref-citation">World Health Organization. (2021). <em>Global, Regional and National Prevalence Estimates for Intimate Partner Violence</em>. <a href="https://www.who.int/publications/i/item/9789241564625" target="_blank">View Report</a></div>
+      <p class="iofs-ref-summary">This report presents comprehensive global estimates of intimate partner and non-partner sexual violence affecting women.</p>
+    </div>
+
+  </div>
+
+  <!-- BOOKS & INVESTIGATIVE JOURNALISM -->
+  <div class="iofs-section-title">Books & Investigative Journalism</div>
+  <div class="iofs-ref-grid">
+
+    <div class="iofs-ref-card">
+      <span class="ref-tag press">Book</span>
+      <div class="iofs-ref-citation">Chesler, P. (2011). <em>Mothers on Trial: The Battle for Children and Custody</em>. Chicago Review Press.</div>
+      <p class="iofs-ref-summary">This book examines systemic bias and legal struggles faced by mothers in child custody disputes.</p>
+    </div>
+
+    <div class="iofs-ref-card">
+      <span class="ref-tag press">Book</span>
+      <div class="iofs-ref-citation">Shengold, L. (1991). <em>Soul murder: The effects of childhood abuse and deprivation</em>. Fawcett Columbine.</div>
+      <p class="iofs-ref-summary">This book discusses the lifelong psychological damage caused by severe childhood abuse and emotional deprivation.</p>
+    </div>
+
+    <div class="iofs-ref-card">
+      <span class="ref-tag press">Investigative Report</span>
+      <div class="iofs-ref-citation">Berger, P. (2014). Divorce is big business. <em>Hawaii Business Magazine</em>. <a href="https://www.hawaiibusiness.com/divorce-is-big-business/" target="_blank">Read Article</a></div>
+      <p class="iofs-ref-summary">A journalistic overview shows how divorce has evolved into a multibillion-dollar industry with strong financial incentives.</p>
+    </div>
+
+    <div class="iofs-ref-card">
+      <span class="ref-tag press">Investigative Report</span>
+      <div class="iofs-ref-citation">Friedman, G. (2019). Fatal court: "The harm to children in the nation's family courts has reached crisis proportions." <em>Deseret News</em>. <a href="https://www.deseret.com/2019/9/17/20805882/fatal-family-court-parental-rights-custody-battles-child-deaths-harm-center-for-judicial-excellence/" target="_blank">Read Article</a></div>
+      <p class="iofs-ref-summary">This investigative report argues that U.S. family courts routinely fail to protect children from preventable harm.</p>
+    </div>
+
+    <div class="iofs-ref-card">
+      <span class="ref-tag press">Investigative Report</span>
+      <div class="iofs-ref-citation">Silberg, J. (2008). <em>How Many Children are Court-Ordered into Unsupervised Contact with an Abusive Parent after Divorce?</em> Leadership Council. <a href="http://www.leadershipcouncil.org/1/med/PR3.html" target="_blank">Read Report</a></div>
+      <p class="iofs-ref-summary">This report estimates the number of children placed into unsafe, unsupervised contact with abusive parents through court orders.</p>
+    </div>
+
+    <div class="iofs-ref-card">
+      <span class="ref-tag press">Investigative Report</span>
+      <div class="iofs-ref-citation">Thomas, E. (2023). Family courts: Children forced into contact with fathers accused of abuse. <em>BBC News</em>. <a href="https://www.bbc.com/news/uk-66531409" target="_blank">Read Article</a></div>
+      <p class="iofs-ref-summary">This investigation reports that UK family courts frequently require children to have contact with fathers accused of abuse.</p>
+    </div>
+
+  </div>
+
+  <!-- COMMUNITY CTA -->
+  <div class="iofs-community-cta">
+    <h2>Stay Connected to Our Latest Research</h2>
+    <p>Members of The Just Science Community receive continuous access to our latest research, legislative reform updates, and groundbreaking findings — ensuring every family is empowered with the data they need to advocate for their children.</p>
+    <a href="/contact/" class="iofs-cta-btn-white">Join The Just Science Community</a>
+    <a href="/contact/" class="iofs-cta-btn-outline">Request a Free Consultation</a>
+  </div>
+
+</div>

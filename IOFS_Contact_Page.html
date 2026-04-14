@@ -1,0 +1,143 @@
+<style>
+.iofs-wrap { font-family: 'Georgia', serif; color: #1a1a2e; max-width: 1100px; margin: 0 auto; }
+.iofs-hero { background: linear-gradient(160deg, #1c3060 0%, #1e3d78 60%, #1a3468 100%); padding: 80px 60px; text-align: center; border-radius: 8px; margin-bottom: 60px; }
+.iofs-hero-tag { font-family: 'Trebuchet MS', sans-serif; font-size: 12px; letter-spacing: 4px; text-transform: uppercase; color: rgba(170,210,250,0.8); margin-bottom: 20px; }
+.iofs-hero h1 { font-size: 48px; font-weight: 700; color: #ffffff; margin: 0 0 20px; font-family: 'Trebuchet MS', sans-serif; line-height: 1.2; }
+.iofs-hero h1 span { color: #90c8f8; }
+.iofs-hero p { font-size: 20px; color: rgba(190,225,255,0.9); max-width: 700px; margin: 0 auto 30px; line-height: 1.7; }
+.iofs-accent { width: 80px; height: 3px; background: linear-gradient(90deg, transparent, #50a0f0, transparent); margin: 0 auto; }
+
+/* TWO PATHWAYS */
+.iofs-pathways { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 60px; }
+.iofs-pathway { border-radius: 12px; padding: 45px; position: relative; overflow: hidden; }
+.iofs-pathway.forensic { background: #ffffff; border: 2px solid #1e3d78; }
+.iofs-pathway.community { background: linear-gradient(160deg, #1c3060, #1e3d78); color: #ffffff; }
+.iofs-pathway-num { font-family: 'Trebuchet MS', sans-serif; font-size: 60px; font-weight: 700; position: absolute; top: 10px; right: 25px; line-height: 1; }
+.iofs-pathway.forensic .iofs-pathway-num { color: rgba(30,61,120,0.08); }
+.iofs-pathway.community .iofs-pathway-num { color: rgba(255,255,255,0.08); }
+.iofs-pathway-icon { font-size: 36px; margin-bottom: 15px; }
+.iofs-pathway h2 { font-family: 'Trebuchet MS', sans-serif; font-size: 24px; font-weight: 700; margin: 0 0 15px; }
+.iofs-pathway.forensic h2 { color: #1e3d78; }
+.iofs-pathway.community h2 { color: #ffffff; }
+.iofs-pathway p { font-size: 15px; line-height: 1.8; margin-bottom: 20px; }
+.iofs-pathway.forensic p { color: #555; }
+.iofs-pathway.community p { color: rgba(190,225,255,0.9); }
+.iofs-pathway ul { list-style: none; padding: 0; margin: 0 0 25px; }
+.iofs-pathway ul li { font-size: 14px; padding: 6px 0; display: flex; align-items: flex-start; gap: 10px; }
+.iofs-pathway.forensic ul li { color: #444; border-bottom: 1px solid #f0f5ff; }
+.iofs-pathway.community ul li { color: rgba(190,225,255,0.9); border-bottom: 1px solid rgba(100,170,240,0.2); }
+.iofs-pathway ul li:last-child { border-bottom: none; }
+.iofs-pathway ul li::before { content: '✦'; font-size: 10px; margin-top: 4px; flex-shrink: 0; }
+.iofs-pathway.forensic ul li::before { color: #1e3d78; }
+.iofs-pathway.community ul li::before { color: #90c8f8; }
+.iofs-btn-navy { display: inline-block; background: #1e3d78; color: #ffffff; font-family: 'Trebuchet MS', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 14px 30px; border-radius: 6px; text-decoration: none; }
+.iofs-btn-white { display: inline-block; background: #ffffff; color: #1e3d78; font-family: 'Trebuchet MS', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 14px 30px; border-radius: 6px; text-decoration: none; }
+
+/* CONTACT INFO */
+.iofs-contact-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; margin-bottom: 60px; }
+.iofs-contact-card { background: #ffffff; border: 1px solid #e0e8f8; border-radius: 10px; padding: 35px; text-align: center; box-shadow: 0 4px 20px rgba(30,61,120,0.06); }
+.iofs-contact-card .icon { font-size: 32px; margin-bottom: 15px; }
+.iofs-contact-card h3 { font-family: 'Trebuchet MS', sans-serif; font-size: 16px; font-weight: 700; color: #1e3d78; margin: 0 0 12px; }
+.iofs-contact-card p { font-size: 15px; color: #444; margin: 0; line-height: 1.7; }
+.iofs-contact-card a { color: #1e3d78; text-decoration: none; font-weight: 600; }
+
+/* MISSION STRIP */
+.iofs-mission-strip { background: #f0f5ff; border-radius: 8px; padding: 40px; text-align: center; margin-bottom: 60px; }
+.iofs-mission-strip h2 { font-family: 'Trebuchet MS', sans-serif; font-size: 24px; font-weight: 700; color: #1e3d78; margin: 0 0 12px; }
+.iofs-mission-strip p { font-size: 16px; color: #555; margin: 0; line-height: 1.7; max-width: 700px; margin-left: auto; margin-right: auto; }
+
+/* DISCLAIMER */
+.iofs-disclaimer { background: #fff8f0; border: 1px solid #f0d8b0; border-radius: 8px; padding: 30px 35px; margin-bottom: 30px; }
+.iofs-disclaimer h3 { font-family: 'Trebuchet MS', sans-serif; font-size: 13px; font-weight: 700; color: #8a5a00; margin-bottom: 10px; letter-spacing: 1px; text-transform: uppercase; }
+.iofs-disclaimer p { font-size: 14px; color: #6a4800; line-height: 1.7; margin: 0; }
+
+@media (max-width: 768px) {
+  .iofs-pathways, .iofs-contact-grid { grid-template-columns: 1fr; }
+  .iofs-hero { padding: 50px 30px; }
+  .iofs-hero h1 { font-size: 32px; }
+}
+</style>
+
+<div class="iofs-wrap">
+
+  <!-- HERO -->
+  <div class="iofs-hero">
+    <div class="iofs-hero-tag">Contact Us</div>
+    <h1>We Are Here <span>For You</span></h1>
+    <p>Whether you need direct forensic expertise from Dr. Bandy Lee, M.D. or access to The Just Science Community — take the first step today. No family should face family court complexity alone.</p>
+    <div class="iofs-accent"></div>
+  </div>
+
+  <!-- MISSION -->
+  <div class="iofs-mission-strip">
+    <h2>The Science that Protects Families</h2>
+    <p>Ensuring every family is empowered with the critical insights and scientific excellence desperately needed in family courts across the country and beyond. Objective fact over subjective opinion. Data-driven solutions over guesswork.</p>
+  </div>
+
+  <!-- TWO PATHWAYS -->
+  <div style="font-family: 'Trebuchet MS', sans-serif; font-size: 32px; font-weight: 700; color: #1a1a2e; margin-bottom: 10px;">How Can We Help You?</div>
+  <p style="font-size: 17px; color: #555; margin-bottom: 40px; line-height: 1.7;">IOFS offers two powerful pathways to access world-class forensic expertise. Choose the option that best fits your needs.</p>
+
+  <div class="iofs-pathways">
+
+    <!-- FORENSIC SERVICES -->
+    <div class="iofs-pathway forensic">
+      <div class="iofs-pathway-num">01</div>
+      <div class="iofs-pathway-icon">🔬</div>
+      <h2>Forensic Services</h2>
+      <p>Retain Dr. Bandy Lee, M.D. directly for comprehensive forensic engagement in your specific case. With 30 years at Harvard and Yale and 300+ expert witness engagements — Dr. Lee brings unmatched credibility to every case.</p>
+      <ul>
+        <li>Comprehensive forensic psychiatric evaluation</li>
+        <li>Peer review / independent second opinion</li>
+        <li>Expert witness testimony</li>
+        <li>Available in all 50 states & globally</li>
+      </ul>
+      <a href="mailto:advocate@forensicscienceinstitute.com" class="iofs-btn-navy">Request a Free Consultation</a>
+      <p style="font-size: 13px; color: #888; margin-top: 12px; font-style: italic;">advocate@forensicscienceinstitute.com</p>
+    </div>
+
+    <!-- JUST SCIENCE COMMUNITY -->
+    <div class="iofs-pathway community">
+      <div class="iofs-pathway-num">02</div>
+      <div class="iofs-pathway-icon">🌐</div>
+      <h2>The Just Science Community</h2>
+      <p>Join our transformational resource that opens the door to world-class forensic expertise, groundbreaking data, and actionable insights — at just $129/month. No financial barriers. No family left behind.</p>
+      <ul>
+        <li>Monthly one-hour session with Dr. Bandy Lee, M.D.</li>
+        <li>Submit questions across 15 expertise categories</li>
+        <li>Monthly newsletter — legislative reform updates</li>
+        <li>Session recording downloads — no meeting missed</li>
+      </ul>
+      <a href="mailto:advocate@forensicscienceinstitute.com" class="iofs-btn-white">Join Now — $129/month</a>
+    </div>
+
+  </div>
+
+  <!-- CONTACT INFO -->
+  <div class="iofs-contact-grid">
+    <div class="iofs-contact-card">
+      <div class="icon">📞</div>
+      <h3>Phone</h3>
+      <p><a href="tel:9148268803">(914) 826-8803</a><br><a href="tel:8886429483">(888) 642-9483</a><br><span style="color: #888; font-size: 13px;">Fax: (844) 971-1983</span></p>
+    </div>
+    <div class="iofs-contact-card">
+      <div class="icon">✉️</div>
+      <h3>Email</h3>
+      <p><strong style="font-size: 12px; color: #1e3d78; font-family: Trebuchet MS, sans-serif; letter-spacing: 1px; text-transform: uppercase;">Forensic Services</strong><br><a href="mailto:advocate@forensicscienceinstitute.com">advocate@forensicscienceinstitute.com</a></p>
+      <br>
+      <p><strong style="font-size: 12px; color: #1e3d78; font-family: Trebuchet MS, sans-serif; letter-spacing: 1px; text-transform: uppercase;">Just Science Community</strong><br><a href="mailto:membership@forensicscienceinstitute.com">membership@forensicscienceinstitute.com</a></p>
+    </div>
+    <div class="iofs-contact-card">
+      <div class="icon">📍</div>
+      <h3>Address</h3>
+      <p>2810 N Church St #935942<br>Wilmington, DE 19802<br><span style="color: #888; font-size: 13px;">Serving all 50 states & global markets</span></p>
+    </div>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="iofs-disclaimer">
+    <h3>⚠️ Important Notice</h3>
+    <p>All content and materials provided through The Just Science Community are for educational purposes only and do not constitute legal advice, clinical care, therapy, diagnosis, or case review. IOFS membership does not create an attorney-client or doctor-patient relationship. Individual case review requires a separate formal professional engagement through our Forensic Services.</p>
+  </div>
+
+</div>

@@ -1,0 +1,15 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/", "destination": "/IOFS_Homepage.html" },
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/services", "destination": "/IOFS_Services_Page.html" },
+    { "source": "/community", "destination": "/IOFS_JustScienceCommunity_Page.html" },
+    { "source": "/faq", "destination": "/IOFS_FAQ_Page.html" },
+    { "source": "/research", "destination": "/IOFS_Research_Literature_Page.html" },
+    { "source": "/insights", "destination": "/IOFS_Insights_Page.html" },
+    { "source": "/expertise", "destination": "/IOFS_Expertise_Page.html" },
+    { "source": "/contact", "destination": "/IOFS_Contact_Page.html" }
+  ]
+}

@@ -1,0 +1,187 @@
+<style>
+.iofs-wrap { font-family: 'Georgia', serif; color: #1a1a2e; max-width: 1100px; margin: 0 auto; }
+.iofs-hero { background: linear-gradient(160deg, #1c3060 0%, #1e3d78 60%, #1a3468 100%); padding: 80px 60px; text-align: center; border-radius: 8px; margin-bottom: 60px; }
+.iofs-hero-tag { font-family: 'Trebuchet MS', sans-serif; font-size: 12px; letter-spacing: 4px; text-transform: uppercase; color: rgba(170,210,250,0.8); margin-bottom: 20px; }
+.iofs-hero h1 { font-size: 48px; font-weight: 700; color: #ffffff; margin: 0 0 20px; font-family: 'Trebuchet MS', sans-serif; }
+.iofs-hero h1 span { color: #90c8f8; }
+.iofs-hero p { font-size: 20px; color: rgba(190,225,255,0.9); max-width: 700px; margin: 0 auto 30px; line-height: 1.7; }
+.iofs-accent { width: 80px; height: 3px; background: linear-gradient(90deg, transparent, #50a0f0, transparent); margin: 0 auto; }
+
+/* SPINNING STATS */
+.iofs-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; margin-bottom: 70px; }
+.iofs-stat { background: linear-gradient(160deg, #1c3060, #1e3d78); border-radius: 12px; padding: 40px 20px; text-align: center; color: #ffffff; position: relative; overflow: hidden; }
+.iofs-stat::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #50a0f0, #90c8f8, #50a0f0); }
+.iofs-stat-num { font-family: 'Trebuchet MS', sans-serif; font-size: 52px; font-weight: 700; color: #90c8f8; line-height: 1; margin-bottom: 8px; }
+.iofs-stat-label { font-size: 13px; color: rgba(190,225,255,0.85); line-height: 1.5; font-family: 'Trebuchet MS', sans-serif; letter-spacing: 0.5px; }
+.iofs-stat-divider { width: 30px; height: 2px; background: rgba(100,170,240,0.4); margin: 12px auto; }
+
+/* COUNTER ANIMATION */
+.counter { display: inline-block; }
+
+/* MAIN CONTENT */
+.iofs-section-title { font-family: 'Trebuchet MS', sans-serif; font-size: 32px; font-weight: 700; color: #1a1a2e; margin-bottom: 10px; }
+.iofs-section-sub { font-size: 17px; color: #555; margin-bottom: 40px; line-height: 1.7; }
+
+.iofs-content-block { background: #ffffff; border: 1px solid #e0e8f8; border-radius: 12px; padding: 50px; margin-bottom: 40px; box-shadow: 0 4px 20px rgba(30,61,120,0.08); }
+.iofs-content-block h2 { font-family: 'Trebuchet MS', sans-serif; font-size: 24px; font-weight: 700; color: #1e3d78; margin-bottom: 20px; }
+.iofs-content-block p { font-size: 16px; color: #444; line-height: 1.9; margin-bottom: 20px; }
+.iofs-content-block p:last-child { margin-bottom: 0; }
+
+/* RESEARCH AREAS */
+.iofs-research-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; margin-bottom: 60px; }
+.iofs-research-item { background: #f8faff; border: 1px solid #e0e8f8; border-radius: 8px; padding: 30px; border-top: 4px solid #1e3d78; }
+.iofs-research-item h3 { font-family: 'Trebuchet MS', sans-serif; font-size: 16px; font-weight: 700; color: #1e3d78; margin: 0 0 12px; }
+.iofs-research-item p { font-size: 14px; color: #555; line-height: 1.7; margin: 0; }
+
+/* DR LEE HIGHLIGHT */
+.iofs-dr-highlight { background: linear-gradient(160deg, #1c3060, #1e3d78); border-radius: 12px; padding: 60px; margin-bottom: 60px; display: grid; grid-template-columns: 1fr 2fr; gap: 50px; align-items: center; color: #ffffff; }
+.iofs-dr-highlight img { width: 100%; border-radius: 8px; }
+.iofs-dr-highlight h2 { font-family: 'Trebuchet MS', sans-serif; font-size: 28px; font-weight: 700; color: #ffffff; margin-bottom: 20px; }
+.iofs-dr-highlight p { font-size: 16px; color: rgba(190,225,255,0.9); line-height: 1.8; margin-bottom: 15px; }
+.iofs-dr-highlight .badge { display: inline-block; background: rgba(255,255,255,0.15); color: #90c8f8; font-family: 'Trebuchet MS', sans-serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 20px; border: 1px solid rgba(100,170,240,0.3); }
+
+/* CTA */
+.iofs-cta-strip { background: #f0f5ff; border-radius: 8px; padding: 50px; text-align: center; }
+.iofs-cta-strip h2 { font-family: 'Trebuchet MS', sans-serif; font-size: 28px; font-weight: 700; color: #1e3d78; margin-bottom: 15px; }
+.iofs-cta-strip p { font-size: 17px; color: #555; margin-bottom: 30px; line-height: 1.7; max-width: 600px; margin-left: auto; margin-right: auto; }
+.iofs-cta-btn { display: inline-block; background: #1e3d78; color: #ffffff; font-family: 'Trebuchet MS', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 16px 40px; border-radius: 6px; text-decoration: none; }
+
+@media (max-width: 768px) {
+  .iofs-stats { grid-template-columns: 1fr 1fr; }
+  .iofs-research-grid { grid-template-columns: 1fr; }
+  .iofs-dr-highlight { grid-template-columns: 1fr; }
+  .iofs-hero { padding: 50px 30px; }
+  .iofs-hero h1 { font-size: 32px; }
+}
+</style>
+
+<div class="iofs-wrap">
+
+  <!-- HERO -->
+  <div class="iofs-hero">
+    <div class="iofs-hero-tag">Insights</div>
+    <h1>Groundbreaking Research. <span>Actionable Intelligence.</span></h1>
+    <p>The Institute of Forensic Science conducts extensive data-driven research across hundreds of legal cases nationwide — building unique qualitative insights that provide the actionable intelligence needed to demand meaningful change in courts and public policy.</p>
+    <div class="iofs-accent"></div>
+  </div>
+
+  <!-- SPINNING STATS -->
+  <div class="iofs-stats">
+    <div class="iofs-stat">
+      <div class="iofs-stat-num"><span class="counter" data-target="250">0</span>+</div>
+      <div class="iofs-stat-divider"></div>
+      <div class="iofs-stat-label">Expert Witness<br>Engagements</div>
+    </div>
+    <div class="iofs-stat">
+      <div class="iofs-stat-num"><span class="counter" data-target="500">0</span>+</div>
+      <div class="iofs-stat-divider"></div>
+      <div class="iofs-stat-label">Custody Engagements<br>National Research Repository</div>
+      <div class="iofs-stat-sub" style="margin-top: 10px; font-size: 12px; color: rgba(170,210,250,0.75); line-height: 1.5;">A custom data set analyzing clinical, operational, and professional protocols across the nation — underscoring the impact on families.</div>
+    </div>
+    <div class="iofs-stat">
+      <div class="iofs-stat-num"><span class="counter" data-target="30">0</span>+</div>
+      <div class="iofs-stat-divider"></div>
+      <div class="iofs-stat-label">States Served<br>Nationwide</div>
+    </div>
+    <div class="iofs-stat">
+      <div class="iofs-stat-num"><span class="counter" data-target="30">0</span></div>
+      <div class="iofs-stat-divider"></div>
+      <div class="iofs-stat-label">Years of Academic<br>Excellence at Harvard & Yale</div>
+    </div>
+  </div>
+
+  <!-- COUNTER ANIMATION SCRIPT -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const counters = document.querySelectorAll('.counter');
+    const speed = 200;
+    counters.forEach(counter => {
+      const animate = () => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText;
+        const inc = target / speed;
+        if (count < target) {
+          counter.innerText = Math.ceil(count + inc);
+          setTimeout(animate, 10);
+        } else {
+          counter.innerText = target;
+        }
+      };
+      const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) { animate(); observer.disconnect(); }
+      });
+      observer.observe(counter);
+    });
+  });
+  </script>
+
+  <!-- INTRO CONTENT -->
+  <div style="margin-bottom: 50px;">
+    <div class="iofs-section-title">Our Research & Insights</div>
+    <p class="iofs-section-sub">Through extensive, data-driven research across several hundred — and soon to be thousands — of cases in 35 states and counting, the Institute of Forensic Science is building impactful qualitative insights that provide actionable intelligence and demand urgent scientific policy reform and education. Our commitment extends beyond delivering evidence-based solutions — it is rooted in driving accountability, reform, and transparency in every facet of forensic evaluation and legal decision-making.</p>
+  </div>
+
+  <!-- CONTENT BLOCKS -->
+  <div class="iofs-content-block">
+    <h2>The Crisis in Family Court — What Our Research Reveals</h2>
+    <p>At IOFS, we have personally witnessed the devastating consequences of fraudulent and unscientific evaluations on families and children. Court-appointed "experts" hold extraordinary influence over the lives of adults and minors alike. They are entrusted to provide objective, science-based assessments and to uphold the highest standards of clinical accuracy and ethical integrity.</p>
+    <p>When that trust is violated — when subjective opinion replaces objective fact, and financial incentive replaces scientific integrity — the damage can be irreparable. Families are shattered. Children are endangered. Faith in justice itself is eroded.</p>
+    <p>Our research documents these failures, quantifies their impact, and provides the empirical foundation needed to drive meaningful reform at the legislative, judicial, and clinical levels.</p>
+  </div>
+
+  <div class="iofs-content-block">
+    <h2>Groundbreaking Scientific Research — Clinical, Operational & Professional Standards</h2>
+    <p>IOFS conducts rigorous, multi-disciplinary research across clinical, operational, and professional standards in forensic evaluation. Our findings provide courts, families, attorneys, and policymakers with the empirical data they need to identify systemic failures and demand accountability.</p>
+    <p>Our research spans the full spectrum of forensic evaluation quality — from methodological validity and DSM-5 compliance to ethical standards, transparency of methodology, and the presence of financial conflicts of interest. This groundbreaking body of work is driving a national conversation about the urgent need for reform in family court forensic practice.</p>
+  </div>
+
+  <!-- RESEARCH AREAS -->
+  <div class="iofs-section-title" style="margin-bottom: 30px;">Areas of Research Focus</div>
+  <div class="iofs-research-grid">
+    <div class="iofs-research-item">
+      <h3>Clinical Standards & DSM-5 Compliance</h3>
+      <p>Research on the application of DSM-5 diagnostic criteria in family court evaluations and the prevalence of baseless or fabricated diagnoses.</p>
+    </div>
+    <div class="iofs-research-item">
+      <h3>Methodological Validity</h3>
+      <p>Analysis of evaluation methodologies used in family court — identifying cases where brief interviews and questionnaires replace comprehensive clinical assessment.</p>
+    </div>
+    <div class="iofs-research-item">
+      <h3>Financial Conflicts of Interest</h3>
+      <p>Documentation of financial incentives that sustain prolonged litigation and reward professionals who extend conflict rather than resolve it.</p>
+    </div>
+    <div class="iofs-research-item">
+      <h3>Outcomes for Children & Families</h3>
+      <p>Data on the long-term psychological, emotional, and financial consequences of unscientific forensic evaluations on children and families.</p>
+    </div>
+    <div class="iofs-research-item">
+      <h3>Legislative Reform Impact</h3>
+      <p>Tracking the impact of legislative testimony and advocacy efforts across multiple states on family court reform and accountability measures.</p>
+    </div>
+    <div class="iofs-research-item">
+      <h3>Professional & Ethical Standards</h3>
+      <p>Research on the ethical obligations of forensic evaluators and the frequency with which those standards are violated in family court proceedings.</p>
+    </div>
+  </div>
+
+  <!-- DR LEE HIGHLIGHT -->
+  <div class="iofs-dr-highlight">
+    <div>
+      <img src="https://forensicscienceinstitute.com/wp-content/uploads/2025/06/Bandy_X_Lee.webp" alt="Dr. Bandy X. Lee, MD" />
+    </div>
+    <div>
+      <div class="badge">Leading the National Conversation</div>
+      <h2>Dr. Bandy X. Lee, M.D. — A Catalyst for Reform</h2>
+      <p>Recognizing the urgency of this crisis, judicial reform advocates across the country have called upon Dr. Bandy X. Lee, M.D., M.Div. to testify before multiple state legislatures regarding abuses within the family court system. Her leadership and expertise continue to serve as a catalyst for reform — empowering communities, informing policymakers, and advancing the movement to protect vulnerable populations through truth, transparency, and ethical forensic science.</p>
+      <p>From the Washington Press Room to state legislatures across Arizona, Idaho, Oregon, and New Hampshire — Dr. Lee's research and testimony are changing the conversation about family court justice nationwide.</p>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="iofs-cta-strip">
+    <h2>Access Our Insights Through The Just Science Community</h2>
+    <p>Members of The Just Science Community receive continuous access to our latest research, legislative reform updates, and groundbreaking findings — ensuring every family is empowered with the data they need.</p>
+    <a href="/contact/" class="iofs-cta-btn">Join The Just Science Community</a>
+  </div>
+
+</div>
