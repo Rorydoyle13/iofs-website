@@ -1,3 +1,41 @@
+<style>
+.iofs-nav { background: #0f1f4a; padding: 0 40px; height: 70px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.3); }
+.iofs-nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.iofs-nav-logo { height: 45px; width: auto; }
+.iofs-nav-links { display: flex; align-items: center; gap: 6px; }
+.iofs-nav-links a { color: rgba(190,225,255,0.85); text-decoration: none; font-family: 'Trebuchet MS', sans-serif; font-size: 13px; font-weight: 600; padding: 8px 12px; border-radius: 6px; transition: all 0.2s; white-space: nowrap; }
+.iofs-nav-links a:hover { background: rgba(80,160,240,0.2); color: white; }
+.iofs-nav-cta { background: #50a0f0; color: white !important; border-radius: 6px; padding: 8px 16px !important; }
+.iofs-nav-mobile { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+.iofs-nav-mobile span { display: block; width: 24px; height: 2px; background: white; margin: 5px 0; }
+.iofs-mobile-menu { display: none; background: #1c3060; padding: 20px 40px; flex-direction: column; gap: 8px; }
+.iofs-mobile-menu a { color: rgba(190,225,255,0.85); text-decoration: none; font-family: 'Trebuchet MS', sans-serif; font-size: 14px; font-weight: 600; padding: 10px 0; border-bottom: 1px solid rgba(80,160,240,0.1); }
+@media (max-width: 900px) { .iofs-nav-links { display: none; } .iofs-nav-mobile { display: block; } .iofs-mobile-menu.open { display: flex; } }
+</style>
+<nav class="iofs-nav">
+  <a class="iofs-nav-brand" href="/"><img class="iofs-nav-logo" src="https://forensicscienceinstitute.com/wp-content/uploads/2025/11/IOFS-Logo.png" alt="IOFS" onerror="this.style.display='none'"></a>
+  <div class="iofs-nav-links">
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/services">Services</a>
+    <a href="/expertise">Expertise</a>
+    <a href="/insights">Insights</a>
+    <a href="/research">Research</a>
+    <a href="/community">Just Science Community</a>
+    <a href="/contact" class="iofs-nav-cta">Contact Us</a>
+  </div>
+  <button class="iofs-nav-mobile" onclick="document.querySelector('.iofs-mobile-menu').classList.toggle('open')"><span></span><span></span><span></span></button>
+</nav>
+<div class="iofs-mobile-menu">
+  <a href="/">Home</a>
+  <a href="/about">About</a>
+  <a href="/services">Services</a>
+  <a href="/expertise">Expertise</a>
+  <a href="/insights">Insights</a>
+  <a href="/research">Research</a>
+  <a href="/community">Just Science Community</a>
+  <a href="/contact">Contact Us</a>
+</div>
 <!-- IOFS ABOUT PAGE - WordPress Ready Content -->
 <!-- Copy everything between the page content tags into WordPress page editor (Text/HTML mode) -->
 
