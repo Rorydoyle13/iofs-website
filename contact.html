@@ -101,20 +101,90 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
 
 @media (max-width: 768px) {
   body { overflow-x: hidden; }
-  .iofs-wrap { }
-  .iofs-pathways, .iofs-contact-grid { grid-template-columns: 1fr; padding-left: 20px; padding-right: 20px; }
+
+  /* NAV */
+  .iofs-nav-logo { max-height: 40px; width: auto; }
+  .iofs-nav-inner { padding: 0 16px; }
+  .iofs-nav-mobile { min-height: 44px; min-width: 44px; display: flex; align-items: center; justify-content: center; }
+  .iofs-mobile-menu a { min-height: 48px; display: flex; align-items: center; }
+
+  /* HERO */
   .iofs-hero { padding: 40px 20px; }
-  .iofs-hero h1 { font-size: 28px; line-height: 1.2; }
-  .iofs-hero p { font-size: 15px; }
+  .iofs-hero h1 { font-size: 26px; line-height: 1.2; }
+  .iofs-hero p { font-size: 15px; line-height: 1.6; }
+
+  /* TYPOGRAPHY */
   .iofs-section-title { font-size: 22px !important; }
+  .iofs-section-sub { font-size: 15px; }
+
+  /* IMAGES */
   img { max-width: 100%; height: auto; }
+  .iofs-founder-img { max-width: 200px; margin: 0 auto; display: block; }
+  .iofs-dr-feature img { max-width: 200px; margin: 0 auto; display: block; }
+
+  /* SECTION PADDING */
+  .iofs-mission, .iofs-intro, .iofs-mission-strip { padding: 30px 20px; }
+  .iofs-cta, .iofs-cta-strip, .iofs-contact-cta, .iofs-community-cta { padding: 30px 20px; }
+  .iofs-tagline-strip { padding: 30px 20px; }
+  .iofs-serve { padding: 30px 20px; }
+  .iofs-credentials { padding: 30px 20px; }
+  .iofs-practice { padding: 30px 20px; }
+  .iofs-founders { padding: 30px 20px; }
+  .iofs-pricing { padding: 30px 20px; }
+  .iofs-disclaimer { padding: 30px 20px; }
+
+  /* GRIDS: 2-col -> 1-col */
+  .iofs-pathways { grid-template-columns: 1fr; padding: 30px 20px; gap: 15px; }
+  .iofs-two-col { grid-template-columns: 1fr; padding: 30px 20px; gap: 15px; }
+  .iofs-services-grid { grid-template-columns: 1fr; padding: 30px 20px; gap: 15px; }
+  .iofs-contact-grid { grid-template-columns: 1fr; padding: 30px 20px; gap: 15px; }
+  .iofs-community-card { grid-template-columns: 1fr; padding: 30px 20px; gap: 15px; }
+  .iofs-quote { grid-template-columns: 1fr !important; padding: 30px 20px; }
+  .iofs-dr-highlight { grid-template-columns: 1fr; padding: 30px 20px; gap: 15px; }
+  .iofs-pricing-box { grid-template-columns: 1fr; padding: 30px 20px; gap: 15px; }
+  .iofs-dr-feature { grid-template-columns: 1fr; padding: 30px 20px; gap: 15px; }
+  .iofs-approach { grid-template-columns: 1fr; padding: 30px 20px; gap: 15px; }
+  .iofs-research-grid { grid-template-columns: 1fr; padding: 30px 20px; gap: 15px; }
+  .iofs-ref-grid { padding: 30px 20px; }
+  .iofs-founder, .iofs-founder.reverse { grid-template-columns: 1fr; gap: 20px; padding: 20px; }
+
+  /* GRIDS: 3-col -> 1-col */
+  .iofs-benefits-grid { grid-template-columns: 1fr; padding: 30px 20px; gap: 15px; }
+  .iofs-dr-section { grid-template-columns: 1fr; padding: 30px 20px; gap: 15px; }
+  .iofs-cred-grid { grid-template-columns: 1fr; gap: 10px; }
+
+  /* GRIDS: 4-col -> 2-col */
+  .iofs-stats { grid-template-columns: 1fr 1fr; padding: 30px 20px; gap: 15px; }
+  .iofs-stats-row { grid-template-columns: 1fr 1fr; padding: 30px 20px; gap: 15px; }
+  .iofs-serve-grid { grid-template-columns: 1fr 1fr; gap: 15px; }
+  .iofs-practice-grid { grid-template-columns: 1fr 1fr; gap: 15px; }
+  .iofs-dr-stats { grid-template-columns: 1fr 1fr; gap: 10px; }
+
+  /* BUTTONS */
+  .iofs-btn-white, .iofs-btn-outline, .iofs-btn-navy, .iofs-btn-white-sm,
+  .iofs-cta-btn, .iofs-cta-btn-navy, .iofs-cta-btn-white, .iofs-cta-btn-outline,
+  .iofs-contact-btn, .iofs-join-btn, .iofs-service-link, .iofs-hero-btns a,
+  .iofs-cta-btns a { display: block; width: 100%; min-height: 48px; line-height: 48px;
+    font-size: 14px; text-align: center; margin: 10px 0; padding: 0 16px; box-sizing: border-box; }
+  .iofs-hero-btns, .iofs-cta-btns { flex-direction: column; align-items: stretch; gap: 10px; }
+
+  /* FORMS */
   input, select, textarea { width: 100%; box-sizing: border-box; font-size: 16px; }
   label { display: block; margin-bottom: 4px; }
-  .iofs-cta-btn, .iofs-cta-btn-navy, .iofs-cta-btn-white, .iofs-cta-btn-outline, .iofs-contact-btn { display: block; width: 100%; min-height: 48px; line-height: 48px; padding: 0 16px; text-align: center; margin: 8px 0; box-sizing: border-box; }
 }
 @media (max-width: 375px) {
-  .iofs-wrap { }
-  .iofs-hero h1 { font-size: 24px; }
+  .iofs-hero { padding: 25px 16px; }
+  .iofs-hero h1 { font-size: 22px; }
+  .iofs-mission, .iofs-intro, .iofs-mission-strip, .iofs-cta, .iofs-cta-strip,
+  .iofs-contact-cta, .iofs-community-cta, .iofs-tagline-strip, .iofs-serve,
+  .iofs-credentials, .iofs-practice, .iofs-founders, .iofs-quote, .iofs-pricing,
+  .iofs-disclaimer, .iofs-pathways, .iofs-two-col, .iofs-services-grid,
+  .iofs-contact-grid, .iofs-benefits-grid, .iofs-dr-section, .iofs-dr-feature,
+  .iofs-dr-highlight, .iofs-pricing-box, .iofs-research-grid, .iofs-ref-grid,
+  .iofs-approach, .iofs-community-card, .iofs-stats, .iofs-stats-row { padding: 25px 16px; }
+  .iofs-stats, .iofs-stats-row, .iofs-serve-grid, .iofs-practice-grid,
+  .iofs-dr-stats { grid-template-columns: 1fr; }
+  .iofs-founder, .iofs-founder.reverse { padding: 16px; }
 }
 </style>
 
