@@ -1,11 +1,12 @@
 <style>
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: #ffffff; }
-.iofs-wrap, .iofs-about-wrap { max-width: 1200px; margin: 0 auto; padding: 40px; width: 100%; }
+.iofs-wrap, .iofs-about-wrap { width: 100%; }
 .iofs-nav { width: 100% !important; }
 </style>
 <style>
-.iofs-nav { background: #0f1f4a; padding: 0 40px; height: 70px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.3); }
+.iofs-nav { background: #0f1f4a; width: 100%; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.3); }
+.iofs-nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 70px; }
 .iofs-nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 .iofs-nav-logo { height: 45px; width: auto; }
 .iofs-nav-links { display: flex; align-items: center; gap: 6px; }
@@ -16,9 +17,10 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
 .iofs-nav-mobile span { display: block; width: 24px; height: 2px; background: white; margin: 5px 0; }
 .iofs-mobile-menu { display: none; background: #1c3060; padding: 20px 40px; flex-direction: column; gap: 8px; }
 .iofs-mobile-menu a { color: rgba(190,225,255,0.85); text-decoration: none; font-family: 'Trebuchet MS', sans-serif; font-size: 14px; font-weight: 600; padding: 10px 0; border-bottom: 1px solid rgba(80,160,240,0.1); }
-@media (max-width: 900px) { .iofs-nav-links { display: none; } .iofs-nav-mobile { display: flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; } .iofs-mobile-menu.open { display: flex; } .iofs-nav { padding: 0 16px; } }
+@media (max-width: 900px) { .iofs-nav-links { display: none; } .iofs-nav-mobile { display: flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; } .iofs-mobile-menu.open { display: flex; } .iofs-nav-inner { padding: 0 16px; } }
 </style>
 <nav class="iofs-nav">
+  <div class="iofs-nav-inner">
   <a class="iofs-nav-brand" href="/"><img class="iofs-nav-logo" src="https://forensicscienceinstitute.com/wp-content/uploads/2025/11/IOFS-Logo.png" alt="IOFS" onerror="this.style.display='none'"></a>
   <div class="iofs-nav-links">
     <a href="/">Home</a>
@@ -31,6 +33,7 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
     <a href="/contact" class="iofs-nav-cta">Contact Us</a>
   </div>
   <button class="iofs-nav-mobile" onclick="document.querySelector('.iofs-mobile-menu').classList.toggle('open')"><span></span><span></span><span></span></button>
+  </div>
 </nav>
 <div class="iofs-mobile-menu">
   <a href="/">Home</a>
@@ -44,10 +47,10 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
 </div>
 <script>document.querySelectorAll('.iofs-mobile-menu a').forEach(function(a){a.addEventListener('click',function(){document.querySelector('.iofs-mobile-menu').classList.remove('open');});});</script>
 <style>
-.iofs-wrap { font-family: 'Georgia', serif; color: #1a1a2e; max-width: 1100px; margin: 0 auto; }
+.iofs-wrap { font-family: 'Georgia', serif; color: #1a1a2e; width: 100%; }
 
 /* HERO */
-.iofs-hero { background: linear-gradient(160deg, #1c3060 0%, #1e3d78 60%, #1a3468 100%); padding: 100px 60px; text-align: center; border-radius: 8px; margin-bottom: 60px; position: relative; overflow: hidden; }
+.iofs-hero { background: linear-gradient(160deg, #1c3060 0%, #1e3d78 60%, #1a3468 100%); padding: 100px max(40px, calc((100vw - 1200px) / 2)); text-align: center; width: 100%; box-sizing: border-box; position: relative; overflow: hidden; }
 .iofs-hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 70% 50%, rgba(80,160,240,0.15) 0%, transparent 70%); }
 .iofs-hero-tag { font-family: 'Trebuchet MS', sans-serif; font-size: 12px; letter-spacing: 4px; text-transform: uppercase; color: rgba(170,210,250,0.8); margin-bottom: 20px; }
 .iofs-hero h1 { font-size: 56px; font-weight: 700; color: #ffffff; margin: 0 0 25px; font-family: 'Trebuchet MS', sans-serif; line-height: 1.15; position: relative; }
@@ -59,7 +62,7 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
 .iofs-btn-outline { display: inline-block; background: transparent; color: #ffffff; font-family: 'Trebuchet MS', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 16px 35px; border-radius: 6px; text-decoration: none; border: 2px solid rgba(255,255,255,0.5); }
 
 /* DYNAMIC STATS */
-.iofs-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 70px; }
+.iofs-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; padding: 80px max(40px, calc((100vw - 1200px) / 2)); width: 100%; box-sizing: border-box; }
 .iofs-stat { background: linear-gradient(160deg, #1c3060, #1e3d78); border-radius: 12px; padding: 45px 25px; text-align: center; color: #ffffff; position: relative; overflow: hidden; }
 .iofs-stat::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #50a0f0, #90c8f8, #50a0f0); }
 .iofs-stat-num { font-family: 'Trebuchet MS', sans-serif; font-size: 64px; font-weight: 700; color: #90c8f8; line-height: 1; margin-bottom: 8px; }
@@ -72,11 +75,11 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
 .counter { display: inline-block; }
 
 /* MISSION STRIP */
-.iofs-mission { background: #f8faff; border-left: 5px solid #1e3d78; padding: 40px 50px; margin-bottom: 60px; border-radius: 0 8px 8px 0; }
+.iofs-mission { background: #f8faff; border-left: 5px solid #1e3d78; padding: 70px max(40px, calc((100vw - 1200px) / 2)); width: 100%; box-sizing: border-box; }
 .iofs-mission p { font-size: 21px; color: #1a1a2e; line-height: 1.8; margin: 0; font-style: italic; }
 
 /* TWO PATHWAYS */
-.iofs-pathways { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 60px; }
+.iofs-pathways { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; padding: 80px max(40px, calc((100vw - 1200px) / 2)); width: 100%; box-sizing: border-box; }
 .iofs-pathway { border-radius: 12px; padding: 50px; position: relative; overflow: hidden; transition: all 0.3s; }
 .iofs-pathway:hover { transform: translateY(-4px); }
 .iofs-pathway.forensic { background: #ffffff; border: 2px solid #1e3d78; box-shadow: 0 4px 20px rgba(30,61,120,0.08); }
@@ -103,13 +106,13 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
 .iofs-btn-white-sm { display: inline-block; background: #ffffff; color: #1e3d78; font-family: 'Trebuchet MS', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 14px 30px; border-radius: 6px; text-decoration: none; }
 
 /* DR LEE QUOTE */
-.iofs-quote { background: linear-gradient(160deg, #1c3060, #1e3d78); border-radius: 12px; padding: 60px; margin-bottom: 60px; display: grid; grid-template-columns: 180px 1fr; gap: 50px; align-items: center; color: #ffffff; }
+.iofs-quote { background: linear-gradient(160deg, #1c3060, #1e3d78); padding: 80px max(40px, calc((100vw - 1200px) / 2)); display: grid; grid-template-columns: 180px 1fr; gap: 50px; align-items: center; color: #ffffff; width: 100%; box-sizing: border-box; }
 .iofs-quote img { width: 100%; border-radius: 8px; }
 .iofs-quote blockquote { font-size: 20px; color: rgba(190,225,255,0.95); line-height: 1.8; font-style: italic; margin: 0 0 20px; }
 .iofs-quote cite { font-family: 'Trebuchet MS', sans-serif; font-size: 13px; color: #90c8f8; letter-spacing: 1px; }
 
 /* WHO WE SERVE */
-.iofs-serve { margin-bottom: 60px; }
+.iofs-serve { padding: 80px max(40px, calc((100vw - 1200px) / 2)); width: 100%; box-sizing: border-box; }
 .iofs-serve h2 { font-family: 'Trebuchet MS', sans-serif; font-size: 32px; font-weight: 700; color: #1a1a2e; margin-bottom: 10px; }
 .iofs-serve p { font-size: 17px; color: #555; margin-bottom: 35px; line-height: 1.7; }
 .iofs-serve-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
@@ -119,7 +122,7 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
 .iofs-serve-item p { font-size: 13px; color: #666; margin: 0; line-height: 1.5; }
 
 /* AFFILIATIONS SCROLLING */
-.iofs-affiliations { background: #f8faff; border-radius: 12px; padding: 70px 0; margin-bottom: 60px; text-align: center; overflow: hidden; }
+.iofs-affiliations { background: #f8faff; padding: 70px 0; text-align: center; overflow: hidden; width: 100%; }
 .iofs-affiliations h2 { font-family: 'Trebuchet MS', sans-serif; font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: #1e3d78; margin-bottom: 35px; }
 .iofs-marquee-wrapper { overflow: hidden; position: relative; }
 .iofs-marquee-wrapper::before, .iofs-marquee-wrapper::after { content: ''; position: absolute; top: 0; bottom: 0; width: 100px; z-index: 2; }
@@ -132,7 +135,7 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
 @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
 /* CTA STRIP */
-.iofs-cta { background: #f0f5ff; border-radius: 8px; padding: 60px; text-align: center; margin-bottom: 30px; }
+.iofs-cta { background: #f0f5ff; padding: 80px max(40px, calc((100vw - 1200px) / 2)); text-align: center; width: 100%; box-sizing: border-box; }
 .iofs-cta h2 { font-family: 'Trebuchet MS', sans-serif; font-size: 32px; font-weight: 700; color: #1e3d78; margin-bottom: 15px; }
 .iofs-cta p { font-size: 18px; color: #555; margin-bottom: 30px; line-height: 1.7; max-width: 650px; margin-left: auto; margin-right: auto; }
 .iofs-cta-btns { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
@@ -141,8 +144,8 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
 
 @media (max-width: 768px) {
   body { overflow-x: hidden; }
-  .iofs-wrap { padding: 20px 16px; }
-  .iofs-stats, .iofs-pathways, .iofs-quote { grid-template-columns: 1fr; }
+  .iofs-wrap { }
+  .iofs-stats, .iofs-pathways, .iofs-quote { grid-template-columns: 1fr; padding-left: 20px; padding-right: 20px; }
   .iofs-serve-grid { grid-template-columns: 1fr 1fr; }
   .iofs-hero { padding: 40px 20px; }
   .iofs-hero h1 { font-size: 28px; line-height: 1.2; }
@@ -152,7 +155,7 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
   .iofs-cta-btn, .iofs-cta-btn-navy, .iofs-cta-btn-white, .iofs-cta-btn-outline, .iofs-contact-btn { display: block; width: 100%; min-height: 48px; line-height: 48px; padding: 0 16px; text-align: center; margin: 8px 0; box-sizing: border-box; }
 }
 @media (max-width: 375px) {
-  .iofs-wrap { padding: 16px 12px; }
+  .iofs-wrap { }
   .iofs-hero h1 { font-size: 24px; }
   .iofs-serve-grid { grid-template-columns: 1fr; }
 }

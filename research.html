@@ -1,11 +1,12 @@
 <style>
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: #ffffff; }
-.iofs-wrap, .iofs-about-wrap { max-width: 1200px; margin: 0 auto; padding: 40px; width: 100%; }
+.iofs-wrap, .iofs-about-wrap { width: 100%; }
 .iofs-nav { width: 100% !important; }
 </style>
 <style>
-.iofs-nav { background: #0f1f4a; padding: 0 40px; height: 70px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.3); }
+.iofs-nav { background: #0f1f4a; width: 100%; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.3); }
+.iofs-nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 70px; }
 .iofs-nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 .iofs-nav-logo { height: 45px; width: auto; }
 .iofs-nav-links { display: flex; align-items: center; gap: 6px; }
@@ -16,9 +17,10 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
 .iofs-nav-mobile span { display: block; width: 24px; height: 2px; background: white; margin: 5px 0; }
 .iofs-mobile-menu { display: none; background: #1c3060; padding: 20px 40px; flex-direction: column; gap: 8px; }
 .iofs-mobile-menu a { color: rgba(190,225,255,0.85); text-decoration: none; font-family: 'Trebuchet MS', sans-serif; font-size: 14px; font-weight: 600; padding: 10px 0; border-bottom: 1px solid rgba(80,160,240,0.1); }
-@media (max-width: 900px) { .iofs-nav-links { display: none; } .iofs-nav-mobile { display: flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; } .iofs-mobile-menu.open { display: flex; } .iofs-nav { padding: 0 16px; } }
+@media (max-width: 900px) { .iofs-nav-links { display: none; } .iofs-nav-mobile { display: flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; } .iofs-mobile-menu.open { display: flex; } .iofs-nav-inner { padding: 0 16px; } }
 </style>
 <nav class="iofs-nav">
+  <div class="iofs-nav-inner">
   <a class="iofs-nav-brand" href="/"><img class="iofs-nav-logo" src="https://forensicscienceinstitute.com/wp-content/uploads/2025/11/IOFS-Logo.png" alt="IOFS" onerror="this.style.display='none'"></a>
   <div class="iofs-nav-links">
     <a href="/">Home</a>
@@ -31,6 +33,7 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
     <a href="/contact" class="iofs-nav-cta">Contact Us</a>
   </div>
   <button class="iofs-nav-mobile" onclick="document.querySelector('.iofs-mobile-menu').classList.toggle('open')"><span></span><span></span><span></span></button>
+  </div>
 </nav>
 <div class="iofs-mobile-menu">
   <a href="/">Home</a>
@@ -44,8 +47,8 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
 </div>
 <script>document.querySelectorAll('.iofs-mobile-menu a').forEach(function(a){a.addEventListener('click',function(){document.querySelector('.iofs-mobile-menu').classList.remove('open');});});</script>
 <style>
-.iofs-wrap { font-family: 'Georgia', serif; color: #1a1a2e; max-width: 1100px; margin: 0 auto; }
-.iofs-hero { background: linear-gradient(160deg, #1c3060 0%, #1e3d78 60%, #1a3468 100%); padding: 80px 60px; text-align: center; border-radius: 8px; margin-bottom: 60px; }
+.iofs-wrap { font-family: 'Georgia', serif; color: #1a1a2e; width: 100%; }
+.iofs-hero { background: linear-gradient(160deg, #1c3060 0%, #1e3d78 60%, #1a3468 100%); padding: 80px max(40px, calc((100vw - 1200px) / 2)); text-align: center; width: 100%; box-sizing: border-box; }
 .iofs-hero-tag { font-family: 'Trebuchet MS', sans-serif; font-size: 12px; letter-spacing: 4px; text-transform: uppercase; color: rgba(170,210,250,0.8); margin-bottom: 20px; }
 .iofs-hero h1 { font-size: 48px; font-weight: 700; color: #ffffff; margin: 0 0 20px; font-family: 'Trebuchet MS', sans-serif; line-height: 1.2; }
 .iofs-hero h1 span { color: #90c8f8; }
@@ -53,11 +56,11 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
 .iofs-accent { width: 80px; height: 3px; background: linear-gradient(90deg, transparent, #50a0f0, transparent); margin: 0 auto; }
 
 /* INTRO */
-.iofs-intro { background: #f8faff; border-left: 5px solid #1e3d78; padding: 40px 50px; margin-bottom: 60px; border-radius: 0 8px 8px 0; }
+.iofs-intro { background: #f8faff; border-left: 5px solid #1e3d78; padding: 70px max(40px, calc((100vw - 1200px) / 2)); width: 100%; box-sizing: border-box; }
 .iofs-intro p { font-size: 18px; color: #1a1a2e; line-height: 1.9; margin: 0; }
 
 /* STATS */
-.iofs-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 60px; }
+.iofs-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 80px max(40px, calc((100vw - 1200px) / 2)); width: 100%; box-sizing: border-box; }
 .iofs-stat { background: linear-gradient(160deg, #1c3060, #1e3d78); border-radius: 10px; padding: 30px 15px; text-align: center; color: #ffffff; }
 .iofs-stat .num { font-family: 'Trebuchet MS', sans-serif; font-size: 36px; font-weight: 700; color: #90c8f8; line-height: 1; margin-bottom: 8px; }
 .iofs-stat .label { font-size: 13px; color: rgba(190,225,255,0.85); line-height: 1.4; }
@@ -66,7 +69,7 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
 .iofs-section-title { font-family: 'Trebuchet MS', sans-serif; font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: #1e3d78; margin-bottom: 25px; padding-bottom: 12px; border-bottom: 2px solid #e0e8f8; }
 
 /* REFERENCE CARDS */
-.iofs-ref-grid { display: grid; grid-template-columns: 1fr; gap: 15px; margin-bottom: 50px; }
+.iofs-ref-grid { display: grid; grid-template-columns: 1fr; gap: 15px; padding: 80px max(40px, calc((100vw - 1200px) / 2)); width: 100%; box-sizing: border-box; }
 .iofs-ref-card { background: #ffffff; border: 1px solid #e0e8f8; border-radius: 10px; padding: 30px 35px; box-shadow: 0 2px 12px rgba(30,61,120,0.05); transition: all 0.3s; border-left: 4px solid #1e3d78; }
 .iofs-ref-card:hover { box-shadow: 0 6px 24px rgba(30,61,120,0.10); transform: translateX(3px); }
 .iofs-ref-card.featured { border-left: 4px solid #50a0f0; background: #f8faff; }
@@ -81,7 +84,7 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
 .iofs-ref-summary { font-size: 14px; color: #555; line-height: 1.7; margin: 0; font-style: italic; }
 
 /* COMMUNITY CTA */
-.iofs-community-cta { background: linear-gradient(160deg, #1c3060, #1e3d78); border-radius: 12px; padding: 60px; margin-bottom: 40px; text-align: center; color: #ffffff; }
+.iofs-community-cta { background: linear-gradient(160deg, #1c3060, #1e3d78); padding: 80px max(40px, calc((100vw - 1200px) / 2)); text-align: center; color: #ffffff; width: 100%; box-sizing: border-box; }
 .iofs-community-cta h2 { font-family: 'Trebuchet MS', sans-serif; font-size: 32px; font-weight: 700; color: #ffffff; margin-bottom: 15px; }
 .iofs-community-cta p { font-size: 18px; color: rgba(190,225,255,0.9); margin-bottom: 30px; line-height: 1.7; max-width: 700px; margin-left: auto; margin-right: auto; }
 .iofs-cta-btn-white { display: inline-block; background: #ffffff; color: #1e3d78; font-family: 'Trebuchet MS', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 16px 40px; border-radius: 6px; text-decoration: none; margin: 0 10px; }
@@ -89,8 +92,8 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
 
 @media (max-width: 768px) {
   body { overflow-x: hidden; }
-  .iofs-wrap { padding: 20px 16px; }
-  .iofs-stats { grid-template-columns: 1fr 1fr; }
+  .iofs-wrap { }
+  .iofs-stats { grid-template-columns: 1fr 1fr; padding-left: 20px; padding-right: 20px; }
   .iofs-hero { padding: 40px 20px; }
   .iofs-hero h1 { font-size: 28px; line-height: 1.2; }
   .iofs-hero p { font-size: 15px; }
@@ -100,7 +103,7 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
   .iofs-cta-btn, .iofs-cta-btn-navy, .iofs-cta-btn-white, .iofs-cta-btn-outline { display: block; width: 100%; min-height: 48px; line-height: 48px; padding: 0 16px; text-align: center; margin: 8px 0; box-sizing: border-box; }
 }
 @media (max-width: 375px) {
-  .iofs-wrap { padding: 16px 12px; }
+  .iofs-wrap { }
   .iofs-hero h1 { font-size: 24px; }
   .iofs-stats { grid-template-columns: 1fr; }
 }
