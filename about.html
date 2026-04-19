@@ -16,7 +16,7 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
 .iofs-nav-mobile span { display: block; width: 24px; height: 2px; background: white; margin: 5px 0; }
 .iofs-mobile-menu { display: none; background: #1c3060; padding: 20px 40px; flex-direction: column; gap: 8px; }
 .iofs-mobile-menu a { color: rgba(190,225,255,0.85); text-decoration: none; font-family: 'Trebuchet MS', sans-serif; font-size: 14px; font-weight: 600; padding: 10px 0; border-bottom: 1px solid rgba(80,160,240,0.1); }
-@media (max-width: 900px) { .iofs-nav-links { display: none; } .iofs-nav-mobile { display: block; } .iofs-mobile-menu.open { display: flex; } }
+@media (max-width: 900px) { .iofs-nav-links { display: none; } .iofs-nav-mobile { display: flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; } .iofs-mobile-menu.open { display: flex; } .iofs-nav { padding: 0 16px; } }
 </style>
 <nav class="iofs-nav">
   <a class="iofs-nav-brand" href="/"><img class="iofs-nav-logo" src="https://forensicscienceinstitute.com/wp-content/uploads/2025/11/IOFS-Logo.png" alt="IOFS" onerror="this.style.display='none'"></a>
@@ -42,6 +42,7 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
   <a href="/community">Just Science Community</a>
   <a href="/contact">Contact Us</a>
 </div>
+<script>document.querySelectorAll('.iofs-mobile-menu a').forEach(function(a){a.addEventListener('click',function(){document.querySelector('.iofs-mobile-menu').classList.remove('open');});});</script>
 <!-- IOFS ABOUT PAGE - WordPress Ready Content -->
 <!-- Copy everything between the page content tags into WordPress page editor (Text/HTML mode) -->
 
@@ -103,10 +104,20 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
 .iofs-tagline-strip p { font-size: 16px; color: #555; margin: 0; }
 
 @media (max-width: 768px) {
+  body { overflow-x: hidden; }
+  .iofs-about-wrap { padding: 20px 16px; }
   .iofs-two-col, .iofs-benefits, .iofs-commit-grid { grid-template-columns: 1fr; }
   .iofs-founder, .iofs-founder.reverse { grid-template-columns: 1fr; }
-  .iofs-hero { padding: 50px 30px; }
-  .iofs-hero h1 { font-size: 32px; }
+  .iofs-hero { padding: 40px 20px; }
+  .iofs-hero h1 { font-size: 28px; line-height: 1.2; }
+  .iofs-hero p { font-size: 15px; }
+  .iofs-section-title { font-size: 22px !important; }
+  img { max-width: 100%; height: auto; }
+  .iofs-cta-btn, .iofs-cta-btn-navy, .iofs-cta-btn-white, .iofs-cta-btn-outline { display: block; width: 100%; min-height: 48px; line-height: 48px; padding: 0 16px; text-align: center; margin: 8px 0; box-sizing: border-box; }
+}
+@media (max-width: 375px) {
+  .iofs-about-wrap { padding: 16px 12px; }
+  .iofs-hero h1 { font-size: 24px; }
 }
 </style>
 

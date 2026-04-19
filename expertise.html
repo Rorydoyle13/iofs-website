@@ -16,7 +16,7 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
 .iofs-nav-mobile span { display: block; width: 24px; height: 2px; background: white; margin: 5px 0; }
 .iofs-mobile-menu { display: none; background: #1c3060; padding: 20px 40px; flex-direction: column; gap: 8px; }
 .iofs-mobile-menu a { color: rgba(190,225,255,0.85); text-decoration: none; font-family: 'Trebuchet MS', sans-serif; font-size: 14px; font-weight: 600; padding: 10px 0; border-bottom: 1px solid rgba(80,160,240,0.1); }
-@media (max-width: 900px) { .iofs-nav-links { display: none; } .iofs-nav-mobile { display: block; } .iofs-mobile-menu.open { display: flex; } }
+@media (max-width: 900px) { .iofs-nav-links { display: none; } .iofs-nav-mobile { display: flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; } .iofs-mobile-menu.open { display: flex; } .iofs-nav { padding: 0 16px; } }
 </style>
 <nav class="iofs-nav">
   <a class="iofs-nav-brand" href="/"><img class="iofs-nav-logo" src="https://forensicscienceinstitute.com/wp-content/uploads/2025/11/IOFS-Logo.png" alt="IOFS" onerror="this.style.display='none'"></a>
@@ -42,6 +42,7 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
   <a href="/community">Just Science Community</a>
   <a href="/contact">Contact Us</a>
 </div>
+<script>document.querySelectorAll('.iofs-mobile-menu a').forEach(function(a){a.addEventListener('click',function(){document.querySelector('.iofs-mobile-menu').classList.remove('open');});});</script>
 <style>
 .iofs-wrap { font-family: 'Georgia', serif; color: #1a1a2e; max-width: 1100px; margin: 0 auto; }
 .iofs-hero { background: linear-gradient(160deg, #1c3060 0%, #1e3d78 60%, #1a3468 100%); padding: 80px 60px; text-align: center; border-radius: 8px; margin-bottom: 60px; }
@@ -105,12 +106,21 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
 .iofs-cta-btn-outline { display: inline-block; background: transparent; color: #1e3d78; font-family: 'Trebuchet MS', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 16px 40px; border-radius: 6px; text-decoration: none; border: 2px solid #1e3d78; margin: 0 10px; }
 
 @media (max-width: 768px) {
-  .iofs-dr-feature { grid-template-columns: 1fr; }
-  .iofs-stats-row { grid-template-columns: 1fr 1fr; }
-  .iofs-cred-grid, .iofs-approach { grid-template-columns: 1fr; }
-  .iofs-practice-grid { grid-template-columns: 1fr 1fr; }
-  .iofs-hero { padding: 50px 30px; }
-  .iofs-hero h1 { font-size: 32px; }
+  body { overflow-x: hidden; }
+  .iofs-wrap { padding: 20px 16px; }
+  .iofs-dr-feature, .iofs-cred-grid, .iofs-approach { grid-template-columns: 1fr; }
+  .iofs-stats-row, .iofs-practice-grid { grid-template-columns: 1fr 1fr; }
+  .iofs-hero { padding: 40px 20px; }
+  .iofs-hero h1 { font-size: 28px; line-height: 1.2; }
+  .iofs-hero p { font-size: 15px; }
+  .iofs-section-title { font-size: 22px !important; }
+  img { max-width: 100%; height: auto; }
+  .iofs-cta-btn, .iofs-cta-btn-navy, .iofs-cta-btn-white, .iofs-cta-btn-outline { display: block; width: 100%; min-height: 48px; line-height: 48px; padding: 0 16px; text-align: center; margin: 8px 0; box-sizing: border-box; }
+}
+@media (max-width: 375px) {
+  .iofs-wrap { padding: 16px 12px; }
+  .iofs-hero h1 { font-size: 24px; }
+  .iofs-stats-row, .iofs-practice-grid { grid-template-columns: 1fr; }
 }
 </style>
 
