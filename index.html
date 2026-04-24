@@ -122,18 +122,11 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
 .iofs-serve-item h4 { font-family: 'Trebuchet MS', sans-serif; font-size: 15px; font-weight: 700; color: #1e3d78; margin: 0 0 8px; }
 .iofs-serve-item p { font-size: 13px; color: #666; margin: 0; line-height: 1.5; }
 
-/* AFFILIATIONS SCROLLING */
-.iofs-affiliations { background: #f8faff; padding: 70px 0; text-align: center; overflow: hidden; width: 100%; }
-.iofs-affiliations h2 { font-family: 'Trebuchet MS', sans-serif; font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: #1e3d78; margin-bottom: 35px; }
-.iofs-marquee-wrapper { overflow: hidden; position: relative; }
-.iofs-marquee-wrapper::before, .iofs-marquee-wrapper::after { content: ''; position: absolute; top: 0; bottom: 0; width: 100px; z-index: 2; }
-.iofs-marquee-wrapper::before { left: 0; background: linear-gradient(to right, #f8faff, transparent); }
-.iofs-marquee-wrapper::after { right: 0; background: linear-gradient(to left, #f8faff, transparent); }
-.iofs-marquee { display: flex; gap: 100px; animation: marquee 30s linear infinite; width: max-content; align-items: center; padding: 15px 0; }
-.iofs-marquee:hover { animation-play-state: paused; }
-.iofs-marquee img { height: 110px; width: auto; opacity: 0.80; transition: opacity 0.3s; filter: grayscale(10%); }
-.iofs-marquee img:hover { opacity: 1; }
-@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+/* AFFILIATIONS */
+.iofs-affiliations { background: #f8faff; padding: 70px max(40px, calc((100vw - 1200px) / 2)); text-align: center; width: 100%; box-sizing: border-box; }
+.iofs-affiliations h2 { font-family: 'Trebuchet MS', sans-serif; font-size: 12px; letter-spacing: 4px; text-transform: uppercase; color: #1e3d78; margin-bottom: 40px; }
+.iofs-affil-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+.iofs-affil-item { background: #ffffff; border: 1px solid #d8e4f8; border-radius: 8px; padding: 18px 28px; font-family: 'Trebuchet MS', sans-serif; font-size: 14px; font-weight: 700; color: #1e3d78; letter-spacing: 0.3px; white-space: nowrap; box-shadow: 0 2px 8px rgba(30,61,120,0.06); }
 
 /* CTA STRIP */
 .iofs-cta { background: #f0f5ff; padding: 80px max(40px, calc((100vw - 1200px) / 2)); text-align: center; width: 100%; box-sizing: border-box; }
@@ -176,7 +169,8 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
   .iofs-founders { padding: 30px 20px; }
   .iofs-pricing { padding: 30px 20px; }
   .iofs-disclaimer { padding: 30px 20px; }
-  .iofs-affiliations { padding: 40px 0; }
+  .iofs-affiliations { padding: 40px 20px; }
+  .iofs-affil-item { font-size: 13px; padding: 14px 18px; white-space: normal; text-align: center; }
 
   /* TYPOGRAPHY — home-specific */
   .iofs-mission p { font-size: 16px; line-height: 1.7; }
@@ -390,25 +384,18 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
     </div>
   </div>
 
-  <!-- AFFILIATIONS SCROLLING -->
+  <!-- AFFILIATIONS -->
   <div class="iofs-affiliations">
-    <h2>Affiliations</h2>
-    <div class="iofs-marquee-wrapper">
-      <div class="iofs-marquee">
-        <img src="https://forensicscienceinstitute.com/wp-content/uploads/2025/06/logo_columbia_sized.webp" alt="Columbia University" />
-        <img src="https://forensicscienceinstitute.com/wp-content/uploads/2025/06/logo_harvard_sized.webp" alt="Harvard University" />
-        <img src="https://forensicscienceinstitute.com/wp-content/uploads/2025/06/logo_NMH_sized.webp" alt="Massachusetts General Hospital" />
-        <img src="https://forensicscienceinstitute.com/wp-content/uploads/2025/06/logo_nyu_sized.webp" alt="NYU" />
-        <img src="https://forensicscienceinstitute.com/wp-content/uploads/2025/06/logo_worldmentalhealth_sized.webp" alt="World Mental Health Coalition" />
-        <img src="https://forensicscienceinstitute.com/wp-content/uploads/2025/06/logo_yale_sized.webp" alt="Yale University" />
-        <!-- Duplicate for seamless loop -->
-        <img src="https://forensicscienceinstitute.com/wp-content/uploads/2025/06/logo_columbia_sized.webp" alt="Columbia University" />
-        <img src="https://forensicscienceinstitute.com/wp-content/uploads/2025/06/logo_harvard_sized.webp" alt="Harvard University" />
-        <img src="https://forensicscienceinstitute.com/wp-content/uploads/2025/06/logo_NMH_sized.webp" alt="Massachusetts General Hospital" />
-        <img src="https://forensicscienceinstitute.com/wp-content/uploads/2025/06/logo_nyu_sized.webp" alt="NYU" />
-        <img src="https://forensicscienceinstitute.com/wp-content/uploads/2025/06/logo_worldmentalhealth_sized.webp" alt="World Mental Health Coalition" />
-        <img src="https://forensicscienceinstitute.com/wp-content/uploads/2025/06/logo_yale_sized.webp" alt="Yale University" />
-      </div>
+    <h2>Academic &amp; Institutional Affiliations</h2>
+    <div class="iofs-affil-grid">
+      <div class="iofs-affil-item">Yale School of Medicine</div>
+      <div class="iofs-affil-item">Yale Law School</div>
+      <div class="iofs-affil-item">Harvard Medical School</div>
+      <div class="iofs-affil-item">Massachusetts General Hospital</div>
+      <div class="iofs-affil-item">Columbia University</div>
+      <div class="iofs-affil-item">New York University</div>
+      <div class="iofs-affil-item">World Mental Health Coalition</div>
+      <div class="iofs-affil-item">National Institute of Mental Health</div>
     </div>
   </div>
 
