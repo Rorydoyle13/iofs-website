@@ -122,11 +122,18 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
 .iofs-serve-item h4 { font-family: 'Trebuchet MS', sans-serif; font-size: 15px; font-weight: 700; color: #1e3d78; margin: 0 0 8px; }
 .iofs-serve-item p { font-size: 13px; color: #666; margin: 0; line-height: 1.5; }
 
-/* AFFILIATIONS */
-.iofs-affiliations { background: #f8faff; padding: 70px max(40px, calc((100vw - 1200px) / 2)); text-align: center; width: 100%; box-sizing: border-box; }
-.iofs-affiliations h2 { font-family: 'Trebuchet MS', sans-serif; font-size: 12px; letter-spacing: 4px; text-transform: uppercase; color: #1e3d78; margin-bottom: 40px; }
-.iofs-affil-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
-.iofs-affil-item { background: #ffffff; border: 1px solid #d8e4f8; border-radius: 8px; padding: 18px 28px; font-family: 'Trebuchet MS', sans-serif; font-size: 14px; font-weight: 700; color: #1e3d78; letter-spacing: 0.3px; white-space: nowrap; box-shadow: 0 2px 8px rgba(30,61,120,0.06); }
+/* AFFILIATIONS SCROLLING MARQUEE */
+.iofs-affiliations { background: #f8faff; padding: 60px 0; text-align: center; overflow: hidden; width: 100%; }
+.iofs-affiliations h2 { font-family: 'Trebuchet MS', sans-serif; font-size: 12px; letter-spacing: 4px; text-transform: uppercase; color: #1e3d78; margin-bottom: 35px; }
+.iofs-marquee-wrapper { overflow: hidden; position: relative; }
+.iofs-marquee-wrapper::before, .iofs-marquee-wrapper::after { content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; }
+.iofs-marquee-wrapper::before { left: 0; background: linear-gradient(to right, #f8faff, transparent); }
+.iofs-marquee-wrapper::after { right: 0; background: linear-gradient(to left, #f8faff, transparent); }
+.iofs-marquee { display: flex; gap: 70px; animation: marquee 28s linear infinite; width: max-content; align-items: center; padding: 10px 0; }
+.iofs-marquee:hover { animation-play-state: paused; }
+.iofs-marquee img { height: 80px; width: auto; opacity: 0.82; transition: opacity 0.3s; }
+.iofs-marquee img:hover { opacity: 1; }
+@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
 /* CTA STRIP */
 .iofs-cta { background: #f0f5ff; padding: 80px max(40px, calc((100vw - 1200px) / 2)); text-align: center; width: 100%; box-sizing: border-box; }
@@ -169,8 +176,9 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
   .iofs-founders { padding: 30px 20px; }
   .iofs-pricing { padding: 30px 20px; }
   .iofs-disclaimer { padding: 30px 20px; }
-  .iofs-affiliations { padding: 40px 20px; }
-  .iofs-affil-item { font-size: 13px; padding: 14px 18px; white-space: normal; text-align: center; }
+  .iofs-affiliations { padding: 40px 0; }
+  .iofs-marquee img { height: 60px; }
+  .iofs-marquee { gap: 50px; }
 
   /* TYPOGRAPHY — home-specific */
   .iofs-mission p { font-size: 16px; line-height: 1.7; }
@@ -384,18 +392,27 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
     </div>
   </div>
 
-  <!-- AFFILIATIONS -->
+  <!-- AFFILIATIONS SCROLLING -->
   <div class="iofs-affiliations">
     <h2>Academic &amp; Institutional Affiliations</h2>
-    <div class="iofs-affil-grid">
-      <div class="iofs-affil-item">Yale School of Medicine</div>
-      <div class="iofs-affil-item">Yale Law School</div>
-      <div class="iofs-affil-item">Harvard Medical School</div>
-      <div class="iofs-affil-item">Massachusetts General Hospital</div>
-      <div class="iofs-affil-item">Columbia University</div>
-      <div class="iofs-affil-item">New York University</div>
-      <div class="iofs-affil-item">World Mental Health Coalition</div>
-      <div class="iofs-affil-item">National Institute of Mental Health</div>
+    <div class="iofs-marquee-wrapper">
+      <div class="iofs-marquee">
+        <img src="/assets/images/logos/logo-yale.svg" alt="Yale University" title="Yale School of Medicine &amp; Yale Law School" />
+        <img src="/assets/images/logos/logo-harvard.svg" alt="Harvard Medical School" title="Harvard Medical School" />
+        <img src="/assets/images/logos/logo-mgh.svg" alt="Massachusetts General Hospital" title="Massachusetts General Hospital" />
+        <img src="/assets/images/logos/logo-columbia.svg" alt="Columbia University" title="Columbia University" />
+        <img src="/assets/images/logos/logo-nyu.svg" alt="New York University" title="New York University" />
+        <img src="/assets/images/logos/logo-wmhc.svg" alt="World Mental Health Coalition" title="World Mental Health Coalition" />
+        <img src="/assets/images/logos/logo-nimh.svg" alt="National Institute of Mental Health" title="National Institute of Mental Health" />
+        <!-- Duplicate set for seamless loop -->
+        <img src="/assets/images/logos/logo-yale.svg" alt="Yale University" title="Yale School of Medicine &amp; Yale Law School" />
+        <img src="/assets/images/logos/logo-harvard.svg" alt="Harvard Medical School" title="Harvard Medical School" />
+        <img src="/assets/images/logos/logo-mgh.svg" alt="Massachusetts General Hospital" title="Massachusetts General Hospital" />
+        <img src="/assets/images/logos/logo-columbia.svg" alt="Columbia University" title="Columbia University" />
+        <img src="/assets/images/logos/logo-nyu.svg" alt="New York University" title="New York University" />
+        <img src="/assets/images/logos/logo-wmhc.svg" alt="World Mental Health Coalition" title="World Mental Health Coalition" />
+        <img src="/assets/images/logos/logo-nimh.svg" alt="National Institute of Mental Health" title="National Institute of Mental Health" />
+      </div>
     </div>
   </div>
 
