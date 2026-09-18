@@ -3,6 +3,7 @@
 html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: #ffffff; }
 .iofs-wrap, .iofs-about-wrap { width: 100%; }
 .iofs-nav { width: 100% !important; }
+[hidden] { display: none !important; }
 </style>
 <style>
 .iofs-nav { background: #0f1f4a; width: 100%; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.3); }
@@ -93,14 +94,14 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
 .iofs-row2{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
 @media (max-width:560px){ .iofs-row2{ grid-template-columns:1fr; } }
 
-.iofs-choices{ display:flex; flex-direction:column; gap:9px; }
+.iofs-choices{ display:flex; flex-direction:column; gap:9px; width:100%; }
 .iofs-choice{
-  display:flex; align-items:flex-start; gap:11px; padding:13px 15px; border:1px solid var(--line);
-  border-radius:10px; cursor:pointer; background:#fbfcff;
+  display:flex; align-items:flex-start; justify-content:flex-start; flex-direction:row; gap:11px; padding:13px 15px; border:1px solid var(--line);
+  border-radius:10px; cursor:pointer; background:#fbfcff; width:100%;
 }
 .iofs-choice:hover{ border-color:var(--navy); }
-.iofs-choice input{ margin-top:3px; flex-shrink:0; }
-.iofs-choice .txt{ font-size:15px; line-height:1.45; }
+.iofs-choice input[type="radio"], .iofs-choice input[type="checkbox"]{ margin:3px 0 0 0; flex:0 0 16px; width:16px; height:16px; }
+.iofs-choice .txt{ font-size:15px; line-height:1.45; flex:1 1 auto; min-width:0; }
 .iofs-choice .txt b{ display:block; font-weight:700; }
 .iofs-choice .txt small{ color:var(--ink-soft); font-size:13px; }
 
@@ -143,15 +144,16 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
         <h2>Contact &amp; address</h2>
         <p class="lead">So we know how to reach you and can prepare any engagement paperwork in advance.</p>
         <div class="iofs-row2">
-          <div class="iofs-field"><label for="f-name">First &amp; last name *</label><input id="f-name" required></div>
-          <div class="iofs-field"><label for="f-email">Email *</label><input id="f-email" type="email" required></div>
+          <div class="iofs-field"><label for="f-firstname">First name *</label><input id="f-firstname" required></div>
+          <div class="iofs-field"><label for="f-lastname">Last name *</label><input id="f-lastname" required></div>
         </div>
+        <div class="iofs-field"><label for="f-email">Email *</label><input id="f-email" type="email" required></div>
         <div class="iofs-row2">
           <div class="iofs-field"><label for="f-addr">Street address, city &amp; ZIP *</label><input id="f-addr" required></div>
           <div class="iofs-field"><label for="f-state">State *</label><select id="f-state" onchange="toggleIntl(this.value)" required></select></div>
         </div>
         <div class="iofs-field" id="f-country-wrap" hidden><label for="f-country">Country</label><input id="f-country"></div>
-        <div class="iofs-field"><label for="f-phone">Cell phone</label><input id="f-phone" type="tel"></div>
+        <div class="iofs-field"><label for="f-phone">Cell phone</label><input id="f-phone" type="tel" placeholder="203-555-0148" maxlength="12" oninput="formatPhone(this)"></div>
         <label class="iofs-choice" style="align-items:flex-start;"><input type="checkbox" id="f-sms" style="margin-top:3px;"><span class="txt">I agree to receive text messages from IOFS regarding appointment reminders and case-related educational resources. Message and data rates may apply. Reply STOP to opt out at any time.</span></label>
         <div class="iofs-form-nav"><span></span><button type="button" class="iofs-fbtn primary" onclick="submitContact()">Continue &rarr;</button></div>
       </div>
@@ -450,10 +452,17 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
     el.innerHTML = html;
   }
   function toggleIntl(val){ document.getElementById('f-country-wrap').hidden = (val !== '__intl'); }
+  function formatPhone(input){
+    var digits = input.value.replace(/\D/g, '').slice(0, 10);
+    var formatted = digits;
+    if(digits.length > 6){ formatted = digits.slice(0,3) + '-' + digits.slice(3,6) + '-' + digits.slice(6); }
+    else if(digits.length > 3){ formatted = digits.slice(0,3) + '-' + digits.slice(3); }
+    input.value = formatted;
+  }
 
   var state = {};
   function resetState(){
-    state = {name:'',email:'',address:'',phone:'', smsConsent:false, stateRegion:'', country:'', scope:null, scopeSelections:[], testimonyRequested:false, otherDescription:'', customScope:false, redirectedFrom:null, price:null, priceRoute:false, rescue:null, intent:null, readiness:null, timeline:null,
+    state = {firstName:'', lastName:'', name:'',email:'',address:'',phone:'', smsConsent:false, stateRegion:'', country:'', scope:null, scopeSelections:[], testimonyRequested:false, otherDescription:'', customScope:false, redirectedFrom:null, price:null, priceRoute:false, rescue:null, intent:null, readiness:null, timeline:null,
       priorEval:null, priorEvalDetails:{profession:'', professionOther:'', diagnoses:[], methods:[], methodsOther:''},
       mhAllegation:null, mhAllegationDetails:{who:'', description:'', documented:''}};
   }
@@ -482,12 +491,15 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
   }
 
   function submitContact(){
-    var name = document.getElementById('f-name').value.trim();
+    var firstName = document.getElementById('f-firstname').value.trim();
+    var lastName = document.getElementById('f-lastname').value.trim();
     var email = document.getElementById('f-email').value.trim();
     var addr = document.getElementById('f-addr').value.trim();
     var stateSel = document.getElementById('f-state').value;
-    if(!name || !email || !addr || !stateSel){ alert('Please fill in all required fields (name, email, address, and state).'); return; }
-    state.name = name;
+    if(!firstName || !lastName || !email || !addr || !stateSel){ alert('Please fill in all required fields (name, email, address, and state).'); return; }
+    state.firstName = firstName;
+    state.lastName = lastName;
+    state.name = firstName + ' ' + lastName;
     state.email = email;
     state.phone = document.getElementById('f-phone').value.trim();
     state.smsConsent = document.getElementById('f-sms').checked;
@@ -699,8 +711,8 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
     if(state.otherDescription) scopeSummaryParts.push('Other: ' + state.otherDescription);
 
     var payload = {
-      firstname: (state.name||'').split(' ').slice(0,-1).join(' ') || state.name,
-      lastname: (state.name||'').split(' ').slice(-1).join(' '),
+      firstname: state.firstName || '',
+      lastname: state.lastName || '',
       email: state.email,
       address: state.address,
       state: state.stateRegion,
@@ -742,31 +754,31 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
 
   function renderResult(path){
     var el = document.getElementById('result-body');
-    var firstName = (state.name||'').split(' ')[0] || 'there';
+    var firstName = state.firstName || 'there';
     var html = '';
 
     if(path.code==='membership_hard'){
       html += '<div><span class="iofs-result-badge">Thank you</span></div>';
-      html += '<h2 style="color:var(--navy);">Thanks, '+firstName+'.</h2>';
+      html += '<h2 style="color:var(--navy);">Thank you for sharing this information with us.</h2>';
       html += '<p class="lead">Based on your answers, our Just Science Community membership is likely the best next step for you right now — ongoing access to Dr. Lee\'s expertise and our national forensic research database for $50/month, with a $25/month rate available if cost is a barrier.</p>';
       html += '<div class="iofs-callout"><a href="https://advocacy.forensicscienceinstitute.com/membership" target="_blank" rel="noopener">Join the Just Science Community &rarr;</a></div>';
       html += '<p class="lead">If your situation changes, you\'re always welcome to reach back out about a formal engagement.</p>';
     } else if(path.code==='nurture_soft_rescue' || path.code==='nurture_soft_timeline'){
       html += '<div><span class="iofs-result-badge">Thank you</span></div>';
-      html += '<h2 style="color:var(--navy);">Thanks, '+firstName+'.</h2>';
+      html += '<h2 style="color:var(--navy);">Thank you for sharing this information with us.</h2>';
       html += '<p class="lead">We\'ll follow up with some educational resources and information about our Just Science Community membership ($50/month) while you weigh your options, and we\'ll check back in when the timing is right.</p>';
       html += '<div class="iofs-callout"><a href="https://advocacy.forensicscienceinstitute.com/membership" target="_blank" rel="noopener">Learn about the Just Science Community &rarr;</a></div>';
     } else if(path.code==='qualified_custom'){
       html += '<div><span class="iofs-result-badge">Thank you</span></div>';
-      html += '<h2 style="color:var(--navy);">Thanks, '+firstName+'.</h2>';
-      html += '<p class="lead">Your matter doesn\'t fit one of our standard engagement categories, so our team will personally review what you shared and follow up at '+state.email+' with next steps and a tailored quote — typically within 1&ndash;2 business days.</p>';
+      html += '<h2 style="color:var(--navy);">Thank you for sharing this information with us.</h2>';
+      html += '<p class="lead">Your matter doesn\'t fit one of our standard engagement categories, so our team will personally review what you shared. Final pricing can only be determined following an in-person intake call to confirm and clarify your individual needs. Please reach out to <a href="mailto:advocate@forensicscienceinstitute.com">advocate@forensicscienceinstitute.com</a> with any questions in the meantime.</p>';
     } else {
       var s = SCOPES[state.scope];
       var isNarrow = path.code==='qualified_narrow';
       var price = isNarrow ? '$2,500–$3,500' : s.price;
       html += '<div><span class="iofs-result-badge">Thank you</span></div>';
-      html += '<h2 style="color:var(--navy);">Thanks, '+firstName+'.</h2>';
-      html += '<p class="lead">Based on your answers, you\'re a strong fit for '+(isNarrow?'a narrower-scope engagement':s.label)+'. Our team will reach out at '+state.email+' within 1 business day to schedule your consultation with Dr. Lee.</p>';
+      html += '<h2 style="color:var(--navy);">Thank you for sharing this information with us.</h2>';
+      html += '<p class="lead">Based on your answers, you\'re a strong fit for '+(isNarrow?'a narrower-scope engagement':s.label)+'. Final pricing can only be determined following an in-person intake call to confirm and clarify your individual needs. Please reach out to <a href="mailto:advocate@forensicscienceinstitute.com">advocate@forensicscienceinstitute.com</a> to schedule your consultation with Dr. Lee.</p>';
       html += '<div class="iofs-callout">Estimated range: '+price+', with the final fee determined based on documentation volume and scope.'+(state.testimonyRequested?' Expert testimony, if needed, is billed separately as a $7,500 retainer with 14 days\' notice, available in person or virtually.':'')+'</div>';
       html += '<div class="iofs-callout">Membership in the Just Science Community ($50/month) is also open to engaged clients, alongside your formal engagement — <a href="https://advocacy.forensicscienceinstitute.com/membership" target="_blank" rel="noopener">learn more</a>.</div>';
     }
