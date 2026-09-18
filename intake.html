@@ -344,11 +344,13 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
      silently / land in the wrong properties and the notification workflow
      may not fire. Verify each one against the real form before launch.
   ===================================================================== */
-  var HUBSPOT_PORTAL_ID = "REPLACE_ME_PORTAL_ID";
-  var HUBSPOT_FORM_ID   = "REPLACE_ME_FORM_GUID";
-  var HUBSPOT_REGION    = "na1"; // change if the embed code shows a different region, e.g. "na2"
+  var HUBSPOT_PORTAL_ID = "50791750";
+  var HUBSPOT_FORM_ID   = "4b577c68-4514-4037-8409-fa8b677be0f3";
+  var HUBSPOT_REGION    = "na1";
 
   var HUBSPOT_FIELD_MAP = {
+    // ---- Confirmed real HubSpot internal names (pulled from the account's
+    //      actual Properties export on 2026-09-18) ----
     firstname: 'firstname',
     lastname: 'lastname',
     email: 'email',
@@ -356,25 +358,67 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
     state: 'state',
     country: 'country',
     phone: 'phone',
-    sms_consent: 'sms_consent', // TODO confirm internal name in HubSpot
-    intake_scope: 'intake_scope', // TODO custom property — scope(s) selected
-    intake_other_description: 'intake_other_description', // TODO custom property
-    intake_price_answer: 'intake_price_answer', // TODO custom property
-    intake_rescue_answer: 'intake_rescue_answer', // TODO custom property
-    intake_intent: 'intake_intent', // TODO custom property
-    intake_readiness: 'intake_readiness', // TODO custom property
-    intake_timeline: 'intake_timeline', // TODO custom property
-    intake_prior_evaluation: 'intake_prior_evaluation', // TODO custom property
-    intake_prior_eval_profession: 'intake_prior_eval_profession', // TODO custom property
-    intake_prior_eval_diagnoses: 'intake_prior_eval_diagnoses', // TODO custom property
-    intake_prior_eval_methods: 'intake_prior_eval_methods', // TODO custom property
-    intake_mh_allegation: 'intake_mh_allegation', // TODO custom property
-    intake_mh_allegation_who: 'intake_mh_allegation_who', // TODO custom property
-    intake_mh_allegation_description: 'intake_mh_allegation_description', // TODO custom property
-    intake_mh_allegation_documented: 'intake_mh_allegation_documented', // TODO custom property
-    intake_important_dates: 'intake_important_dates', // TODO custom property
-    intake_routing_outcome: 'intake_routing_outcome' // TODO custom property — result of this simulator's logic
+    sms_consent: 'sms_optin',
+    ack: 'acknowledgement_form_does_not_constitute_acceptance_retention_or_an_agreement_to_provide_services',
+    intake_scope: 'in_what_capacity_are_you_seeking_involvement_or_support_at_this_time',
+    intake_intent: 'are_you_seeking_to_retain_dr_bandy_lee_md_or_one_of_our_affiliated_experts_in_your_matter',
+    intake_readiness: 'readiness_to_formally_engage_timeline',
+    intake_timeline: 'what_is_your_anticipated_timeline_to_potentially_work_together',
+    intake_prior_evaluation: 'have_you_previously_undergone_a_forensic_evaluation_related_to_this_matter',
+    intake_prior_eval_profession: 'what_type_of_professional_conducted_the_evaluation',
+    intake_prior_eval_profession_other: 'what_type_of_professional_conducted_the_evaluation_other',
+    intake_prior_eval_diagnoses: 'were_any_of_the_following_diagnoses_or_findings_identified_by_the_evaluator',
+    intake_prior_eval_methods: 'what_assessment_methods_were_utilized_in_your_evaluation',
+    intake_dates_flag: 'are_there_any_upcoming_or_timesensitive_dates',
+    intake_dates_detail: 'are_there_any_upcoming_or_timesensitive_dates_yes',
+    intake_price_answer: 'ability_to_proceed_at_quoted_price',
+    intake_rescue_answer: 'interested_in_narrowerlowercost_engagement',
+    intake_testimony_requested: 'expert_testimony_requested',
+    intake_other_description: 'other_scope_description',
+    intake_mh_allegation: 'mental_health_allegation_made',
+    intake_mh_allegation_who: 'mental_health_allegationwho_it_concerns',
+    intake_mh_allegation_description: 'mental_health_allegation__description',
+    intake_mh_allegation_documented: 'mental_health_allegation_documentation_status',
+    intake_routing_outcome: 'intake_routing_outcome'
   };
+
+  // Translates our internal answer values to the EXACT option text the
+  // existing HubSpot properties expect, so reporting/filtering in HubSpot
+  // lines up with the old form's data.
+  var HS_TIMELINE_TEXT = {
+    'immediate': 'Immediately',
+    '2-4wks': 'Within 2–4 weeks',
+    '6-8wks': 'Within 6–8 weeks',
+    'several-months': 'Several months or longer'
+  };
+  var HS_READINESS_TEXT = {
+    'yes': 'Yes, I am prepared to proceed with formal engagement if appropriate',
+    'possibly': 'Possibly, I am exploring options and timing',
+    'not-at-time': 'Not at this time — I am seeking education, guidance, or advocacy resources'
+  };
+  var HS_SCOPE_LABELS = { forensic_eval:'Forensic Evaluation', peer_review:'Peer Review / Second Opinion', expert_testimony:'Expert Testimony' };
+  var HS_INTENT_TEXT = {
+    'yes': 'Yes',
+    'possibly': 'Possibly / Exploring',
+    'no': 'No, informational, educational, or advocacy-related inquiry only'
+  };
+  var HS_PRICE_TEXT = {
+    'yes': "Yes, I'm ready to proceed",
+    'yes-not-now': 'Yes, but not at this time',
+    'possibly': 'Possibly, depending on final scope',
+    'no': 'No, this is outside my current budget'
+  };
+  var HS_RESCUE_TEXT = {
+    'yes': "Yes, I'd like to discuss options",
+    'not-at-time': 'Not at this time',
+    'no': 'No, prefer to learn about membership instead'
+  };
+  function hsScopeValue(){
+    var core = (state.scopeSelections||[]).filter(function(v){ return v!=='other'; });
+    if(core.length === 1) return HS_SCOPE_LABELS[core[0]] || '';
+    if(core.length > 1) return 'A combination of the above';
+    return ''; // only "Other" selected — no matching HubSpot option yet
+  }
 
   function getCookie(name){
     var m = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
@@ -710,6 +754,10 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
     if(state.testimonyRequested) scopeSummaryParts.push('Expert Testimony');
     if(state.otherDescription) scopeSummaryParts.push('Other: ' + state.otherDescription);
 
+    var professionMatch = (PROFESSIONS.filter(function(p){return p.v===state.priorEvalDetails.profession;})[0]||{}).l || '';
+    var datesRaw = (document.getElementById('f-dates')||{}).value || '';
+    var datesHasContent = !!datesRaw.trim() && !/^(none|no|n\/a)$/i.test(datesRaw.trim());
+
     var payload = {
       firstname: state.firstName || '',
       lastname: state.lastName || '',
@@ -719,22 +767,26 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
       country: state.country,
       phone: state.phone,
       sms_consent: state.smsConsent ? 'true' : 'false',
-      intake_scope: scopeSummaryParts.join(' + '),
+      ack: 'true', // submit is disabled until this checkbox is checked
+      intake_scope: hsScopeValue(),
       intake_other_description: state.otherDescription || '',
-      intake_price_answer: state.price || '',
-      intake_rescue_answer: state.rescue || '',
-      intake_intent: state.intent || '',
-      intake_readiness: state.readiness || '',
-      intake_timeline: state.timeline || '',
+      intake_price_answer: HS_PRICE_TEXT[state.price] || state.price || '',
+      intake_rescue_answer: HS_RESCUE_TEXT[state.rescue] || state.rescue || '',
+      intake_intent: HS_INTENT_TEXT[state.intent] || state.intent || '',
+      intake_testimony_requested: state.testimonyRequested ? 'true' : 'false',
+      intake_readiness: HS_READINESS_TEXT[state.readiness] || state.readiness || '',
+      intake_timeline: HS_TIMELINE_TEXT[state.timeline] || state.timeline || '',
       intake_prior_evaluation: state.priorEval===true ? 'Yes' : (state.priorEval===false ? 'No' : ''),
-      intake_prior_eval_profession: state.priorEvalDetails.profession==='other' ? ('Other — '+state.priorEvalDetails.professionOther) : (PROFESSIONS.filter(function(p){return p.v===state.priorEvalDetails.profession;})[0]||{}).l || '',
+      intake_prior_eval_profession: state.priorEvalDetails.profession==='other' ? 'Other (please specify)' : professionMatch,
+      intake_prior_eval_profession_other: state.priorEvalDetails.profession==='other' ? (state.priorEvalDetails.professionOther||'') : '',
       intake_prior_eval_diagnoses: state.priorEvalDetails.diagnoses.map(function(v){ var d=DIAGNOSES.filter(function(x){return x.v===v;})[0]; return d?d.l:v; }).join('; '),
       intake_prior_eval_methods: state.priorEvalDetails.methods.map(function(v){ if(v==='other'&&state.priorEvalDetails.methodsOther) return 'Other — '+state.priorEvalDetails.methodsOther; var m=METHODS.filter(function(x){return x.v===v;})[0]; return m?m.l:v; }).join('; '),
       intake_mh_allegation: state.mhAllegation===true ? 'Yes' : (state.mhAllegation===false ? 'No' : ''),
       intake_mh_allegation_who: state.mhAllegationDetails.who || '',
       intake_mh_allegation_description: state.mhAllegationDetails.description || '',
       intake_mh_allegation_documented: state.mhAllegationDetails.documented || '',
-      intake_important_dates: (document.getElementById('f-dates')||{}).value || '',
+      intake_dates_flag: datesHasContent ? 'Yes' : 'No',
+      intake_dates_detail: datesRaw,
       intake_routing_outcome: path.code
     };
 
