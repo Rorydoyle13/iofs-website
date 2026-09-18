@@ -1,0 +1,789 @@
+<style>
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: #ffffff; }
+.iofs-wrap, .iofs-about-wrap { width: 100%; }
+.iofs-nav { width: 100% !important; }
+[hidden] { display: none !important; }
+</style>
+<style>
+.iofs-nav { background: #0f1f4a; width: 100%; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.3); }
+.iofs-nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 70px; }
+.iofs-nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.iofs-nav-logo { height: 45px; width: auto; }
+.iofs-nav-links { display: flex; align-items: center; gap: 6px; }
+.iofs-nav-links a { color: rgba(190,225,255,0.85); text-decoration: none; font-family: 'Trebuchet MS', sans-serif; font-size: 13px; font-weight: 600; padding: 8px 12px; border-radius: 6px; transition: all 0.2s; white-space: nowrap; }
+.iofs-nav-links a:hover { background: rgba(80,160,240,0.2); color: white; }
+.iofs-nav-cta { background: #50a0f0; color: white !important; border-radius: 6px; padding: 8px 16px !important; }
+.iofs-nav-mobile { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+.iofs-nav-mobile span { display: block; width: 24px; height: 2px; background: white; margin: 5px 0; }
+.iofs-mobile-menu { display: none; background: #1c3060; padding: 20px 40px; flex-direction: column; gap: 8px; }
+.iofs-mobile-menu a { color: rgba(190,225,255,0.85); text-decoration: none; font-family: 'Trebuchet MS', sans-serif; font-size: 14px; font-weight: 600; padding: 10px 0; border-bottom: 1px solid rgba(80,160,240,0.1); }
+@media (max-width: 900px) { .iofs-nav-links { display: none; } .iofs-nav-mobile { display: flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; } .iofs-mobile-menu.open { display: flex; } .iofs-nav-inner { padding: 0 16px; } }
+</style>
+<nav class="iofs-nav">
+  <div class="iofs-nav-inner">
+  <a class="iofs-nav-brand" href="/"><img class="iofs-nav-logo" src="https://forensicscienceinstitute.com/wp-content/uploads/2025/11/IOFS-Logo.png" alt="IOFS" onerror="this.style.display='none'"></a>
+  <div class="iofs-nav-links">
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/services">Services</a>
+    <a href="/expertise">Expertise</a>
+    <a href="/insights">Insights</a>
+    <a href="/research">Research</a>
+    <a href="https://advocacy.forensicscienceinstitute.com/membership">Just Science Community</a>
+    <a href="/contact" class="iofs-nav-cta">Contact Us</a>
+  </div>
+  <button class="iofs-nav-mobile" onclick="document.querySelector('.iofs-mobile-menu').classList.toggle('open')"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="iofs-mobile-menu">
+  <a href="/">Home</a>
+  <a href="/about">About</a>
+  <a href="/services">Services</a>
+  <a href="/expertise">Expertise</a>
+  <a href="/insights">Insights</a>
+  <a href="/research">Research</a>
+  <a href="https://advocacy.forensicscienceinstitute.com/membership">Just Science Community</a>
+  <a href="/contact">Contact Us</a>
+</div>
+<script>document.querySelectorAll('.iofs-mobile-menu a').forEach(function(a){a.addEventListener('click',function(){document.querySelector('.iofs-mobile-menu').classList.remove('open');});});</script>
+
+<style>
+:root{
+  --navy:#1e3d78;
+  --navy-dark:#1c3060;
+  --navy-darker:#0f1f4a;
+  --accent:#50a0f0;
+  --accent-light:#90c8f8;
+  --pale:#f0f5ff;
+  --ink:#1a1a2e;
+  --ink-soft:#555;
+  --line:#e0e8f8;
+  --amber:#8a5a00;
+  --amber-bg:#fff8f0;
+  --amber-line:#f0a000;
+}
+.iofs-apply-wrap{ font-family:'Georgia', serif; color:var(--ink); width:100%; }
+.iofs-apply-hero{ background:linear-gradient(160deg, var(--navy-dark) 0%, var(--navy) 60%, var(--navy-dark) 100%); padding:70px max(40px, calc((100vw - 1200px) / 2)) 60px; text-align:center; }
+.iofs-apply-hero .tag{ font-family:'Trebuchet MS', sans-serif; font-size:12px; letter-spacing:4px; text-transform:uppercase; color:rgba(170,210,250,0.8); margin-bottom:16px; }
+.iofs-apply-hero h1{ font-size:38px; font-weight:700; color:#fff; margin:0 0 14px; font-family:'Trebuchet MS', sans-serif; line-height:1.25; }
+.iofs-apply-hero h1 span{ color:var(--accent-light); }
+.iofs-apply-hero p{ font-size:16px; color:rgba(190,225,255,0.9); max-width:640px; margin:0 auto; line-height:1.65; }
+
+.iofs-apply-body{ max-width:820px; margin:0 auto; padding:44px 20px 90px; }
+
+.iofs-stage{ background:#fff; border:1px solid var(--line); border-radius:14px; box-shadow:0 4px 24px rgba(30,61,120,0.08); padding:36px; }
+.iofs-progress{ display:flex; align-items:center; gap:7px; margin-bottom:22px; }
+.iofs-progress .dot{ width:7px; height:7px; border-radius:50%; background:var(--line); }
+.iofs-progress .dot.done{ background:var(--navy); }
+.iofs-progress .plabel{ font-family:'Trebuchet MS', sans-serif; font-size:11px; color:var(--ink-soft); margin-left:8px; letter-spacing:.03em; text-transform:uppercase; }
+
+.iofs-screen{ display:none; flex-direction:column; gap:18px; }
+.iofs-screen.active{ display:flex; }
+.iofs-screen h2{ font-family:'Trebuchet MS', sans-serif; font-size:22px; color:var(--navy); margin:0; }
+.iofs-screen .lead{ color:var(--ink-soft); font-size:15px; line-height:1.6; margin:0; }
+
+.iofs-field{ display:flex; flex-direction:column; gap:6px; }
+.iofs-field label{ font-family:'Trebuchet MS', sans-serif; font-size:12.5px; font-weight:700; color:var(--navy); }
+.iofs-field .hint{ font-size:12.5px; color:var(--ink-soft); margin:0; font-weight:400; font-family:Georgia, serif; }
+.iofs-field input, .iofs-field select, .iofs-field textarea{
+  font:inherit; font-size:15px; padding:11px 13px; border-radius:8px; border:1px solid var(--line);
+  background:#fff; color:var(--ink); width:100%; font-family:Georgia, serif;
+}
+.iofs-field input:focus, .iofs-field select:focus, .iofs-field textarea:focus{ outline:2px solid var(--accent); outline-offset:1px; }
+.iofs-row2{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+@media (max-width:560px){ .iofs-row2{ grid-template-columns:1fr; } }
+
+.iofs-choices{ display:flex; flex-direction:column; gap:9px; width:100%; }
+.iofs-choice{
+  display:flex; align-items:flex-start; justify-content:flex-start; flex-direction:row; gap:11px; padding:13px 15px; border:1px solid var(--line);
+  border-radius:10px; cursor:pointer; background:#fbfcff; width:100%;
+}
+.iofs-choice:hover{ border-color:var(--navy); }
+.iofs-choice input[type="radio"], .iofs-choice input[type="checkbox"]{ margin:3px 0 0 0; flex:0 0 16px; width:16px; height:16px; }
+.iofs-choice .txt{ font-size:15px; line-height:1.45; flex:1 1 auto; min-width:0; }
+.iofs-choice .txt b{ display:block; font-weight:700; }
+.iofs-choice .txt small{ color:var(--ink-soft); font-size:13px; }
+
+.iofs-callout{ background:var(--pale); border:1px solid var(--accent-light); border-radius:10px; padding:15px 17px; font-size:14px; line-height:1.6; color:var(--ink); }
+.iofs-callout.amber{ background:var(--amber-bg); border-color:var(--amber-line); color:var(--amber); }
+.iofs-callout a{ color:var(--navy); font-weight:700; }
+
+.iofs-form-nav{ display:flex; justify-content:space-between; gap:12px; margin-top:6px; }
+.iofs-fbtn{ font-family:'Trebuchet MS', sans-serif; font-size:13px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; padding:12px 22px; border-radius:8px; border:1px solid transparent; cursor:pointer; }
+.iofs-fbtn.primary{ background:var(--navy); color:#fff; }
+.iofs-fbtn.primary:disabled{ opacity:.4; cursor:not-allowed; }
+.iofs-fbtn.ghost{ background:transparent; color:var(--ink-soft); border-color:var(--line); }
+.iofs-fbtn.ghost:hover{ border-color:var(--ink-soft); }
+
+.iofs-result-badge{ display:inline-flex; align-items:center; font-family:'Trebuchet MS', sans-serif; font-size:11.5px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; padding:6px 14px; border-radius:999px; background:var(--pale); color:var(--navy); }
+
+@media (max-width:768px){
+  .iofs-apply-hero{ padding:40px 20px; }
+  .iofs-apply-hero h1{ font-size:26px; }
+  .iofs-apply-body{ padding:28px 16px 60px; }
+  .iofs-stage{ padding:22px; }
+  input, select, textarea{ font-size:16px !important; }
+}
+</style>
+
+<div class="iofs-apply-wrap">
+  <div class="iofs-apply-hero">
+    <div class="tag">Forensic Services Intake</div>
+    <h1>Start Your <span>Confidential Inquiry</span></h1>
+    <p>A few questions help us route your matter to the right next step — whether that's a formal engagement with Dr. Bandy Lee, M.D. or a path into The Just Science Community.</p>
+  </div>
+
+  <div class="iofs-apply-body">
+    <div class="iofs-stage" id="stage">
+      <div class="iofs-progress" id="progress"></div>
+
+      <form id="iofs-intake-form" onsubmit="return false;">
+
+      <div class="iofs-screen active" data-id="contact">
+        <h2>Contact &amp; address</h2>
+        <p class="lead">So we know how to reach you and can prepare any engagement paperwork in advance.</p>
+        <div class="iofs-row2">
+          <div class="iofs-field"><label for="f-firstname">First name *</label><input id="f-firstname" required></div>
+          <div class="iofs-field"><label for="f-lastname">Last name *</label><input id="f-lastname" required></div>
+        </div>
+        <div class="iofs-field"><label for="f-email">Email *</label><input id="f-email" type="email" required></div>
+        <div class="iofs-row2">
+          <div class="iofs-field"><label for="f-addr">Street address, city &amp; ZIP *</label><input id="f-addr" required></div>
+          <div class="iofs-field"><label for="f-state">State *</label><select id="f-state" onchange="toggleIntl(this.value)" required></select></div>
+        </div>
+        <div class="iofs-field" id="f-country-wrap" hidden><label for="f-country">Country</label><input id="f-country"></div>
+        <div class="iofs-field"><label for="f-phone">Cell phone</label><input id="f-phone" type="tel" placeholder="203-555-0148" maxlength="12" oninput="formatPhone(this)"></div>
+        <label class="iofs-choice" style="align-items:flex-start;"><input type="checkbox" id="f-sms" style="margin-top:3px;"><span class="txt">I agree to receive text messages from IOFS regarding appointment reminders and case-related educational resources. Message and data rates may apply. Reply STOP to opt out at any time.</span></label>
+        <div class="iofs-form-nav"><span></span><button type="button" class="iofs-fbtn primary" onclick="submitContact()">Continue &rarr;</button></div>
+      </div>
+
+      <div class="iofs-screen" data-id="scope">
+        <h2>What are you inquiring about?</h2>
+        <p class="lead">Select everything that applies.</p>
+        <div class="iofs-choices" id="scope-choices"></div>
+        <div class="iofs-form-nav">
+          <button type="button" class="iofs-fbtn ghost" onclick="goTo('contact')">&larr; Back</button>
+          <button type="button" class="iofs-fbtn primary" id="scope-continue" disabled onclick="continueScope()">Continue &rarr;</button>
+        </div>
+      </div>
+
+      <div class="iofs-screen" data-id="scope_redirect">
+        <h2>Following her area of practice</h2>
+        <div class="iofs-callout">Dr. Lee has provided expert testimony in over 300 cases nationally. Expert testimony follows an underlying comprehensive evaluation or peer review &mdash; which of those best fits where your matter currently stands?</div>
+        <div class="iofs-choices">
+          <label class="iofs-choice"><input type="radio" name="redirect" onclick="chooseRedirect('forensic_eval')"><span class="txt"><b>Comprehensive Forensic Psychiatric Evaluation, Analysis and Reporting</b></span></label>
+          <label class="iofs-choice"><input type="radio" name="redirect" onclick="chooseRedirect('peer_review')"><span class="txt"><b>Comprehensive Peer Review, Analysis and Reporting (2nd Opinion)</b></span></label>
+        </div>
+        <div class="iofs-form-nav"><button type="button" class="iofs-fbtn ghost" onclick="goTo('scope')">&larr; Back</button><span></span></div>
+      </div>
+
+      <div class="iofs-screen" data-id="membership_price">
+        <h2>Before we talk cost</h2>
+        <div class="iofs-callout">Note: Alongside a formal engagement &mdash; or entirely on its own &mdash; our Just Science Community membership offers ongoing access to Dr. Lee's expertise and our national forensic research database for $50/month. Members can also submit two questions each month, addressed through Zoom sessions or in our newsletter. &mdash; <a href="https://advocacy.forensicscienceinstitute.com/membership" target="_blank" rel="noopener">Join the community</a></div>
+        <p class="lead" style="font-style:italic;">Due to high demand to retain Dr. Lee and the urgent needs of the families we serve, we've built a more efficient process to help you get the support you need faster.</p>
+        <h3 id="price-question" style="font-size:15.5px;font-family:'Trebuchet MS', sans-serif;font-weight:700;color:var(--navy);margin:0;"></h3>
+        <div class="iofs-choices">
+          <label class="iofs-choice"><input type="radio" name="price" onclick="choosePrice('yes')"><span class="txt"><b>Yes, I'm ready to proceed</b></span></label>
+          <label class="iofs-choice"><input type="radio" name="price" onclick="choosePrice('yes-not-now')"><span class="txt"><b>Yes, but not at this time</b></span></label>
+          <label class="iofs-choice"><input type="radio" name="price" onclick="choosePrice('possibly')"><span class="txt"><b>Possibly, depending on final scope</b></span></label>
+          <label class="iofs-choice"><input type="radio" name="price" onclick="choosePrice('no')"><span class="txt"><b>No, this is outside my current budget</b></span></label>
+        </div>
+        <div class="iofs-form-nav"><button type="button" class="iofs-fbtn ghost" onclick="goTo(state.redirectedFrom==='expert_testimony'?'scope_redirect':'scope')">&larr; Back</button><span></span></div>
+      </div>
+
+      <div class="iofs-screen" data-id="rescue">
+        <h2>One more option</h2>
+        <div class="iofs-choices">
+          <label class="iofs-choice"><input type="radio" name="rescue" onclick="chooseRescue('yes')"><span class="txt"><b>Yes, I'd like to discuss options</b><small>Payment plan or a narrower, lower-cost modified engagement ($2,500&ndash;$3,500)</small></span></label>
+          <label class="iofs-choice"><input type="radio" name="rescue" onclick="chooseRescue('not-at-time')"><span class="txt"><b>Not at this time</b></span></label>
+          <label class="iofs-choice"><input type="radio" name="rescue" onclick="chooseRescue('no')"><span class="txt"><b>No, prefer to learn about membership instead</b></span></label>
+        </div>
+        <div class="iofs-form-nav"><button type="button" class="iofs-fbtn ghost" onclick="goTo('membership_price')">&larr; Back</button><span></span></div>
+      </div>
+
+      <div class="iofs-screen" data-id="intent">
+        <h2>Intent to retain</h2>
+        <div class="iofs-choices">
+          <label class="iofs-choice"><input type="radio" name="intent" onclick="chooseIntent('yes')"><span class="txt"><b>Yes</b></span></label>
+          <label class="iofs-choice"><input type="radio" name="intent" onclick="chooseIntent('possibly')"><span class="txt"><b>Possibly &ndash; exploring</b></span></label>
+          <label class="iofs-choice"><input type="radio" name="intent" onclick="chooseIntent('no')"><span class="txt"><b>No &ndash; informational only</b></span></label>
+        </div>
+        <div class="iofs-form-nav"><button type="button" class="iofs-fbtn ghost" onclick="goTo(state.customScope?'scope':(state.priceRoute?'rescue':'membership_price'))">&larr; Back</button><span></span></div>
+      </div>
+
+      <div class="iofs-screen" data-id="readiness">
+        <h2>Readiness for formal engagement</h2>
+        <div class="iofs-choices">
+          <label class="iofs-choice"><input type="radio" name="readiness" onclick="chooseReadiness('yes')"><span class="txt"><b>Yes</b></span></label>
+          <label class="iofs-choice"><input type="radio" name="readiness" onclick="chooseReadiness('possibly')"><span class="txt"><b>Possibly</b></span></label>
+          <label class="iofs-choice"><input type="radio" name="readiness" onclick="chooseReadiness('not-at-time')"><span class="txt"><b>Not at this time</b></span></label>
+        </div>
+        <div class="iofs-form-nav"><button type="button" class="iofs-fbtn ghost" onclick="goTo('intent')">&larr; Back</button><span></span></div>
+      </div>
+
+      <div class="iofs-screen" data-id="timeline">
+        <h2>Anticipated timeline</h2>
+        <div class="iofs-choices">
+          <label class="iofs-choice"><input type="radio" name="timeline" onclick="chooseTimeline('immediate')"><span class="txt"><b>Immediate</b></span></label>
+          <label class="iofs-choice"><input type="radio" name="timeline" onclick="chooseTimeline('2-4wks')"><span class="txt"><b>2&ndash;4 weeks</b></span></label>
+          <label class="iofs-choice"><input type="radio" name="timeline" onclick="chooseTimeline('6-8wks')"><span class="txt"><b>6&ndash;8 weeks</b></span></label>
+          <label class="iofs-choice"><input type="radio" name="timeline" onclick="chooseTimeline('several-months')"><span class="txt"><b>Several months+</b></span></label>
+        </div>
+        <div class="iofs-form-nav"><button type="button" class="iofs-fbtn ghost" onclick="goTo('readiness')">&larr; Back</button><span></span></div>
+      </div>
+
+      <div class="iofs-screen" data-id="prior">
+        <h2>Prior evaluation &amp; mental health allegations</h2>
+        <p class="lead">These are independent questions &mdash; an allegation about a party's mental health or behavior can exist even when no prior evaluation was ever done. This helps Dr. Lee prepare and does not affect your routing above.</p>
+
+        <div class="iofs-field">
+          <label>Has there been a prior forensic psychological or psychiatric evaluation in this matter?</label>
+          <div class="iofs-choices">
+            <label class="iofs-choice"><input type="radio" name="prior-eval" id="prior-eval-yes" onclick="choosePriorEval(true)"><span class="txt"><b>Yes</b></span></label>
+            <label class="iofs-choice"><input type="radio" name="prior-eval" id="prior-eval-no" onclick="choosePriorEval(false)"><span class="txt"><b>No</b></span></label>
+          </div>
+        </div>
+
+        <div id="prior-eval-details" hidden style="display:flex;flex-direction:column;gap:16px;border-top:1px solid var(--line);padding-top:16px;">
+          <h3 style="font-family:'Trebuchet MS', sans-serif; font-size:15px; color:var(--navy); margin:0;">Prior Forensic Evaluation Details</h3>
+
+          <div class="iofs-field">
+            <label>What type of professional conducted the evaluation? *</label>
+            <div class="iofs-choices">
+              <label class="iofs-choice"><input type="radio" name="profession" id="prof-psychiatrist" onclick="setProfession('psychiatrist')"><span class="txt">Psychiatrist (MD)</span></label>
+              <label class="iofs-choice"><input type="radio" name="profession" id="prof-psychologist" onclick="setProfession('psychologist')"><span class="txt">Psychologist (PhD or PsyD)</span></label>
+              <label class="iofs-choice"><input type="radio" name="profession" id="prof-lcsw" onclick="setProfession('lcsw')"><span class="txt">Licensed Clinical Social Worker (LCSW)</span></label>
+              <label class="iofs-choice"><input type="radio" name="profession" id="prof-counselor" onclick="setProfession('counselor')"><span class="txt">Licensed Counselor / Therapist (e.g., LPC, LMHC)</span></label>
+              <label class="iofs-choice"><input type="radio" name="profession" id="prof-other" onclick="setProfession('other')"><span class="txt">Other</span></label>
+            </div>
+            <div class="iofs-field" id="profession-other-wrap" hidden><label for="f-profession-other">Please specify</label><input id="f-profession-other"></div>
+          </div>
+
+          <div class="iofs-field">
+            <label>Were any of the following diagnoses or findings identified by the evaluator?</label>
+            <p class="hint">Select all that apply. Selection does not indicate agreement with, or accuracy of, any diagnosis or finding.</p>
+            <div class="iofs-choices" id="diagnoses-choices"></div>
+          </div>
+
+          <div class="iofs-field">
+            <label>What assessment methods were utilized in your evaluation?</label>
+            <p class="hint">Select all that apply.</p>
+            <div class="iofs-choices" id="methods-choices"></div>
+            <div class="iofs-field" id="method-other-wrap" hidden><label for="f-method-other">Please specify</label><input id="f-method-other"></div>
+          </div>
+        </div>
+
+        <div class="iofs-field" style="border-top:1px solid var(--line);padding-top:16px;">
+          <label>Was an allegation made regarding a party's mental health or behavior?</label>
+          <p class="hint">Mental health allegations can be made without any evaluation ever having occurred.</p>
+          <div class="iofs-choices">
+            <label class="iofs-choice"><input type="radio" name="mh-allegation" id="mh-allegation-yes" onclick="chooseMhAllegation(true)"><span class="txt"><b>Yes</b></span></label>
+            <label class="iofs-choice"><input type="radio" name="mh-allegation" id="mh-allegation-no" onclick="chooseMhAllegation(false)"><span class="txt"><b>No</b></span></label>
+          </div>
+        </div>
+
+        <div id="mh-allegation-details" hidden style="display:flex;flex-direction:column;gap:16px;border-top:1px solid var(--line);padding-top:16px;">
+          <h3 style="font-family:'Trebuchet MS', sans-serif; font-size:15px; color:var(--navy); margin:0;">Mental Health Allegation Details</h3>
+          <div class="iofs-field">
+            <label>Who does the allegation concern?</label>
+            <div class="iofs-choices">
+              <label class="iofs-choice"><input type="radio" name="mh-who" id="mh-who-self" onclick="setMhWho('self')"><span class="txt">Myself</span></label>
+              <label class="iofs-choice"><input type="radio" name="mh-who" id="mh-who-other-party" onclick="setMhWho('other_party')"><span class="txt">The other party</span></label>
+              <label class="iofs-choice"><input type="radio" name="mh-who" id="mh-who-both" onclick="setMhWho('both')"><span class="txt">Both parties</span></label>
+              <label class="iofs-choice"><input type="radio" name="mh-who" id="mh-who-someone" onclick="setMhWho('someone_else')"><span class="txt">Someone else in the case</span></label>
+            </div>
+          </div>
+          <div class="iofs-field"><label for="f-mh-desc">Briefly describe the nature of the allegation (optional)</label><textarea id="f-mh-desc" rows="2"></textarea></div>
+          <div class="iofs-field">
+            <label>Is there documentation of this allegation (e.g., court filing, evaluation report, email)?</label>
+            <div class="iofs-choices">
+              <label class="iofs-choice"><input type="radio" name="mh-doc" id="mh-doc-yes" onclick="setMhDocumented('yes')"><span class="txt">Yes</span></label>
+              <label class="iofs-choice"><input type="radio" name="mh-doc" id="mh-doc-no" onclick="setMhDocumented('no')"><span class="txt">No</span></label>
+              <label class="iofs-choice"><input type="radio" name="mh-doc" id="mh-doc-notsure" onclick="setMhDocumented('not_sure')"><span class="txt">Not sure</span></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="iofs-form-nav"><button type="button" class="iofs-fbtn ghost" onclick="goTo('timeline')">&larr; Back</button><button type="button" class="iofs-fbtn primary" onclick="continuePrior()">Continue &rarr;</button></div>
+      </div>
+
+      <div class="iofs-screen" data-id="dates">
+        <h2>Important dates</h2>
+        <p class="lead">Any upcoming hearings or deadlines we should be aware of?</p>
+        <div class="iofs-field"><input id="f-dates" placeholder="e.g. Hearing on Nov 12, or None"></div>
+        <div class="iofs-form-nav"><button type="button" class="iofs-fbtn ghost" onclick="goTo('prior')">&larr; Back</button><button type="button" class="iofs-fbtn primary" onclick="goTo('ack')">Continue &rarr;</button></div>
+      </div>
+
+      <div class="iofs-screen" data-id="ack">
+        <h2>Acknowledgment</h2>
+        <label class="iofs-choice"><input type="checkbox" id="f-ack" onclick="toggleAck(this.checked)"><span class="txt">I understand this intake does not create an attorney-client or doctor-patient relationship and is used to determine the appropriate next step.</span></label>
+        <div class="iofs-form-nav"><button type="button" class="iofs-fbtn ghost" onclick="goTo('dates')">&larr; Back</button><button type="button" class="iofs-fbtn primary" id="submit-btn" disabled onclick="submitForm()">Submit &rarr;</button></div>
+      </div>
+
+      <div class="iofs-screen" data-id="result">
+        <div id="result-body" style="display:flex;flex-direction:column;gap:16px;"></div>
+      </div>
+
+      </form>
+    </div>
+
+    <div class="iofs-callout" style="margin-top:20px;">
+      <strong>Important Notice:</strong> This intake tool is for gathering information only and does not constitute legal advice, clinical care, therapy, diagnosis, or case review. Submitting this form does not create an attorney-client or doctor-patient relationship.
+    </div>
+  </div>
+</div>
+
+<script>
+  /* =====================================================================
+     HUBSPOT SUBMISSION CONFIG — REPLACE BEFORE GOING LIVE
+     Get portalId + formGuid from HubSpot: open the form → Actions/Share →
+     Embed → copy the two values out of the embed snippet.
+     Field "name" values below (HUBSPOT_FIELD_MAP) must match this form's
+     actual internal field names in HubSpot, or submissions will fail
+     silently / land in the wrong properties and the notification workflow
+     may not fire. Verify each one against the real form before launch.
+  ===================================================================== */
+  var HUBSPOT_PORTAL_ID = "REPLACE_ME_PORTAL_ID";
+  var HUBSPOT_FORM_ID   = "REPLACE_ME_FORM_GUID";
+  var HUBSPOT_REGION    = "na1"; // change if the embed code shows a different region, e.g. "na2"
+
+  var HUBSPOT_FIELD_MAP = {
+    firstname: 'firstname',
+    lastname: 'lastname',
+    email: 'email',
+    address: 'address',
+    state: 'state',
+    country: 'country',
+    phone: 'phone',
+    sms_consent: 'sms_consent', // TODO confirm internal name in HubSpot
+    intake_scope: 'intake_scope', // TODO custom property — scope(s) selected
+    intake_other_description: 'intake_other_description', // TODO custom property
+    intake_price_answer: 'intake_price_answer', // TODO custom property
+    intake_rescue_answer: 'intake_rescue_answer', // TODO custom property
+    intake_intent: 'intake_intent', // TODO custom property
+    intake_readiness: 'intake_readiness', // TODO custom property
+    intake_timeline: 'intake_timeline', // TODO custom property
+    intake_prior_evaluation: 'intake_prior_evaluation', // TODO custom property
+    intake_prior_eval_profession: 'intake_prior_eval_profession', // TODO custom property
+    intake_prior_eval_diagnoses: 'intake_prior_eval_diagnoses', // TODO custom property
+    intake_prior_eval_methods: 'intake_prior_eval_methods', // TODO custom property
+    intake_mh_allegation: 'intake_mh_allegation', // TODO custom property
+    intake_mh_allegation_who: 'intake_mh_allegation_who', // TODO custom property
+    intake_mh_allegation_description: 'intake_mh_allegation_description', // TODO custom property
+    intake_mh_allegation_documented: 'intake_mh_allegation_documented', // TODO custom property
+    intake_important_dates: 'intake_important_dates', // TODO custom property
+    intake_routing_outcome: 'intake_routing_outcome' // TODO custom property — result of this simulator's logic
+  };
+
+  function getCookie(name){
+    var m = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+    return m ? decodeURIComponent(m.pop()) : '';
+  }
+
+  function submitToHubSpot(payloadFields){
+    if(HUBSPOT_PORTAL_ID.indexOf('REPLACE_ME') === 0 || HUBSPOT_FORM_ID.indexOf('REPLACE_ME') === 0){
+      console.warn('HubSpot portalId/formGuid not configured yet — skipping real submission.', payloadFields);
+      return Promise.resolve({skipped:true});
+    }
+    var endpoint = 'https://api.hsforms.com/submissions/v3/integration/submit/' + HUBSPOT_PORTAL_ID + '/' + HUBSPOT_FORM_ID;
+    var fields = Object.keys(payloadFields).map(function(k){
+      var name = HUBSPOT_FIELD_MAP[k] || k;
+      return { name: name, value: payloadFields[k] };
+    });
+    var body = {
+      fields: fields,
+      context: {
+        pageUri: window.location.href,
+        pageName: document.title,
+        hutk: getCookie('hubspotutk') || undefined
+      }
+    };
+    return fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    }).then(function(res){ return res.json().catch(function(){ return {}; }); });
+  }
+
+  var SCOPES = {
+    forensic_eval: {label:"Comprehensive Forensic Psychiatric Evaluation, Analysis and Reporting", option:"Option 1", price:"$7,500–$10,000", priceWording:"comprehensive",
+      purpose:"The purpose of this Agreement is to engage the Expert to conduct a comprehensive forensic psychiatric evaluation, analysis, and reporting, which will include interviews, assessment, and reporting related to the Client's mental health, functioning, and all relevant information as pertains to the underlying legal matter."},
+    peer_review: {label:"Comprehensive Peer Review, Analysis and Reporting (2nd Opinion)", option:"Option 2", price:"$5,000–$7,500", priceWording:"peer_review",
+      purpose:"The purpose of this Agreement is to engage the Expert to conduct a comprehensive forensic analysis and peer review of an existing evaluation, report, or opinion in the underlying legal matter, focusing on methodological integrity, forensic relevance, ethical compliance, and transparency of report structure."},
+    combination: {label:"Combination (Evaluation + Peer Review)", option:"Options 1 & 2", price:"$7,500–$10,000", priceWording:"comprehensive",
+      purpose:"The purpose of this Agreement is to engage the Expert under both Option 1 and Option 2, combining a comprehensive forensic psychiatric evaluation with a peer review of existing materials, as applicable to the underlying legal matter."}
+  };
+  var PROFESSIONS = [
+    {v:'psychiatrist', l:'Psychiatrist (MD)'},
+    {v:'psychologist', l:'Psychologist (PhD or PsyD)'},
+    {v:'lcsw', l:'Licensed Clinical Social Worker (LCSW)'},
+    {v:'counselor', l:'Licensed Counselor / Therapist (e.g., LPC, LMHC)'},
+    {v:'other', l:'Other'}
+  ];
+  var DIAGNOSES = [
+    {v:'personality_disorder', l:'Personality Disorder'},
+    {v:'bipolar', l:'Bipolar Disorder'},
+    {v:'bpd', l:'Borderline Personality Disorder'},
+    {v:'factitious', l:'Factitious Disorder Imposed on Another (formerly referred to as Munchausen by proxy)'},
+    {v:'parental_alienation', l:'Parental Alienation or related findings'},
+    {v:'none', l:'None of the above'},
+    {v:'not_sure', l:'Not sure / Do not recall'}
+  ];
+  var DIAGNOSES_EXCLUSIVE = ['none','not_sure'];
+  var METHODS = [
+    {v:'mmpi', l:'MMPI-2 or MMPI-2-RF'},
+    {v:'mcmi', l:'MCMI-III or MCMI-IV'},
+    {v:'other_testing', l:'Other standardized psychological testing'},
+    {v:'clinical_interview', l:'Clinical interview only'},
+    {v:'record_review', l:'Record review'},
+    {v:'not_sure', l:'Not sure'},
+    {v:'other', l:'Other (please specify)'}
+  ];
+  var METHODS_EXCLUSIVE = ['not_sure'];
+
+  var US_STATES = ["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","District of Columbia","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Carolina","North Dakota","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"];
+  function populateStates(){
+    var el = document.getElementById('f-state');
+    if(!el || el.options.length) return;
+    var html = '<option value="">Select a state&hellip;</option>';
+    US_STATES.forEach(function(s){ html += '<option value="'+s+'">'+s+'</option>'; });
+    html += '<option value="__intl">Outside the United States</option>';
+    el.innerHTML = html;
+  }
+  function toggleIntl(val){ document.getElementById('f-country-wrap').hidden = (val !== '__intl'); }
+  function formatPhone(input){
+    var digits = input.value.replace(/\D/g, '').slice(0, 10);
+    var formatted = digits;
+    if(digits.length > 6){ formatted = digits.slice(0,3) + '-' + digits.slice(3,6) + '-' + digits.slice(6); }
+    else if(digits.length > 3){ formatted = digits.slice(0,3) + '-' + digits.slice(3); }
+    input.value = formatted;
+  }
+
+  var state = {};
+  function resetState(){
+    state = {firstName:'', lastName:'', name:'',email:'',address:'',phone:'', smsConsent:false, stateRegion:'', country:'', scope:null, scopeSelections:[], testimonyRequested:false, otherDescription:'', customScope:false, redirectedFrom:null, price:null, priceRoute:false, rescue:null, intent:null, readiness:null, timeline:null,
+      priorEval:null, priorEvalDetails:{profession:'', professionOther:'', diagnoses:[], methods:[], methodsOther:''},
+      mhAllegation:null, mhAllegationDetails:{who:'', description:'', documented:''}};
+  }
+  resetState();
+
+  function screens(){ return document.querySelectorAll('.iofs-screen'); }
+  function goTo(id){
+    screens().forEach(function(s){ s.classList.toggle('active', s.dataset.id===id); });
+    renderProgress(id);
+    if(id==='scope') renderScopeChoices();
+    if(id==='membership_price') renderPriceQuestion();
+    if(id==='prior') syncPriorScreen();
+    document.getElementById('stage').scrollIntoView({behavior:'smooth', block:'start'});
+  }
+  function renderProgress(id){
+    var visSteps = ['contact','scope','membership_price','rescue','intent','readiness','timeline','prior','dates','ack'];
+    var idx = visSteps.indexOf(id);
+    var wrap = document.getElementById('progress');
+    if(id==='result' || id==='scope_redirect'){ wrap.innerHTML=''; return; }
+    var dots='';
+    for(var i=0;i<visSteps.length;i++){
+      if(visSteps[i]==='rescue' && !state.priceRoute) continue;
+      dots += '<span class="dot'+(i<=idx?' done':'')+'"></span>';
+    }
+    wrap.innerHTML = dots + '<span class="plabel">Step '+(idx+1)+'</span>';
+  }
+
+  function submitContact(){
+    var firstName = document.getElementById('f-firstname').value.trim();
+    var lastName = document.getElementById('f-lastname').value.trim();
+    var email = document.getElementById('f-email').value.trim();
+    var addr = document.getElementById('f-addr').value.trim();
+    var stateSel = document.getElementById('f-state').value;
+    if(!firstName || !lastName || !email || !addr || !stateSel){ alert('Please fill in all required fields (name, email, address, and state).'); return; }
+    state.firstName = firstName;
+    state.lastName = lastName;
+    state.name = firstName + ' ' + lastName;
+    state.email = email;
+    state.phone = document.getElementById('f-phone').value.trim();
+    state.smsConsent = document.getElementById('f-sms').checked;
+    if(stateSel === '__intl'){
+      state.stateRegion = '';
+      state.country = document.getElementById('f-country').value.trim();
+      state.address = addr + ', ' + state.country;
+    } else {
+      state.stateRegion = stateSel;
+      state.country = '';
+      state.address = addr + ', ' + state.stateRegion;
+    }
+    goTo('scope');
+  }
+
+  function renderScopeChoices(){
+    var el = document.getElementById('scope-choices');
+    el.innerHTML = [
+      scopeCheckboxRow('forensic_eval','Comprehensive Forensic Psychiatric Evaluation, Analysis and Reporting'),
+      scopeCheckboxRow('peer_review','Comprehensive Peer Review, Analysis and Reporting (2nd Opinion)'),
+      scopeCheckboxRow('expert_testimony','Expert Testimony (Available in person or virtually)'),
+      scopeCheckboxRow('other','Other &mdash; something else')
+    ].join('') + otherDescField();
+    var btn = document.getElementById('scope-continue');
+    if(btn) btn.disabled = state.scopeSelections.length===0;
+  }
+  function scopeCheckboxRow(val,label){
+    var checked = state.scopeSelections.indexOf(val) > -1;
+    return '<label class="iofs-choice"><input type="checkbox" value="'+val+'"'+(checked?' checked':'')+' onclick="toggleScope(\''+val+'\',this.checked)"><span class="txt"><b>'+label+'</b></span></label>';
+  }
+  function otherDescField(){
+    var show = state.scopeSelections.indexOf('other') > -1;
+    return '<div class="iofs-field" id="other-desc-wrap"'+(show?'':' hidden')+'><label for="f-other-desc">Briefly describe what you need</label><textarea id="f-other-desc" rows="2" placeholder="e.g. Records review only, consultation on a filed report, etc.">'+(state.otherDescription||'')+'</textarea></div>';
+  }
+  function toggleScope(val,checked){
+    var i = state.scopeSelections.indexOf(val);
+    if(checked && i===-1) state.scopeSelections.push(val);
+    if(!checked && i>-1) state.scopeSelections.splice(i,1);
+    document.getElementById('scope-continue').disabled = state.scopeSelections.length===0;
+    if(val==='other'){
+      var wrap = document.getElementById('other-desc-wrap');
+      if(wrap) wrap.hidden = !checked;
+    }
+  }
+  function continueScope(){
+    var sel = state.scopeSelections;
+    var hasEval = sel.indexOf('forensic_eval')>-1;
+    var hasPeer = sel.indexOf('peer_review')>-1;
+    var hasTestimony = sel.indexOf('expert_testimony')>-1;
+    var hasOther = sel.indexOf('other')>-1;
+    if(hasOther){
+      var descEl = document.getElementById('f-other-desc');
+      state.otherDescription = descEl ? descEl.value.trim() : '';
+    } else {
+      state.otherDescription = '';
+    }
+
+    if(!hasEval && !hasPeer && hasTestimony){ goTo('scope_redirect'); return; }
+
+    if(!hasEval && !hasPeer && !hasTestimony && hasOther){
+      state.scope = 'other';
+      state.customScope = true;
+      state.testimonyRequested = false;
+      goTo('intent');
+      return;
+    }
+
+    state.scope = (hasEval && hasPeer) ? 'combination' : (hasEval ? 'forensic_eval' : 'peer_review');
+    state.testimonyRequested = hasTestimony;
+    state.customScope = false;
+    goTo('membership_price');
+  }
+  function chooseRedirect(val){
+    state.scope = val;
+    state.redirectedFrom = 'expert_testimony';
+    state.testimonyRequested = true;
+    state.customScope = false;
+    goTo('membership_price');
+  }
+
+  function renderPriceQuestion(){
+    var s = SCOPES[state.scope];
+    var q = s.priceWording==='peer_review'
+      ? "Peer Review engagements typically range from $5,000–$7,500, depending on documentation volume and records review. Are you in a position to accommodate a fee in this range?"
+      : "Comprehensive engagements typically range from $7,500–$10,000, depending on documentation volume and records review. Are you in a position to accommodate a fee in this range?";
+    document.getElementById('price-question').textContent = q;
+  }
+  function choosePrice(val){
+    state.price = val;
+    if(val==='yes' || val==='yes-not-now'){ state.priceRoute = false; goTo('intent'); }
+    else { state.priceRoute = true; goTo('rescue'); }
+  }
+  function chooseRescue(val){
+    state.rescue = val;
+    if(state.price==='no' && val==='no'){ finish(); return; }
+    goTo('intent');
+  }
+  function chooseIntent(val){
+    state.intent = val;
+    if(val==='no'){ finish(); return; }
+    goTo('readiness');
+  }
+  function chooseReadiness(val){
+    state.readiness = val;
+    if(val==='not-at-time'){ finish(); return; }
+    goTo('timeline');
+  }
+  function chooseTimeline(val){ state.timeline = val; goTo('prior'); }
+
+  function choosePriorEval(val){ state.priorEval = val; document.getElementById('prior-eval-details').hidden = !val; }
+  function setProfession(val){ state.priorEvalDetails.profession = val; document.getElementById('profession-other-wrap').hidden = (val!=='other'); }
+  function renderDiagnosesChoices(){
+    var el = document.getElementById('diagnoses-choices');
+    if(!el) return;
+    el.innerHTML = DIAGNOSES.map(function(d){
+      var checked = state.priorEvalDetails.diagnoses.indexOf(d.v) > -1;
+      return '<label class="iofs-choice"><input type="checkbox" '+(checked?'checked':'')+' onclick="toggleDiagnosis(\''+d.v+'\',this.checked)"><span class="txt">'+d.l+'</span></label>';
+    }).join('');
+  }
+  function toggleDiagnosis(val, checked){
+    var arr = state.priorEvalDetails.diagnoses;
+    if(checked){
+      if(DIAGNOSES_EXCLUSIVE.indexOf(val)>-1){ arr = [val]; }
+      else { arr = arr.filter(function(v){ return DIAGNOSES_EXCLUSIVE.indexOf(v)===-1; }); arr.push(val); }
+    } else { arr = arr.filter(function(v){ return v!==val; }); }
+    state.priorEvalDetails.diagnoses = arr;
+    renderDiagnosesChoices();
+  }
+  function renderMethodsChoices(){
+    var el = document.getElementById('methods-choices');
+    if(!el) return;
+    el.innerHTML = METHODS.map(function(m){
+      var checked = state.priorEvalDetails.methods.indexOf(m.v) > -1;
+      return '<label class="iofs-choice"><input type="checkbox" '+(checked?'checked':'')+' onclick="toggleMethod(\''+m.v+'\',this.checked)"><span class="txt">'+m.l+'</span></label>';
+    }).join('');
+    var wrap = document.getElementById('method-other-wrap');
+    if(wrap) wrap.hidden = state.priorEvalDetails.methods.indexOf('other')===-1;
+  }
+  function toggleMethod(val, checked){
+    var arr = state.priorEvalDetails.methods;
+    if(checked){
+      if(METHODS_EXCLUSIVE.indexOf(val)>-1){ arr = [val]; }
+      else { arr = arr.filter(function(v){ return METHODS_EXCLUSIVE.indexOf(v)===-1; }); arr.push(val); }
+    } else { arr = arr.filter(function(v){ return v!==val; }); }
+    state.priorEvalDetails.methods = arr;
+    renderMethodsChoices();
+  }
+  function chooseMhAllegation(val){ state.mhAllegation = val; document.getElementById('mh-allegation-details').hidden = !val; }
+  function setMhWho(val){ state.mhAllegationDetails.who = val; }
+  function setMhDocumented(val){ state.mhAllegationDetails.documented = val; }
+
+  function syncPriorScreen(){
+    document.getElementById('prior-eval-yes').checked = state.priorEval===true;
+    document.getElementById('prior-eval-no').checked = state.priorEval===false;
+    document.getElementById('prior-eval-details').hidden = !state.priorEval;
+    var profIds = {psychiatrist:'prof-psychiatrist', psychologist:'prof-psychologist', lcsw:'prof-lcsw', counselor:'prof-counselor', other:'prof-other'};
+    Object.keys(profIds).forEach(function(k){ document.getElementById(profIds[k]).checked = state.priorEvalDetails.profession===k; });
+    document.getElementById('profession-other-wrap').hidden = (state.priorEvalDetails.profession!=='other');
+    document.getElementById('f-profession-other').value = state.priorEvalDetails.professionOther || '';
+    renderDiagnosesChoices();
+    renderMethodsChoices();
+    document.getElementById('f-method-other').value = state.priorEvalDetails.methodsOther || '';
+    document.getElementById('mh-allegation-yes').checked = state.mhAllegation===true;
+    document.getElementById('mh-allegation-no').checked = state.mhAllegation===false;
+    document.getElementById('mh-allegation-details').hidden = !state.mhAllegation;
+    var whoIds = {self:'mh-who-self', other_party:'mh-who-other-party', both:'mh-who-both', someone_else:'mh-who-someone'};
+    Object.keys(whoIds).forEach(function(k){ document.getElementById(whoIds[k]).checked = state.mhAllegationDetails.who===k; });
+    document.getElementById('f-mh-desc').value = state.mhAllegationDetails.description || '';
+    var docIds = {yes:'mh-doc-yes', no:'mh-doc-no', not_sure:'mh-doc-notsure'};
+    Object.keys(docIds).forEach(function(k){ document.getElementById(docIds[k]).checked = state.mhAllegationDetails.documented===k; });
+  }
+  function continuePrior(){
+    var profOtherEl = document.getElementById('f-profession-other');
+    if(profOtherEl) state.priorEvalDetails.professionOther = profOtherEl.value.trim();
+    var methodOtherEl = document.getElementById('f-method-other');
+    if(methodOtherEl) state.priorEvalDetails.methodsOther = methodOtherEl.value.trim();
+    var mhDescEl = document.getElementById('f-mh-desc');
+    if(mhDescEl) state.mhAllegationDetails.description = mhDescEl.value.trim();
+    goTo('dates');
+  }
+  function toggleAck(checked){ document.getElementById('submit-btn').disabled = !checked; }
+
+  function computePath(){
+    if(state.intent==='no' || state.readiness==='not-at-time'){
+      return {code:'membership_hard'};
+    }
+    if(state.customScope){
+      if(state.readiness==='possibly' && state.timeline==='several-months') return {code:'nurture_soft_timeline'};
+      return {code:'qualified_custom'};
+    }
+    if(state.price==='no' || state.price==='possibly'){
+      if(state.rescue==='no') return {code:'membership_hard'};
+      if(state.rescue==='not-at-time') return {code:'nurture_soft_rescue'};
+      if(state.readiness==='possibly' && state.timeline==='several-months') return {code:'nurture_soft_timeline'};
+      return {code:'qualified_narrow'};
+    }
+    if(state.readiness==='possibly' && state.timeline==='several-months') return {code:'nurture_soft_timeline'};
+    return {code:'qualified_standard'};
+  }
+
+  function submitForm(){
+    var path = computePath();
+    state.routingOutcome = path.code;
+
+    var scopeSummaryParts = [];
+    if(state.scope && SCOPES[state.scope]) scopeSummaryParts.push(SCOPES[state.scope].label);
+    else if(state.scope==='other') scopeSummaryParts.push('Other');
+    if(state.testimonyRequested) scopeSummaryParts.push('Expert Testimony');
+    if(state.otherDescription) scopeSummaryParts.push('Other: ' + state.otherDescription);
+
+    var payload = {
+      firstname: state.firstName || '',
+      lastname: state.lastName || '',
+      email: state.email,
+      address: state.address,
+      state: state.stateRegion,
+      country: state.country,
+      phone: state.phone,
+      sms_consent: state.smsConsent ? 'true' : 'false',
+      intake_scope: scopeSummaryParts.join(' + '),
+      intake_other_description: state.otherDescription || '',
+      intake_price_answer: state.price || '',
+      intake_rescue_answer: state.rescue || '',
+      intake_intent: state.intent || '',
+      intake_readiness: state.readiness || '',
+      intake_timeline: state.timeline || '',
+      intake_prior_evaluation: state.priorEval===true ? 'Yes' : (state.priorEval===false ? 'No' : ''),
+      intake_prior_eval_profession: state.priorEvalDetails.profession==='other' ? ('Other — '+state.priorEvalDetails.professionOther) : (PROFESSIONS.filter(function(p){return p.v===state.priorEvalDetails.profession;})[0]||{}).l || '',
+      intake_prior_eval_diagnoses: state.priorEvalDetails.diagnoses.map(function(v){ var d=DIAGNOSES.filter(function(x){return x.v===v;})[0]; return d?d.l:v; }).join('; '),
+      intake_prior_eval_methods: state.priorEvalDetails.methods.map(function(v){ if(v==='other'&&state.priorEvalDetails.methodsOther) return 'Other — '+state.priorEvalDetails.methodsOther; var m=METHODS.filter(function(x){return x.v===v;})[0]; return m?m.l:v; }).join('; '),
+      intake_mh_allegation: state.mhAllegation===true ? 'Yes' : (state.mhAllegation===false ? 'No' : ''),
+      intake_mh_allegation_who: state.mhAllegationDetails.who || '',
+      intake_mh_allegation_description: state.mhAllegationDetails.description || '',
+      intake_mh_allegation_documented: state.mhAllegationDetails.documented || '',
+      intake_important_dates: (document.getElementById('f-dates')||{}).value || '',
+      intake_routing_outcome: path.code
+    };
+
+    var submitBtn = document.getElementById('submit-btn');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting…';
+
+    submitToHubSpot(payload).then(function(){
+      renderResult(path);
+      goTo('result');
+    }).catch(function(err){
+      console.error('HubSpot submission failed', err);
+      renderResult(path);
+      goTo('result');
+    });
+  }
+
+  function renderResult(path){
+    var el = document.getElementById('result-body');
+    var firstName = state.firstName || 'there';
+    var html = '';
+
+    if(path.code==='membership_hard'){
+      html += '<div><span class="iofs-result-badge">Thank you</span></div>';
+      html += '<h2 style="color:var(--navy);">Thank you for sharing this information with us.</h2>';
+      html += '<p class="lead">Based on your answers, our Just Science Community membership is likely the best next step for you right now — ongoing access to Dr. Lee\'s expertise and our national forensic research database for $50/month, with a $25/month rate available if cost is a barrier.</p>';
+      html += '<div class="iofs-callout"><a href="https://advocacy.forensicscienceinstitute.com/membership" target="_blank" rel="noopener">Join the Just Science Community &rarr;</a></div>';
+      html += '<p class="lead">If your situation changes, you\'re always welcome to reach back out about a formal engagement.</p>';
+    } else if(path.code==='nurture_soft_rescue' || path.code==='nurture_soft_timeline'){
+      html += '<div><span class="iofs-result-badge">Thank you</span></div>';
+      html += '<h2 style="color:var(--navy);">Thank you for sharing this information with us.</h2>';
+      html += '<p class="lead">We\'ll follow up with some educational resources and information about our Just Science Community membership ($50/month) while you weigh your options, and we\'ll check back in when the timing is right.</p>';
+      html += '<div class="iofs-callout"><a href="https://advocacy.forensicscienceinstitute.com/membership" target="_blank" rel="noopener">Learn about the Just Science Community &rarr;</a></div>';
+    } else if(path.code==='qualified_custom'){
+      html += '<div><span class="iofs-result-badge">Thank you</span></div>';
+      html += '<h2 style="color:var(--navy);">Thank you for sharing this information with us.</h2>';
+      html += '<p class="lead">Your matter doesn\'t fit one of our standard engagement categories, so our team will personally review what you shared. Final pricing can only be determined following an in-person intake call to confirm and clarify your individual needs. Please reach out to <a href="mailto:advocate@forensicscienceinstitute.com">advocate@forensicscienceinstitute.com</a> with any questions in the meantime.</p>';
+    } else {
+      var s = SCOPES[state.scope];
+      var isNarrow = path.code==='qualified_narrow';
+      var price = isNarrow ? '$2,500–$3,500' : s.price;
+      html += '<div><span class="iofs-result-badge">Thank you</span></div>';
+      html += '<h2 style="color:var(--navy);">Thank you for sharing this information with us.</h2>';
+      html += '<p class="lead">Based on your answers, you\'re a strong fit for '+(isNarrow?'a narrower-scope engagement':s.label)+'. Final pricing can only be determined following an in-person intake call to confirm and clarify your individual needs. Please reach out to <a href="mailto:advocate@forensicscienceinstitute.com">advocate@forensicscienceinstitute.com</a> to schedule your consultation with Dr. Lee.</p>';
+      html += '<div class="iofs-callout">Estimated range: '+price+', with the final fee determined based on documentation volume and scope.'+(state.testimonyRequested?' Expert testimony, if needed, is billed separately as a $7,500 retainer with 14 days\' notice, available in person or virtually.':'')+'</div>';
+      html += '<div class="iofs-callout">Membership in the Just Science Community ($50/month) is also open to engaged clients, alongside your formal engagement — <a href="https://advocacy.forensicscienceinstitute.com/membership" target="_blank" rel="noopener">learn more</a>.</div>';
+    }
+    el.innerHTML = html;
+  }
+
+  populateStates();
+</script>
