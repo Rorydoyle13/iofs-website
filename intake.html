@@ -193,9 +193,10 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
       </div>
 
       <div class="iofs-screen" data-id="rescue">
-        <h2>One more option</h2>
+        <h2>A couple more options</h2>
         <div class="iofs-choices">
-          <label class="iofs-choice"><input type="radio" name="rescue" onclick="chooseRescue('yes')"><span class="txt"><b>Yes, I'd like to discuss options</b><small>Payment plan or a narrower, lower-cost modified engagement ($3,500)</small></span></label>
+          <label class="iofs-choice"><input type="radio" name="rescue" onclick="chooseRescue('modified')"><span class="txt"><b>A narrower, lower-cost modified engagement</b><small>$3,500 &mdash; a formal engagement agreement with a reduced scope</small></span></label>
+          <label class="iofs-choice"><input type="radio" name="rescue" onclick="chooseRescue('consult')"><span class="txt"><b>Expert Advisory Consult</b><small>$1,000 &mdash; a focused conversation with Dr. Lee on your matter, no formal engagement required</small></span></label>
           <label class="iofs-choice"><input type="radio" name="rescue" onclick="chooseRescue('not-at-time')"><span class="txt"><b>Not at this time</b></span></label>
           <label class="iofs-choice"><input type="radio" name="rescue" onclick="chooseRescue('no')"><span class="txt"><b>No, prefer to learn about membership instead</b></span></label>
         </div>
@@ -409,7 +410,8 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
     'no': 'No, this is outside my current budget'
   };
   var HS_RESCUE_TEXT = {
-    'yes': "Yes, I'd like to discuss options",
+    'modified': 'Yes — narrower, lower-cost modified engagement ($3,500)',
+    'consult': 'Yes — Expert Advisory Consult ($1,000)',
     'not-at-time': 'Not at this time',
     'no': 'No, prefer to learn about membership instead'
   };
@@ -727,6 +729,9 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
   function toggleAck(checked){ document.getElementById('submit-btn').disabled = !checked; }
 
   function computePath(){
+    if(state.rescue==='consult'){
+      return {code:'qualified_consult'};
+    }
     if(state.intent==='no' || state.readiness==='not-at-time'){
       return {code:'membership_hard'};
     }
@@ -824,6 +829,12 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
       html += '<div><span class="iofs-result-badge">Thank you</span></div>';
       html += '<h2 style="color:var(--navy);">Thank you for sharing this information with us.</h2>';
       html += '<p class="lead">Your matter doesn\'t fit one of our standard engagement categories, so our team will personally review what you shared. Final pricing can only be determined following an in-person intake call to confirm and clarify your individual needs. Please reach out to <a href="mailto:advocate@forensicscienceinstitute.com">advocate@forensicscienceinstitute.com</a> with any questions in the meantime.</p>';
+    } else if(path.code==='qualified_consult'){
+      html += '<div><span class="iofs-result-badge">Thank you</span></div>';
+      html += '<h2 style="color:var(--navy);">Thank you for sharing this information with us.</h2>';
+      html += '<p class="lead">Based on your answers, our Expert Advisory Consult with Dr. Lee is a great next step. You\'ll receive an email shortly with a secure payment link. Once payment is received, our team will reach out to schedule your consult directly with Dr. Lee.</p>';
+      html += '<div class="iofs-callout">Expert Advisory Consult: $1,000. No formal engagement agreement is required for this service. This is an informational consult and does not constitute a clinical evaluation or formal opinion; no doctor-patient relationship is created.</div>';
+      html += '<div class="iofs-callout">If a formal engagement makes sense afterward, Dr. Lee can help determine the right next step at that time.</div>';
     } else {
       var s = SCOPES[state.scope];
       var isNarrow = path.code==='qualified_narrow';
