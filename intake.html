@@ -195,7 +195,7 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
       <div class="iofs-screen" data-id="rescue">
         <h2>One more option</h2>
         <div class="iofs-choices">
-          <label class="iofs-choice"><input type="radio" name="rescue" onclick="chooseRescue('yes')"><span class="txt"><b>Yes, I'd like to discuss options</b><small>Payment plan or a narrower, lower-cost modified engagement ($2,500&ndash;$3,500)</small></span></label>
+          <label class="iofs-choice"><input type="radio" name="rescue" onclick="chooseRescue('yes')"><span class="txt"><b>Yes, I'd like to discuss options</b><small>Payment plan or a narrower, lower-cost modified engagement ($3,500)</small></span></label>
           <label class="iofs-choice"><input type="radio" name="rescue" onclick="chooseRescue('not-at-time')"><span class="txt"><b>Not at this time</b></span></label>
           <label class="iofs-choice"><input type="radio" name="rescue" onclick="chooseRescue('no')"><span class="txt"><b>No, prefer to learn about membership instead</b></span></label>
         </div>
@@ -451,11 +451,11 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
   }
 
   var SCOPES = {
-    forensic_eval: {label:"Comprehensive Forensic Psychiatric Evaluation, Analysis and Reporting", option:"Option 1", price:"$7,500–$10,000", priceWording:"comprehensive",
+    forensic_eval: {label:"Comprehensive Forensic Psychiatric Evaluation, Analysis and Reporting", option:"Option 1", price:"$8,500", priceWording:"comprehensive",
       purpose:"The purpose of this Agreement is to engage the Expert to conduct a comprehensive forensic psychiatric evaluation, analysis, and reporting, which will include interviews, assessment, and reporting related to the Client's mental health, functioning, and all relevant information as pertains to the underlying legal matter."},
-    peer_review: {label:"Comprehensive Peer Review, Analysis and Reporting (2nd Opinion)", option:"Option 2", price:"$5,000–$7,500", priceWording:"peer_review",
+    peer_review: {label:"Comprehensive Peer Review, Analysis and Reporting (2nd Opinion)", option:"Option 2", price:"$6,500", priceWording:"peer_review",
       purpose:"The purpose of this Agreement is to engage the Expert to conduct a comprehensive forensic analysis and peer review of an existing evaluation, report, or opinion in the underlying legal matter, focusing on methodological integrity, forensic relevance, ethical compliance, and transparency of report structure."},
-    combination: {label:"Combination (Evaluation + Peer Review)", option:"Options 1 & 2", price:"$7,500–$10,000", priceWording:"comprehensive",
+    combination: {label:"Combination (Evaluation + Peer Review)", option:"Options 1 & 2", price:"$8,500 + $6,500 (two separate engagements)", priceWording:"comprehensive",
       purpose:"The purpose of this Agreement is to engage the Expert under both Option 1 and Option 2, combining a comprehensive forensic psychiatric evaluation with a peer review of existing materials, as applicable to the underlying legal matter."}
   };
   var PROFESSIONS = [
@@ -627,8 +627,8 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
   function renderPriceQuestion(){
     var s = SCOPES[state.scope];
     var q = s.priceWording==='peer_review'
-      ? "Peer Review engagements typically range from $5,000–$7,500, depending on documentation volume and records review. Are you in a position to accommodate a fee in this range?"
-      : "Comprehensive engagements typically range from $7,500–$10,000, depending on documentation volume and records review. Are you in a position to accommodate a fee in this range?";
+      ? "The initial retainer for a Comprehensive Peer Review, Analysis and Reporting engagement is $6,500. Are you in a position to proceed at this fee?"
+      : "The initial retainer for a Comprehensive Forensic Psychiatric Evaluation, Analysis and Reporting engagement is $8,500. Are you in a position to proceed at this fee?";
     document.getElementById('price-question').textContent = q;
   }
   function choosePrice(val){
@@ -827,11 +827,11 @@ html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: 
     } else {
       var s = SCOPES[state.scope];
       var isNarrow = path.code==='qualified_narrow';
-      var price = isNarrow ? '$2,500–$3,500' : s.price;
+      var price = isNarrow ? '$3,500' : s.price;
       html += '<div><span class="iofs-result-badge">Thank you</span></div>';
       html += '<h2 style="color:var(--navy);">Thank you for sharing this information with us.</h2>';
-      html += '<p class="lead">Based on your answers, you\'re a strong fit for '+(isNarrow?'a narrower-scope engagement':s.label)+'. Final pricing can only be determined following an in-person intake call to confirm and clarify your individual needs. Please reach out to <a href="mailto:advocate@forensicscienceinstitute.com">advocate@forensicscienceinstitute.com</a> to schedule your consultation with Dr. Lee.</p>';
-      html += '<div class="iofs-callout">Estimated range: '+price+', with the final fee determined based on documentation volume and scope.'+(state.testimonyRequested?' Expert testimony, if needed, is billed separately as a $7,500 retainer with 14 days\' notice, available in person or virtually.':'')+'</div>';
+      html += '<p class="lead">Based on your answers, you\'re a strong fit for '+(isNarrow?'a narrower-scope engagement':s.label)+'. Your engagement agreement, reflecting the '+price+' initial retainer, will be sent to you shortly via DocuSign for signature.</p>';
+      html += '<div class="iofs-callout">Initial retainer: '+price+'.'+(state.testimonyRequested?' Expert testimony, if needed, is billed separately as a $7,500 retainer with 14 days\' notice, available in person or virtually.':'')+'</div>';
       html += '<div class="iofs-callout">Membership in the Just Science Community ($50/month) is also open to engaged clients, alongside your formal engagement — <a href="https://advocacy.forensicscienceinstitute.com/membership" target="_blank" rel="noopener">learn more</a>.</div>';
     }
     el.innerHTML = html;
